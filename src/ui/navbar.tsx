@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import clsx from "clsx";
-import { urgentNavBarItems, primaryNavBarItems } from "@/lib/nav-items";
+import { urgentNavBarItems, primaryNavBarItems } from "@/lib/navbar-items";
 import {
   DesktopMenu,
   DesktopMenuItem,

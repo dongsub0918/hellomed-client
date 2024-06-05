@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/ui/globals.css";
-import Navbar from "@/ui/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,8 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased text-gray-900`}>
+      <body className={`relative ${inter.className} antialiased text-gray-900`}>
         {children}
+
+        {/* Footer, to be implemented in the future */}
+        {/* <p className="absolute inset-x-0 bottom-0 text-center">Footer</p> */}
       </body>
     </html>
   );
