@@ -11,7 +11,7 @@ export const DesktopMenu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)}
-      className="px-2 pt-2 pb-4 text-lg md:flex text-white md:p-0"
+      className="flex flex-wrap items-center pt-3 text-white"
     >
       {children}
     </nav>
@@ -29,11 +29,15 @@ export const DesktopMenuItem = ({
 }) => {
   return (
     <div className="relative" onMouseEnter={() => setActive(item.name)}>
-      <div className="mt-1 block px-2 py-1 font-semibold rounded md:mt-0 md:ml-2">
-        {item.name}
+      <div className="font-semibold text-nowrap text-center mr-5">
+        {item.dropdown.length === 0 ? (
+          <Link href={item.href}>{item.name}</Link>
+        ) : (
+          <div>{item.name}</div>
+        )}
       </div>
-      {active === item.name && (
-        <div className="absolute right-0 py-2 w-48 bg-white rounded-lg border-black border-2">
+      {active === item.name && item.dropdown.length !== 0 && (
+        <div className="absolute z-50 py-2 w-48 bg-white rounded-lg border-black border-2">
           {item.dropdown.map((subItem: any) => (
             <Link
               href={subItem.href}
@@ -59,7 +63,7 @@ export const MobileMenu = ({
 }) => {
   return (
     <nav
-      className={clsx("px-2 pt-2 pb-4 text-lg text-white md:flex md:p-0", {
+      className={clsx("px-2 pt-2 pb-4 text-lg text-white", {
         block: navOpen,
         hidden: !navOpen,
       })}

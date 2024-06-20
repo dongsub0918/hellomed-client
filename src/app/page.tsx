@@ -5,7 +5,6 @@ export default function LandingPage() {
   return (
     <>
       <div className="hidden md:block">
-        {/* <MobileLandingPage/> */}
         <DesktopLandingPage />
       </div>
       <div className="md:hidden">

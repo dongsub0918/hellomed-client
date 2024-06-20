@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { urgentNavBarItems, primaryNavBarItems } from "@/lib/navbar-items";
+import { HamburgerX } from "@/ui/hamburger-x";
 import {
   DesktopMenu,
   DesktopMenuItem,
@@ -25,61 +26,61 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
     primary: "bg-green-400",
   };
 
+  const darkBgVariants = {
+    urgent: "bg-red-700",
+    primary: "bg-green-700",
+  };
+
   const hoverBgVariants = {
-    urgent: "hover:bg-red-300",
-    primary: "hover:bg-green-300",
+    urgent: "hover:bg-red-600",
+    primary: "hover:bg-green-600",
   };
 
   return (
     <header
-      className={`${bgVariants[theme]} md:flex md:justify-between md:items-center md:px-4 md:py-3`}
+      className={`${bgVariants[theme]} md:justify-between md:items-center md:px-4 md:py-3`}
     >
-      {/* link with logo heading to homepage */}
+      {/* leftside of topbar */}
       <div className="flex items-center justify-between px-4 py-3 md:p-0">
-        <div>
-          <Link href={"/"}>
-            <Image
-              src="/logo.png"
-              width={80}
-              height={80}
-              className=""
-              alt="Hellomed logo"
-            />
-          </Link>
+        <div className="flex items-center">
+          <div>
+            <Link href={"/"}>
+              <Image
+                src="/logo.png"
+                width={100}
+                height={100}
+                alt="Hellomed logo"
+              />
+            </Link>
+          </div>
+          <div className="hidden md:block ml-5 text-white font-black text-4xl capitalize">
+            {theme} care
+          </div>
         </div>
 
-        {/* div for hamburger / x icon on mobile view */}
-        <div className="md:hidden">
-          <button
-            className="rounded text-white outline-none"
-            onClick={() => {
-              setNavOpen(!navOpen);
-            }}
-          >
-            <svg
-              className="w-9 h-9"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+        {/* right side of topbar */}
+        <div>
+          {/* mobile topbar rightside */}
+          <div className="flex items-center md:hidden">
+            <div
+              className={`p-2 mr-4 text-white text-center rounded-lg ${darkBgVariants[theme]} shadow-lg`}
             >
-              {navOpen ? (
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+              <Link href="/make-appointment"> BOOK NOW</Link>
+            </div>
+            <HamburgerX setNavOpen={setNavOpen} navOpen={navOpen} />
+          </div>
+
+          {/* desktop topbar rightside */}
+          <div className="hidden md:block">
+            <div
+              className={`p-2 text-xl text-white text-center rounded-lg ${darkBgVariants[theme]} ${hoverBgVariants[theme]} shadow-lg`}
+            >
+              <Link href="/make-appointment"> WALK-IN OR BOOK ONLINE</Link>
+            </div>
+            <div className="p-2 mt-2 text-center rounded-lg bg-white shadow-lg">
+              <Link href="/contact">CONTACT US</Link>
+            </div>
+          </div>
         </div>
       </div>
 

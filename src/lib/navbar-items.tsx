@@ -1,185 +1,167 @@
 export const urgentNavBarItems = [
   {
-    name: "Nav1",
-    href: "/urgent-care/nav1",
+    name: "Acute Conditions",
+    href: "",
     dropdown: [
       {
-        name: "Nav1-Drop1",
-        href: "/urgent-care/nav1/drop1",
+        name: "Cold & Flu",
+        href: "/urgent-care/acute-conditions/cold-flu",
       },
       {
-        name: "Nav1-Drop2",
-        href: "/urgent-care/nav1/drop2",
+        name: "Strep",
+        href: "/urgent-care/acute-conditions/strep",
       },
       {
-        name: "Nav1-Drop3",
-        href: "/urgent-care/nav1/drop3",
+        name: "Sinusitis",
+        href: "/urgent-care/acute-conditions/sinusitis",
+      },
+      {
+        name: "Pink Eye",
+        href: "/urgent-care/acute-conditions/pink-eye",
+      },
+      {
+        name: "Stye",
+        href: "/urgent-care/acute-conditions/stye",
+      },
+      {
+        name: "Abdominal Pain",
+        href: "/urgent-care/acute-conditions/abdominal-pain",
+      },
+      {
+        name: "UTI",
+        href: "/urgent-care/acute-conditions/uti",
+      },
+      {
+        name: "Ear Infection",
+        href: "/urgent-care/acute-conditions/ear-infection",
+      },
+      {
+        name: "Gout",
+        href: "/urgent-care/acute-conditions/gout",
+      },
+      {
+        name: "Skin Infection",
+        href: "/urgent-care/acute-conditions/skin-infection",
+      },
+      {
+        name: "Allergy",
+        href: "/urgent-care/acute-conditions/allergy",
+      },
+      {
+        name: "Ankle Sprain",
+        href: "/urgent-care/acute-conditions/ankle-sprain",
+      },
+      {
+        name: "Back & Neck Pain",
+        href: "/urgent-care/acute-conditions/back-neck-pain",
+      },
+      {
+        name: "Joint Pain",
+        href: "/urgent-care/acute-conditions/joint-pain",
       },
     ],
   },
   {
-    name: "Nav2",
-    href: "/urgent-care/nav2",
-    dropdown: [
-      {
-        name: "Nav2-Drop1",
-        href: "/urgent-care/nav2/drop1",
-      },
-      {
-        name: "Nav2-Drop2",
-        href: "/urgent-care/nav2/drop2",
-      },
-      {
-        name: "Nav2-Drop3",
-        href: "/urgent-care/nav2/drop3",
-      },
-    ],
+    name: "Pediatric Urgent Care",
+    href: "/urgent-care/pediatric-urgent-care",
+    dropdown: [],
   },
   {
-    name: "Nav3",
-    href: "/urgent-care/nav3",
-    dropdown: [
-      {
-        name: "Nav3-Drop1",
-        href: "/urgent-care/nav3/drop1",
-      },
-      {
-        name: "Nav3-Drop2",
-        href: "/urgent-care/nav3/drop2",
-      },
-      {
-        name: "Nav3-Drop3",
-        href: "/urgent-care/nav3/drop3",
-      },
-    ],
+    name: "Geriatric Urgent Care",
+    href: "/urgent-care/geriatric-urgent-care",
+    dropdown: [],
   },
   {
-    name: "Nav4",
-    href: "/urgent-care/nav4",
-    dropdown: [
-      {
-        name: "Nav4-Drop1",
-        href: "/urgent-care/nav4/drop1",
-      },
-      {
-        name: "Nav4-Drop2",
-        href: "/urgent-care/nav4/drop2",
-      },
-      {
-        name: "Nav4-Drop3",
-        href: "/urgent-care/nav4/drop3",
-      },
-    ],
+    name: "Telemedicine",
+    href: "/urgent-care/telemedicine",
+    dropdown: [],
   },
   {
-    name: "Nav5",
-    href: "/urgent-care/nav5",
-    dropdown: [
-      {
-        name: "Nav5-Drop1",
-        href: "/urgent-care/nav5/drop1",
-      },
-      {
-        name: "Nav5-Drop2",
-        href: "/urgent-care/nav5/drop2",
-      },
-      {
-        name: "Nav5-Drop3",
-        href: "/urgent-care/nav5/drop3",
-      },
-    ],
+    name: "Lab Services",
+    href: "/urgent-care/lab-services",
+    dropdown: [],
+  },
+  {
+    name: "X-ray Service",
+    href: "/urgent-care/x-ray-service",
+    dropdown: [],
+  },
+  {
+    name: "Work Place Injuries",
+    href: "/urgent-care/work-place-injuries",
+    dropdown: [],
+  },
+  {
+    name: "Insurance Information",
+    href: "/urgent-care/insurance-information",
+    dropdown: [],
+  },
+  {
+    name: "No Insurance Plan",
+    href: "/urgent-care/no-insurance-plan",
+    dropdown: [],
   },
 ];
 
 export const primaryNavBarItems = [
   {
-    name: "Nav1",
-    href: "/primary-care/nav1",
-    dropdown: [
-      {
-        name: "Nav1-Drop1",
-        href: "/primary-care/nav1/drop1",
-      },
-      {
-        name: "Nav1-Drop2",
-        href: "/primary-care/nav1/drop2",
-      },
-      {
-        name: "Nav1-Drop3",
-        href: "/primary-care/nav1/drop3",
-      },
-    ],
+    name: "Annual Physical",
+    href: "/primary-care/annual-physical",
+    dropdown: [],
   },
   {
-    name: "Nav2",
-    href: "/primary-care/nav2",
-    dropdown: [
-      {
-        name: "Nav2-Drop1",
-        href: "/primary-care/nav2/drop1",
-      },
-      {
-        name: "Nav2-Drop2",
-        href: "/primary-care/nav2/drop2",
-      },
-      {
-        name: "Nav2-Drop3",
-        href: "/primary-care/nav2/drop3",
-      },
-    ],
+    name: "Work Physical",
+    href: "/primary-care/work-physical",
+    dropdown: [],
   },
   {
-    name: "Nav3",
-    href: "/primary-care/nav3",
-    dropdown: [
-      {
-        name: "Nav3-Drop1",
-        href: "/primary-care/nav3/drop1",
-      },
-      {
-        name: "Nav3-Drop2",
-        href: "/primary-care/nav3/drop2",
-      },
-      {
-        name: "Nav3-Drop3",
-        href: "/primary-care/nav3/drop3",
-      },
-    ],
+    name: "School & Camp Physical",
+    href: "/primary-care/school-camp-physical",
+    dropdown: [],
   },
   {
-    name: "Nav4",
-    href: "/primary-care/nav4",
-    dropdown: [
-      {
-        name: "Nav4-Drop1",
-        href: "/primary-care/nav4/drop1",
-      },
-      {
-        name: "Nav4-Drop2",
-        href: "/primary-care/nav4/drop2",
-      },
-      {
-        name: "Nav4-Drop3",
-        href: "/primary-care/nav4/drop3",
-      },
-    ],
+    name: "TB Testing",
+    href: "/primary-care/tb-testing",
+    dropdown: [],
   },
   {
-    name: "Nav5",
-    href: "/primary-care/nav5",
-    dropdown: [
-      {
-        name: "Nav5-Drop1",
-        href: "/primary-care/nav5/drop1",
-      },
-      {
-        name: "Nav5-Drop2",
-        href: "/primary-care/nav5/drop2",
-      },
-      {
-        name: "Nav5-Drop3",
-        href: "/primary-care/nav5/drop3",
-      },
-    ],
+    name: "Vaccination",
+    href: "/primary-care/vaccination",
+    dropdown: [],
+  },
+  {
+    name: "Depression Screening",
+    href: "/primary-care/depression-screening",
+    dropdown: [],
+  },
+  {
+    name: "STD Testing",
+    href: "/primary-care/std-testing",
+    dropdown: [],
+  },
+  {
+    name: "IV Infusion",
+    href: "/primary-care/iv-infusion",
+    dropdown: [],
+  },
+  {
+    name: "Lab Services",
+    href: "/primary-care/lab-services",
+    dropdown: [],
+  },
+  {
+    name: "X-ray Service",
+    href: "/primary-care/x-ray-service",
+    dropdown: [],
+  },
+  {
+    name: "Insurance Information",
+    href: "/primary-care/insurance-information",
+    dropdown: [],
+  },
+  {
+    name: "No Insurance Plan",
+    href: "/primary-care/no-insurance-plan",
+    dropdown: [],
   },
 ];
