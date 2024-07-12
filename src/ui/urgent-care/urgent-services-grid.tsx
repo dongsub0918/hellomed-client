@@ -13,8 +13,8 @@ export default function UrgentServicesGrid() {
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-3 px-3 md:gap-6 md:px-6 justify-items-center w-screen ">
-      {fakeUrgentServices.map((service: string) => (
-        <Link href="/">
+      {fakeUrgentServices.map((service: string, i: number) => (
+        <Link key={i} href="/">
           <div className="relative md:hover:brightness-150">
             <Image
               className="rounded-lg brightness-50"
