@@ -87,8 +87,9 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
       {/* nav items for desktop view */}
       <div className="hidden md:block">
         <DesktopMenu setActive={setActive}>
-          {navItems[theme].map((item) => (
+          {navItems[theme].map((item, i) => (
             <DesktopMenuItem
+              key={i}
               setActive={setActive}
               active={active}
               item={item}
@@ -100,8 +101,13 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
       {/* nav items for mobile view */}
       <div className="block md:hidden">
         <MobileMenu setActive={setActive} navOpen={navOpen}>
-          {navItems[theme].map((item) => (
-            <MobileMenuItem setActive={setActive} active={active} item={item} />
+          {navItems[theme].map((item, i) => (
+            <MobileMenuItem
+              key={i}
+              setActive={setActive}
+              active={active}
+              item={item}
+            />
           ))}
         </MobileMenu>
       </div>

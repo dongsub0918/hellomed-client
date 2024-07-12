@@ -16,8 +16,6 @@ export default function UrgentLayout({
 
       {/* Main Content */}
       {children}
-
-      {/* Footer: To be updated */}
     </div>
   );
 }

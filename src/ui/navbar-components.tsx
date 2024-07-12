@@ -38,8 +38,9 @@ export const DesktopMenuItem = ({
       </div>
       {active === item.name && item.dropdown.length !== 0 && (
         <div className="absolute z-50 py-2 w-48 bg-white rounded-lg border-black border-2">
-          {item.dropdown.map((subItem: any) => (
+          {item.dropdown.map((subItem: any, i: number) => (
             <Link
+              key={i}
               href={subItem.href}
               className="block px-4 py-2 text-center text-black hover:bg-slate-200"
             >
@@ -89,8 +90,12 @@ export const MobileMenuItem = ({
       </div>
       {active === item.name && (
         <div className="w-full py-2 border-y-2">
-          {item.dropdown.map((subItem: any) => (
-            <Link href={subItem.href} className="block text-center py-2">
+          {item.dropdown.map((subItem: any, i: number) => (
+            <Link
+              key={i}
+              href={subItem.href}
+              className="block text-center py-2"
+            >
               {subItem.name}
             </Link>
           ))}

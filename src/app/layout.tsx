@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Cabin } from "next/font/google";
 import "@/ui/globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
 const cabin = Cabin({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,12 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html className="scroll-smooth" lang="en">
       <body className={`relative ${cabin.className} antialiased text-gray-900`}>
         {children}
-
-        {/* Footer, to be implemented in the future */}
-        {/* <p className="absolute inset-x-0 bottom-0 text-center">Footer</p> */}
       </body>
     </html>
   );

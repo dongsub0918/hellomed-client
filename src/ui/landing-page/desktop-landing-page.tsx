@@ -19,11 +19,11 @@ export default function DesktopLandingPage() {
         </div>
 
         {/* Contents + Buttons Container */}
-        <div className="h-10/12 grid content-between 2xl:flex 2xl:">
+        <div className="h-10/12 grid content-between 2xl:flex">
           {/* Contents */}
           <div className="2xl:w-7/12 2xl:place-self-center">
             <div className="p-5 whitespace-pre-line text-center">
-              {landingItems[active as keyof typeof landingItems].text}
+              {landingItems[active as keyof typeof landingItems].content}
             </div>
 
             {/* Open link on new tab - for future use in location component */}
@@ -42,11 +42,6 @@ export default function DesktopLandingPage() {
           <div className="2xl:w-5/12 2xl:place-self-center">
             <QuickLinks />
           </div>
-        </div>
-
-        {/* Footer Container */}
-        <div className="h-1/12 text-center uppercase font-semibold">
-          Footer placeholder
         </div>
       </div>
 

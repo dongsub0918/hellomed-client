@@ -12,12 +12,15 @@ export default function UrgentLayout({
   return (
     <div>
       {/* Navbar */}
-      <Navbar theme="urgent" />
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar theme="urgent" />
+      </div>
 
       {/* Main Content */}
-      {children}
+      <div className="mt-[112px] md:mt-[152px]">{children}</div>
 
-      {/* Footer: To be updated */}
+      {/* Footer */}
+      <div>Footer</div>
     </div>
   );
 }

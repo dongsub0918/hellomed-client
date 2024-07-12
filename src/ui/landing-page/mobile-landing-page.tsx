@@ -34,20 +34,16 @@ export default function MobileLandingPage() {
 
           {/* Text container */}
           <div className="relative pb-8/12 sm:pb-6/12 overflow-y-auto">
-            <div className="absolute w-full h-full p-5 whitespace-pre-line">
-              {landingItems[active as keyof typeof landingItems].text}
+            <div className="absolute w-full h-full whitespace-pre-line">
+              <div className="grid h-full justify-items-center content-center">
+                {landingItems[active as keyof typeof landingItems].content}
+              </div>
             </div>
           </div>
 
           {/* Quick Links container */}
           <div className="px-5">
             <QuickLinks />
-          </div>
-
-          {/* Footer container */}
-          <div className="text-center uppercase font-semibold">
-            {" "}
-            Footer placeholder{" "}
           </div>
         </div>
       </div>
