@@ -9,7 +9,7 @@ export const HamburgerX = ({
 }) => {
   return (
     <button
-      className="rounded text-white outline-none"
+      className="rounded outline-none"
       onClick={() => {
         setNavOpen(!navOpen);
       }}

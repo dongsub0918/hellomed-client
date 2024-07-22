@@ -16,14 +16,14 @@ export default function UrgentMainBackground() {
       {/* Container for logo and text */}
       <div className="absolute grid place-items-center inset-0">
         <div className="grid justify-items-center w-11/12 text-white">
-          <Image
-            className="w-2/12"
+          {/* <Image
+            className="w-4/12 md:w-2/12"
             src="/logo.png"
             alt="urgent landing page logo"
             height={300}
             width={300}
-          />
-          <h1 className="text-2xl md:text-5xl font-bold text-center md:mb-8">
+          /> */}
+          <h1 className="text-2xl md:text-5xl font-bold text-center md:mb-8 mt-4">
             Accessibility, Convenience, and Quality Care.
           </h1>
           <h2 className="hidden md:block text-center text-2xl">

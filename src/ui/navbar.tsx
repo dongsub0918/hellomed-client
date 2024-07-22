@@ -22,23 +22,23 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
   };
 
   const bgVariants = {
-    urgent: "bg-red-400",
+    urgent: "bg-hmred",
     primary: "bg-green-400",
   };
 
   const darkBgVariants = {
-    urgent: "bg-red-700",
+    urgent: "bg-hmblue",
     primary: "bg-green-700",
   };
 
   const hoverBgVariants = {
-    urgent: "hover:bg-red-600",
+    urgent: "hover:bg-slate-600",
     primary: "hover:bg-green-600",
   };
 
   return (
     <header
-      className={`${bgVariants[theme]} md:justify-between md:items-center md:px-4 md:py-3`}
+      className={`${bgVariants[theme]} text-white md:justify-between md:items-center md:px-4 md:py-3`}
     >
       {/* leftside of topbar */}
       <div className="flex items-center justify-between px-4 py-3 md:p-0">
@@ -47,13 +47,13 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
             <Link href={"/"}>
               <Image
                 src="/logo.png"
-                width={100}
-                height={100}
+                width={174}
+                height={44}
                 alt="Hellomed logo"
               />
             </Link>
           </div>
-          <div className="hidden md:block ml-5 text-white font-black text-4xl capitalize">
+          <div className="hidden md:block ml-5 font-black text-4xl capitalize">
             {theme} care
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
           {/* mobile topbar rightside */}
           <div className="flex items-center md:hidden">
             <div
-              className={`p-2 mr-4 text-white text-center rounded-lg ${darkBgVariants[theme]} shadow-lg`}
+              className={`p-2 mr-4 text-center font-bold text-white rounded-lg ${darkBgVariants[theme]} shadow-lg`}
             >
               <Link href="/make-appointment"> BOOK NOW</Link>
             </div>
@@ -72,14 +72,18 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
 
           {/* desktop topbar rightside */}
           <div className="hidden md:block">
-            <div
-              className={`p-2 text-xl text-white text-center rounded-lg ${darkBgVariants[theme]} ${hoverBgVariants[theme]} shadow-lg`}
-            >
-              <Link href="/make-appointment"> WALK-IN OR BOOK ONLINE</Link>
-            </div>
-            <div className="p-2 mt-2 text-center rounded-lg bg-white shadow-lg">
-              <Link href="/contact">CONTACT US</Link>
-            </div>
+            <Link href="/make-appointment">
+              <div
+                className={`p-2 text-xl font-bold text-center rounded-lg ${darkBgVariants[theme]} ${hoverBgVariants[theme]} text-blue`}
+              >
+                WALK-IN OR BOOK ONLINE
+              </div>
+            </Link>
+            <Link href="/contact">
+              <div className="p-2 mt-2 text-center font-bold rounded-lg bg-white text-black">
+                CONTACT US
+              </div>
+            </Link>
           </div>
         </div>
       </div>

@@ -11,6 +11,9 @@ const config: Config = {
   plugins: [],
   theme: {
     extend: {
+      fontFamily: {
+        avenirNext: ["AvenirNext", "sans-serif"],
+      },
       spacing: {
         "1/2": "50%",
         "1/3": "33.333333%",
@@ -38,6 +41,18 @@ const config: Config = {
         "9/12": "75%",
         "10/12": "83.333333%",
         "11/12": "91.666667%",
+      },
+      colors: {
+        hmgreen: {
+          dark: "#255c4f",
+          light: "#91cfab",
+          pastel: "#b3ceae",
+        },
+        hmblack: "#231f20",
+        hmpink: "#f1f2f2",
+        hmred: "#ac1e23",
+        hmblue: "#153c55",
+        hmgray: "#9d9d9d",
       },
     },
   },

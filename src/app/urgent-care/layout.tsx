@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import "@/ui/globals.css";
 import Navbar from "@/ui/navbar";
+import Footer from "@/ui/footer";
 
 export default function UrgentLayout({
   children,
@@ -17,10 +18,10 @@ export default function UrgentLayout({
       </div>
 
       {/* Main Content */}
-      <div className="mt-[112px] md:mt-[152px]">{children}</div>
+      <div className="mt-[68px] md:mt-[152px]">{children}</div>
 
       {/* Footer */}
-      <div>Footer</div>
+      <Footer />
     </div>
   );
 }

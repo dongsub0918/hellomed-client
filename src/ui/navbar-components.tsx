@@ -11,7 +11,7 @@ export const DesktopMenu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)}
-      className="flex flex-wrap items-center pt-3 text-white"
+      className="flex flex-wrap items-center pt-3"
     >
       {children}
     </nav>
@@ -64,7 +64,7 @@ export const MobileMenu = ({
 }) => {
   return (
     <nav
-      className={clsx("px-2 pt-2 pb-4 text-lg text-white", {
+      className={clsx("px-2 pt-2 pb-4 text-lg", {
         block: navOpen,
         hidden: !navOpen,
       })}

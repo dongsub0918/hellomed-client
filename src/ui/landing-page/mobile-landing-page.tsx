@@ -42,7 +42,7 @@ export default function MobileLandingPage() {
           </div>
 
           {/* Quick Links container */}
-          <div className="px-5">
+          <div className="px-5 mb-5">
             <QuickLinks />
           </div>
         </div>

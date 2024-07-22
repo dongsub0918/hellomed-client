@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Cabin } from "next/font/google";
+import { Cabin } from "next/font/google";
 import "@/ui/globals.css";
 
-const cabin = Cabin({ subsets: ["latin"] });
+// const cabin = Cabin({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html className="scroll-smooth" lang="en">
-      <body className={`relative ${cabin.className} antialiased text-gray-900`}>
+      <body className={`relative antialiased text-gray-900 font-avenirNext`}>
         {children}
       </body>
     </html>
