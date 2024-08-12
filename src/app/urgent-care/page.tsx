@@ -2,8 +2,8 @@ import UrgentMainBackground from "@/ui/urgent-care/main-background";
 import HoursTable from "@/ui/hours-table";
 import UrgentServicesSection from "@/ui/urgent-care/urgent-services-section";
 import PlusSign from "@/ui/urgent-care/plus-sign";
-
 import UrgentReviewsGrid from "@/ui/urgent-care/urgent-reviews-grid";
+import LocationsSection from "@/ui/locations-section";
 
 export default function UrgentHome() {
   return (
@@ -47,6 +47,18 @@ export default function UrgentHome() {
         {/* Grid for services */}
         <UrgentReviewsGrid />
       </div>
+
+      {/* Location Section */}
+      <div className="grid justify-center justify-items-center pt-16 md:pt-32 gap-y-5 md:gap-y-10">
+        <PlusSign />
+        <strong className="uppercase text-center text-5xl md:text-7xl">
+          Locations
+        </strong>
+        <p className="text-center text-3xl text-gray-500">
+          Three Locations Available
+        </p>
+      </div>
+      <LocationsSection />
     </>
   );
 }
