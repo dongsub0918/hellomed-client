@@ -54,9 +54,6 @@ export default function UrgentHome() {
         <strong className="uppercase text-center text-5xl md:text-7xl">
           Locations
         </strong>
-        <p className="text-center text-3xl text-gray-500">
-          Three Locations Available
-        </p>
       </div>
       <LocationsSection />
     </>

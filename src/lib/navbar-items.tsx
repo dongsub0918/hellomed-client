@@ -5,59 +5,59 @@ export const urgentNavBarItems = [
     dropdown: [
       {
         name: "Cold & Flu",
-        href: "/urgent-care/acute-conditions/cold-flu",
+        href: "/urgent-care/info/acute-conditions/cold-flu",
       },
       {
         name: "Strep",
-        href: "/urgent-care/acute-conditions/strep",
+        href: "/urgent-care/info/acute-conditions/strep",
       },
       {
         name: "Sinusitis",
-        href: "/urgent-care/acute-conditions/sinusitis",
+        href: "/urgent-care/info/acute-conditions/sinusitis",
       },
       {
         name: "Pink Eye",
-        href: "/urgent-care/acute-conditions/pink-eye",
+        href: "/urgent-care/info/acute-conditions/pink-eye",
       },
       {
         name: "Stye",
-        href: "/urgent-care/acute-conditions/stye",
+        href: "/urgent-care/info/acute-conditions/stye",
       },
       {
         name: "Abdominal Pain",
-        href: "/urgent-care/acute-conditions/abdominal-pain",
+        href: "/urgent-care/info/acute-conditions/abdominal-pain",
       },
       {
         name: "UTI",
-        href: "/urgent-care/acute-conditions/uti",
+        href: "/urgent-care/info/acute-conditions/uti",
       },
       {
         name: "Ear Infection",
-        href: "/urgent-care/acute-conditions/ear-infection",
+        href: "/urgent-care/info/acute-conditions/ear-infection",
       },
       {
         name: "Gout",
-        href: "/urgent-care/acute-conditions/gout",
+        href: "/urgent-care/info/acute-conditions/gout",
       },
       {
         name: "Skin Infection",
-        href: "/urgent-care/acute-conditions/skin-infection",
+        href: "/urgent-care/info/acute-conditions/skin-infection",
       },
       {
         name: "Allergy",
-        href: "/urgent-care/acute-conditions/allergy",
+        href: "/urgent-care/info/acute-conditions/allergy",
       },
       {
         name: "Ankle Sprain",
-        href: "/urgent-care/acute-conditions/ankle-sprain",
+        href: "/urgent-care/info/acute-conditions/ankle-sprain",
       },
       {
         name: "Back & Neck Pain",
-        href: "/urgent-care/acute-conditions/back-neck-pain",
+        href: "/urgent-care/info/acute-conditions/back-neck-pain",
       },
       {
         name: "Joint Pain",
-        href: "/urgent-care/acute-conditions/joint-pain",
+        href: "/urgent-care/info/acute-conditions/joint-pain",
       },
     ],
   },
