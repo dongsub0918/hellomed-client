@@ -1,4 +1,3 @@
-// src/pages/diseaseInfo.tsx
 import React from "react";
 import ConditionInfo from "@/ui/urgent-care/info-conditions-text";
 import { coldAndFluInfo } from "@/lib/conditions-items";
