@@ -18,7 +18,7 @@ export default function AppointmentLayout({
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col justify-center mt-[68px] md:mt-[152px] min-h-[600px] py-10">
+      <div className="flex flex-col justify-center mt-[68px] md:mt-[152px] min-h-[600px] sm:py-10">
         {children}
       </div>
 

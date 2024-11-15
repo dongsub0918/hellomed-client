@@ -9,13 +9,13 @@ interface ConditionInfoProps {
   }[];
 }
 
-export default function ConditionInfo({
+export default function AcuteConditionsText({
   diseaseName,
   description,
   questionsAndAnswers,
 }: ConditionInfoProps) {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 my-6 max-w-3xl mx-auto">
+    <div className="bg-white shadow-lg rounded-lg p-6 max-w-3xl mx-auto">
       <h2 className="text-2xl font-bold text-teal-600">{diseaseName}</h2>
       <p className="text-gray-700 mb-6">{description}</p>
 

@@ -10,8 +10,6 @@ import {
   MobileMenuItem,
 } from "@/ui/navbar-components";
 
-const fakeData = ["Nav1", "Nav2", "Nav3", "Nav4", "Nav5"];
-
 export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
   const [navOpen, setNavOpen] = useState(false);
   const [active, setActive] = useState(null);

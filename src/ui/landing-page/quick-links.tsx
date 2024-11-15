@@ -4,7 +4,6 @@ import Link from "next/link";
 export default function QuickLinks() {
   return (
     <div className="text-center text-white">
-      <p>Not feeling good?</p>
       <Link href="/make-appointment">
         <div className="font-semibold uppercase rounded-lg bg-hmred hover:bg-red-500 shadow-md shadow-slate-400 p-2">
           make an appointment now

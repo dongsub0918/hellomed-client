@@ -5,71 +5,85 @@ export const urgentNavBarItems = [
     dropdown: [
       {
         name: "Cold & Flu",
-        href: "/urgent-care/info/acute-conditions/cold-flu",
+        href: "/urgent-care/acute-conditions/cold-flu",
       },
       {
         name: "Strep",
-        href: "/urgent-care/info/acute-conditions/strep",
+        href: "/urgent-care/acute-conditions/strep",
+      },
+      {
+        name: "COVID",
+        href: "/urgent-care/acute-conditions/covid",
       },
       {
         name: "Sinusitis",
-        href: "/urgent-care/info/acute-conditions/sinusitis",
+        href: "/urgent-care/acute-conditions/sinusitis",
+      },
+      {
+        name: "Cut (Laceration)",
+        href: "/urgent-care/acute-conditions/cut-laceration",
       },
       {
         name: "Pink Eye",
-        href: "/urgent-care/info/acute-conditions/pink-eye",
+        href: "/urgent-care/acute-conditions/pink-eye",
       },
       {
         name: "Stye",
-        href: "/urgent-care/info/acute-conditions/stye",
+        href: "/urgent-care/acute-conditions/stye",
       },
       {
         name: "Abdominal Pain",
-        href: "/urgent-care/info/acute-conditions/abdominal-pain",
+        href: "/urgent-care/acute-conditions/abdominal-pain",
       },
       {
         name: "UTI",
-        href: "/urgent-care/info/acute-conditions/uti",
+        href: "/urgent-care/acute-conditions/uti",
       },
       {
         name: "Ear Infection",
-        href: "/urgent-care/info/acute-conditions/ear-infection",
+        href: "/urgent-care/acute-conditions/ear-infection",
       },
       {
         name: "Gout",
-        href: "/urgent-care/info/acute-conditions/gout",
+        href: "/urgent-care/acute-conditions/gout",
       },
       {
         name: "Skin Infection",
-        href: "/urgent-care/info/acute-conditions/skin-infection",
+        href: "/urgent-care/acute-conditions/skin-infection",
       },
       {
         name: "Allergy",
-        href: "/urgent-care/info/acute-conditions/allergy",
+        href: "/urgent-care/acute-conditions/allergy",
       },
       {
         name: "Ankle Sprain",
-        href: "/urgent-care/info/acute-conditions/ankle-sprain",
+        href: "/urgent-care/acute-conditions/ankle-sprain",
       },
       {
         name: "Back & Neck Pain",
-        href: "/urgent-care/info/acute-conditions/back-neck-pain",
+        href: "/urgent-care/acute-conditions/back-neck-pain",
       },
       {
         name: "Joint Pain",
-        href: "/urgent-care/info/acute-conditions/joint-pain",
+        href: "/urgent-care/acute-conditions/joint-pain",
+      },
+      {
+        name: "Burn",
+        href: "/urgent-care/acute-conditions/burn",
+      },
+      {
+        name: "Pediatric Urgent Care",
+        href: "/urgent-care/acute-conditions/pediatric-urgent-care",
+      },
+      {
+        name: "Geriatric Urgent Care",
+        href: "/urgent-care/acute-conditions/geriatric-urgent-care",
+      },
+      {
+        name: "Work Place Injuries",
+        href: "/urgent-care/acute-conditions/work-place-injuries",
       },
     ],
-  },
-  {
-    name: "Pediatric Urgent Care",
-    href: "/urgent-care/pediatric-urgent-care",
-    dropdown: [],
-  },
-  {
-    name: "Geriatric Urgent Care",
-    href: "/urgent-care/geriatric-urgent-care",
-    dropdown: [],
   },
   {
     name: "Telemedicine",
@@ -87,57 +101,70 @@ export const urgentNavBarItems = [
     dropdown: [],
   },
   {
-    name: "Work Place Injuries",
-    href: "/urgent-care/work-place-injuries",
-    dropdown: [],
-  },
-  {
     name: "Insurance Information",
-    href: "/urgent-care/insurance-information",
-    dropdown: [],
-  },
-  {
-    name: "No Insurance Plan",
-    href: "/urgent-care/no-insurance-plan",
-    dropdown: [],
+    href: "",
+    dropdown: [
+      {
+        name: "Insurace we accept",
+        href: "/urgent-care/insurance-info/insurance-accept",
+      },
+      {
+        name: "No Insurance Plan",
+        href: "/urgent-care/insurance-information/no-insurance-plan",
+      },
+    ],
   },
 ];
 
 export const primaryNavBarItems = [
   {
-    name: "Annual Physical",
-    href: "/primary-care/annual-physical",
-    dropdown: [],
-  },
-  {
-    name: "Work Physical",
-    href: "/primary-care/work-physical",
-    dropdown: [],
-  },
-  {
-    name: "School & Camp Physical",
-    href: "/primary-care/school-camp-physical",
-    dropdown: [],
-  },
-  {
-    name: "TB Testing",
-    href: "/primary-care/tb-testing",
-    dropdown: [],
-  },
-  {
-    name: "Vaccination",
-    href: "/primary-care/vaccination",
-    dropdown: [],
-  },
-  {
-    name: "Depression Screening",
-    href: "/primary-care/depression-screening",
-    dropdown: [],
+    name: "Physical Exam",
+    href: "/primary-care/physical-exam",
+    dropdown: [
+      {
+        name: "Annual Physical",
+        href: "/primary-care/physical-exam/annual-physical",
+      },
+      {
+        name: "Work Physical",
+        href: "/primary-care/physical-exam/work-physical",
+      },
+      {
+        name: "School & Camp Physical",
+        href: "/primary-care/physical-exam/school-camp-physical",
+      },
+      {
+        name: "Study Abroad Physical",
+        href: "/primary-care/physical-exam/study-abroad-physical",
+      },
+    ],
   },
   {
     name: "STD Testing",
     href: "/primary-care/std-testing",
     dropdown: [],
+  },
+  {
+    name: "Screening Test",
+    href: "/primary-care/screening-test",
+    dropdown: [
+      {
+        name: "Depression Screening",
+        href: "/primary-care/screening-test/depression-screening",
+      },
+      {
+        name: "Antibody Test",
+        href: "/primary-care/screening-test/antibody-test",
+      },
+      {
+        name: "TB Test",
+        href: "/primary-care/screening-test/tb-test",
+      },
+      {
+        name: "Drug Screening",
+        href: "/primary-care/screening-test/drug-screening",
+      },
+    ],
   },
   {
     name: "IV Infusion",
@@ -157,11 +184,15 @@ export const primaryNavBarItems = [
   {
     name: "Insurance Information",
     href: "/primary-care/insurance-information",
-    dropdown: [],
-  },
-  {
-    name: "No Insurance Plan",
-    href: "/primary-care/no-insurance-plan",
-    dropdown: [],
+    dropdown: [
+      {
+        name: "Insurace we accept",
+        href: "/primary-care/insurance-information/insurance-we-accept",
+      },
+      {
+        name: "No Insurance Plan",
+        href: "/primary-care/insurance-information/no-insurance-plan",
+      },
+    ],
   },
 ];

@@ -36,7 +36,7 @@ export default function LocationsSection({
   appointmentLinks = false,
 }: LocationsSectionProps) {
   return (
-    <section className="px-6 w-full mt-10 mb-20">
+    <section className="px-6 w-full mt-10">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {locations.map((location, index) => (
           <div key={index} className="flex flex-col">
