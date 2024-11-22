@@ -1,7 +1,7 @@
 import axios, { Axios } from "axios";
 
 const client: Axios = axios.create({
-  baseURL: "localhost:3000/api/v1/",
+  baseURL: "https://hellomed-api.com/api/v1/",
   headers: {
     "Content-Type": "application/json",
   },

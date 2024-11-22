@@ -1,0 +1,93 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Button } from "@/ui/external/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/ui/external/card";
+import { CheckCircle } from "lucide-react";
+import { CheckInFormInputs } from "@/lib/types";
+
+export default function CheckInFormSuccessPage() {
+  const [formData, setFormData] = useState<CheckInFormInputs>();
+  const router = useRouter();
+
+  useEffect(() => {
+    // Retrieve form data from sessionStorage
+    const storedData = sessionStorage.getItem("formData");
+    if (storedData) {
+      setFormData(JSON.parse(storedData));
+    }
+  }, []);
+
+  const renderField = (label: string, value: string | undefined) => (
+    <div className="border-b border-gray-200 py-2">
+      <h3 className="font-semibold text-sm text-gray-600">{label}</h3>
+      <p className="mt-1">{value || "N/A"}</p>
+    </div>
+  );
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <Card className="w-full max-w-3xl mx-auto">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold flex items-center justify-center text-green-600">
+            <CheckCircle className="mr-2" />
+            Check-In Successfully Submitted
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-6">
+            <p className="text-center text-lg">
+              Thank you for submitting your check-in information. Here's a
+              summary of your submission:
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <h2 className="text-xl font-semibold">Personal Information</h2>
+                {renderField("Name", formData?.name)}
+                {renderField("Birth Date", formData?.birthDate)}
+                {renderField("Phone", formData?.phone)}
+                {renderField("Email", formData?.email)}
+                {renderField("Address", formData?.address)}
+                {renderField(
+                  "How did you hear about us?",
+                  formData?.hearAboutUs
+                )}
+              </div>
+              <div className="space-y-4">
+                <h2 className="text-xl font-semibold">Medical Information</h2>
+                {renderField("Medication Allergy", formData?.medicationAllergy)}
+                {renderField("Preferred Pharmacy", formData?.preferredPharmacy)}
+                {renderField("At Home Medication", formData?.homeMedication)}
+                {renderField("Reason for Visit", formData?.reasonForVisit)}
+                {renderField("Recent Exposures", formData?.exposures)}
+                {renderField("Recent Tests", formData?.recentTests)}
+                {renderField("Recent Visits", formData?.recentVisits)}
+              </div>
+            </div>
+          </div>
+        </CardContent>
+        <CardFooter className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mt-6">
+          <Button
+            onClick={() => router.push("/urgent-care")}
+            className="w-full sm:w-auto bg-hmred"
+          >
+            Go back to Urgent Care
+          </Button>
+          <Button
+            onClick={() => router.push("/primary-care")}
+            className="w-full sm:w-auto bg-hmgreen-dark"
+          >
+            Go back to Primary Care
+          </Button>
+        </CardFooter>
+      </Card>
+    </div>
+  );
+}

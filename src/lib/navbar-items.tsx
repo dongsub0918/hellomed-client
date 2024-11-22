@@ -110,7 +110,7 @@ export const urgentNavBarItems = [
       },
       {
         name: "No Insurance Plan",
-        href: "/urgent-care/insurance-information/no-insurance-plan",
+        href: "/urgent-care/insurance-info/no-insurance-plan",
       },
     ],
   },

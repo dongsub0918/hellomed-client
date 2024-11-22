@@ -51,9 +51,12 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
               />
             </Link>
           </div>
-          <div className="hidden md:block ml-5 font-black text-4xl capitalize">
+          <Link
+            href={`/${theme}-care`}
+            className="hidden md:block ml-5 font-black text-4xl capitalize"
+          >
             {theme} care
-          </div>
+          </Link>
         </div>
 
         {/* right side of topbar */}

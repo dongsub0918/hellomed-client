@@ -1,4 +1,5 @@
 import { Button } from "@/ui/external/button";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/external/card";
 import {
   Scan,
@@ -84,34 +85,13 @@ export default function XRayServicesPage() {
         </Card>
       </section>
 
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">
-          How to Make an Appointment
-        </h2>
-        <ol className="list-decimal list-inside space-y-2">
-          <li>
-            Simply call us or visit our website at{" "}
-            <a
-              href="http://www.Hello-med.com"
-              className="text-primary hover:underline"
-            >
-              www.Hello-med.com
-            </a>{" "}
-            to schedule an online appointment.
-          </li>
-          <li>Select the "X-ray Services" option on the booking calendar.</li>
-          <li>
-            If further instructions are needed, we will contact you with all
-            necessary information before your visit.
-          </li>
-        </ol>
-      </section>
-
       <div className="text-center">
-        <Button size="lg" className="mt-4 h-12 text-lg">
-          <Calendar className="mr-1 mb-1" />
-          Book an Appointment
-        </Button>
+        <Link href="/make-appointment">
+          <Button size="lg" className="mt-4 h-12 text-lg">
+            <Calendar className="mr-1 mb-1" />
+            Book an Appointment
+          </Button>
+        </Link>
       </div>
     </div>
   );

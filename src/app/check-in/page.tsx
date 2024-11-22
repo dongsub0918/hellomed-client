@@ -1,6 +1,7 @@
 "use client";
 
 import { ChangeEvent, useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/ui/external/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/external/card";
 import { Input } from "@/ui/external/input";
@@ -17,7 +18,8 @@ import {
 import { CheckInFormInputs } from "@/lib/types";
 import { postCheckIn } from "@/apis/check-in";
 
-export default function CheckInForm() {
+export default function CheckInFormPage() {
+  const router = useRouter();
   const [formInputs, setFormInputs] = useState<CheckInFormInputs>({
     name: "",
     birthDate: "",
@@ -51,16 +53,18 @@ export default function CheckInForm() {
     setIsFormValid(isValid);
   }, [formInputs]);
 
-  const handleSubmit = async () => {
-    console.log(formInputs);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       const res = await postCheckIn(formInputs);
 
-      // redirect to home page
-      window.location.href = "/";
+      // Store form data in sessionStorage
+      sessionStorage.setItem("formData", JSON.stringify(formInputs));
+
+      // Redirect to the success page
+      router.push("/check-in/success");
     } catch (error) {
       window.alert("Something went wrong. Please try again.");
-      return;
     }
   };
 

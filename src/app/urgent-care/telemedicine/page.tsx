@@ -128,24 +128,6 @@ export default function TelemedicinePage() {
         </Card>
       </section>
 
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">
-          How to make an appointment
-        </h2>
-        <ol className="list-decimal list-inside space-y-2">
-          <li>
-            Just call or schedule an online appointment and select Telemedicine
-            option on booking calendar.
-          </li>
-          <li>We will e-mail or text you a link.</li>
-          <li>If you join on a desktop or laptop computer follow the link</li>
-          <li>
-            If you join on a smartphone or tablet pc Download Telehealth by
-            SimplePractice (for iOS or Android) in the app store.
-          </li>
-        </ol>
-      </section>
-
       <div className="text-center">
         <Link href={"/make-appointment"}>
           <Button className="mt-4 h-12 text-lg">
