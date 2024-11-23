@@ -27,7 +27,7 @@ export default function UrgentServicesGrid() {
               height={400}
               className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300 group-hover:bg-opacity-30 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black bg-opacity-30 transition-opacity duration-300 group-hover:bg-opacity-60 flex items-center justify-center">
               <p className="text-white text-center text-lg md:text-xl lg:text-2xl font-semibold px-2">
                 {name}
               </p>

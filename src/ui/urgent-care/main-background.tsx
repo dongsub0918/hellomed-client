@@ -23,10 +23,10 @@ export default function UrgentMainBackground() {
             height={300}
             width={300}
           /> */}
-          <h1 className="text-2xl md:text-5xl font-bold text-center md:mb-8 mt-4">
+          <h1 className="font-black text-center md:mb-8 mt-4 text-2xl md:text-4xl lg:text-7xl">
             Accessibility, Convenience, and Quality Care.
           </h1>
-          <h2 className="hidden md:block text-center text-2xl">
+          <h2 className="hidden md:block text-center font-black md:text-2xl lg:text-3xl">
             We are here to serve the urgent healthcare needs of the Ann Arbor
             community and have been doing so since 2014. Our team of experienced
             medical professionals is committed to providing comprehensive care

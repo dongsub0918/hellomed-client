@@ -33,10 +33,10 @@ const insurancePlans = [
 export default function InsurancePlansPage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8">
+      <h1 className="text-3xl xl:text-5xl font-bold text-center mb-8 xl:my-10">
         Insurance Plans We Accept
       </h1>
-      <div className="text-sm sm:text-xl">
+      <div className="text-sm sm:text-xl xl:text-2xl">
         <p className="text-center text-red-600">
           * As the patient you are always responsible for any charges not paid
           by your insurance.
@@ -62,7 +62,9 @@ export default function InsurancePlansPage() {
                   className="object-contain"
                 />
               </div>
-              <h2 className="text-lg font-semibold text-center">{plan.name}</h2>
+              <h2 className="text-lg font-semibold text-center xl:text-2xl">
+                {plan.name}
+              </h2>
             </CardContent>
           </Card>
         ))}

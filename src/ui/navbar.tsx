@@ -111,6 +111,8 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
               key={i}
               setActive={setActive}
               active={active}
+              navOpen={navOpen}
+              setNavOpen={setNavOpen}
               item={item}
             />
           ))}

@@ -29,7 +29,7 @@ export const DesktopMenuItem = ({
 }) => {
   return (
     <div className="relative" onMouseEnter={() => setActive(item.name)}>
-      <div className="font-semibold text-nowrap text-center mr-5">
+      <div className="font-semibold lg:text-lg text-nowrap text-center mr-6 lg:mr-10">
         {item.dropdown.length === 0 ? (
           <Link href={item.href}>{item.name}</Link>
         ) : (
@@ -78,10 +78,14 @@ export const MobileMenuItem = ({
   setActive,
   active,
   item,
+  navOpen,
+  setNavOpen,
 }: {
   setActive: any;
   active: any;
   item: any;
+  navOpen: Boolean;
+  setNavOpen: any;
 }) => {
   return (
     <div onClick={() => setActive(active === item.name ? null : item.name)}>
@@ -92,7 +96,13 @@ export const MobileMenuItem = ({
         {item.name}
       </Link>
       {active === item.name && item.dropdown.length !== 0 && (
-        <div className="w-full py-2 border-y-2">
+        <div
+          className="w-full py-2 border-y-2"
+          onClick={() => {
+            setActive(null);
+            setNavOpen(false);
+          }}
+        >
           {item.dropdown.map((subItem: any, i: number) => (
             <Link
               key={i}

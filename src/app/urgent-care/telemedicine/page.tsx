@@ -14,11 +14,15 @@ import {
 export default function TelemedicinePage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-8">TELEMEDICINE</h1>
+      <h1 className="text-4xl xl:text-6xl font-bold text-center mb-8 xl:my-12">
+        TELEMEDICINE
+      </h1>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">What is Telehealth?</h2>
-        <p className="text-lg mb-4">
+        <h2 className="text-2xl xl:text-3xl font-semibold mb-4">
+          What is Telehealth?
+        </h2>
+        <p className="text-lg xl:text-xl mb-4">
           Through audio and video over the internet, you can meet with your
           clinician on-the-go from your desktop, laptop, tablet, or mobile
           device (iOS or Android) - it's your choice! Telehealth allows us to
@@ -30,20 +34,22 @@ export default function TelemedicinePage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Benefits of Telehealth</h2>
-        <p className="text-lg mb-4">
+        <h2 className="text-2xl xl:text-3xl font-semibold mb-4">
+          Benefits of Telehealth
+        </h2>
+        <p className="text-lg xl:text-xl mb-4">
           Here are a few of the research-based benefits to providing Telehealth
           services:
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
+              <CardTitle className="flex items-center xl:text-2xl">
                 <Laptop className="mr-2 mb-1" />
                 Increases access
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="xl:text-lg">
               Busy professionals and students or geriatric patients! Telehealth
               can play an important role in these communities by increasing
               accessibility.
@@ -51,12 +57,12 @@ export default function TelemedicinePage() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
+              <CardTitle className="flex items-center xl:text-2xl">
                 <DollarSign className="mr-2 mb-1" />
                 Reduces costs for clients
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="xl:text-lg">
               Nearly all research suggests that Telehealth saves money when
               compared with traditional approaches to providing care. For
               clients, this often means lower copays, transportation costs, less
@@ -66,24 +72,24 @@ export default function TelemedicinePage() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
+              <CardTitle className="flex items-center xl:text-2xl">
                 <Heart className="mr-2 mb-1" />
                 Same-level client care
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="xl:text-lg">
               No client outcome difference was found between Telehealth
               appointments and face-to-face office visits.
             </CardContent>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
+              <CardTitle className="flex items-center xl:text-2xl">
                 <ThumbsUp className="mr-2 mb-1" />
                 Better client experience
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="xl:text-lg">
               Telehealth eliminates the wasted time traveling and sitting in the
               waiting room.
             </CardContent>
@@ -92,8 +98,10 @@ export default function TelemedicinePage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">SERVICES INCLUDE</h2>
-        <ol className="list-decimal list-inside space-y-2">
+        <h2 className="text-2xl xl:text-3xl font-semibold mb-4">
+          SERVICES INCLUDE
+        </h2>
+        <ol className="list-decimal list-inside space-y-2 xl:text-lg">
           <li>All patients who need the services</li>
           <li>
             Conditions including:
@@ -117,9 +125,11 @@ export default function TelemedicinePage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Service Information</h2>
+        <h2 className="text-2xl xl:text-3xl font-semibold mb-4">
+          Service Information
+        </h2>
         <Card>
-          <CardContent className="flex items-center pt-6">
+          <CardContent className="flex items-center pt-6 xl:text-xl">
             <Clock className="mr-3 mb-1" />
             <p>
               <strong>Service Duration:</strong> 15 – 25 minutes
@@ -130,7 +140,7 @@ export default function TelemedicinePage() {
 
       <div className="text-center">
         <Link href={"/make-appointment"}>
-          <Button className="mt-4 h-12 text-lg">
+          <Button className="my-4 h-12 text-lg xl:text-2xl">
             <Calendar className="mr-1 mb-1" />
             Book an Appointment
           </Button>

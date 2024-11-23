@@ -60,7 +60,9 @@ export default function UrgentReviewsGrid() {
                 />
               ))}
             </div>
-            <p className="text-gray-700 text-sm flex-grow">{item.review}</p>
+            <p className="text-gray-700 text-sm md:text-base lg:text-lg flex-grow">
+              {item.review}
+            </p>
             <p className="text-gray-900 font-semibold text-right mt-auto">
               {item.name}
             </p>
