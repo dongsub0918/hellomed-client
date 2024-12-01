@@ -119,7 +119,7 @@ export const urgentNavBarItems = [
 export const primaryNavBarItems = [
   {
     name: "Physical Exam",
-    href: "/primary-care/physical-exam",
+    href: "",
     dropdown: [
       {
         name: "Annual Physical",
@@ -146,7 +146,7 @@ export const primaryNavBarItems = [
   },
   {
     name: "Screening Test",
-    href: "/primary-care/screening-test",
+    href: "",
     dropdown: [
       {
         name: "Depression Screening",
@@ -183,15 +183,15 @@ export const primaryNavBarItems = [
   },
   {
     name: "Insurance Information",
-    href: "/primary-care/insurance-information",
+    href: "",
     dropdown: [
       {
         name: "Insurace we accept",
-        href: "/primary-care/insurance-information/insurance-we-accept",
+        href: "/primary-care/insurance-info/insurance-accept",
       },
       {
         name: "No Insurance Plan",
-        href: "/primary-care/insurance-information/no-insurance-plan",
+        href: "/primary-care/insurance-info/no-insurance-plan",
       },
     ],
   },

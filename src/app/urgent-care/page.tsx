@@ -1,8 +1,8 @@
 import UrgentMainBackground from "@/ui/urgent-care/main-background";
 import HoursTable from "@/ui/hours-table";
-import UrgentServicesSection from "@/ui/urgent-care/urgent-services-section";
+import UrgentServicesSection from "@/ui/urgent-care/services-section";
 import PlusSign from "@/ui/urgent-care/plus-sign";
-import UrgentReviewsGrid from "@/ui/urgent-care/urgent-reviews-grid";
+import UrgentReviewsGrid from "@/ui/reviews-grid";
 import LocationsSection from "@/ui/locations-section";
 
 export default function UrgentHome() {

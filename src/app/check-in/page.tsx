@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/ui/external/select";
+import { Checkbox } from "@/ui/external/checkbox";
 import { CheckInFormInputs } from "@/lib/types";
 import { postCheckIn } from "@/apis/check-in";
 
@@ -36,7 +37,8 @@ export default function CheckInFormPage() {
     recentVisits: "",
   });
 
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [agreedToTerms, setAgreedToTerms] = useState<boolean>(false);
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
 
   useEffect(() => {
     const requiredFields = [
@@ -185,13 +187,41 @@ export default function CheckInFormPage() {
 
           <div className="space-y-2">
             <Label htmlFor="preferredPharmacy">Preferred Pharmacy *</Label>
-            <Input
+            <Select
               name="preferredPharmacy"
-              placeholder="Pharmacy name and location"
               value={formInputs.preferredPharmacy}
-              onChange={handleChange}
-              required
-            />
+              onValueChange={(value) =>
+                handleChange("preferredPharmacy", value)
+              }
+            >
+              <SelectTrigger id="preferredPharmacy">
+                <SelectValue placeholder="Select an option" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="CVS - 209 S State St, Ann Arbor, MI 48104">
+                  CVS - 209 S State St, Ann Arbor, MI 48104
+                </SelectItem>
+                <SelectItem value="CVS - 3535 Plymouth Rd, Ann Arbor, MI 48105">
+                  CVS - 3535 Plymouth Rd, Ann Arbor, MI 48105
+                </SelectItem>
+                <SelectItem value="Kroger - 2641 Plymouth Rd, Ann Arbor, MI 48105">
+                  Kroger - 2641 Plymouth Rd, Ann Arbor, MI 48105
+                </SelectItem>
+                <SelectItem
+                  value="Walgreen - 317 S State St, Ann Arbor, MI 48104
+"
+                >
+                  Walgreen - 317 S State St, Ann Arbor, MI 48104
+                </SelectItem>
+                <SelectItem
+                  value="Meijer pharmacy - 3145 Ann Arbor-Saline Rd, Ann Arbor, MI 48103
+"
+                >
+                  Meijer pharmacy - 3145 Ann Arbor-Saline Rd, Ann Arbor, MI
+                  48103
+                </SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">
@@ -263,7 +293,36 @@ export default function CheckInFormPage() {
             />
           </div>
 
-          <Button type="submit" className="w-full" disabled={!isFormValid}>
+          <div className="space-y-2">
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                id="terms"
+                checked={agreedToTerms}
+                onCheckedChange={(checked) =>
+                  setAgreedToTerms(checked as boolean)
+                }
+              />
+              <Label htmlFor="terms" className="text-sm">
+                I agree to the following terms:
+              </Label>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              We at HelloMed are required by law to maintain the privacy of and
+              provide individuals with the attached Notice of our legal duties
+              and privacy practices with respect to protected health
+              information. If you have any objections to the Notice, please ask
+              to speak with our HIPAA Compliance Officer in person or by phone
+              at our main phone number. If you would like a copy of the Notice,
+              please ask. HelloMed could send an e-mail or call to inform you of
+              your test result, follow up or news.
+            </p>
+          </div>
+
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={!isFormValid || !agreedToTerms}
+          >
             Submit Check-In Form
           </Button>
         </form>

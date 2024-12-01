@@ -21,17 +21,17 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
 
   const bgVariants = {
     urgent: "bg-hmred",
-    primary: "bg-green-400",
+    primary: "bg-hmgreen-dark",
   };
 
   const darkBgVariants = {
     urgent: "bg-hmblue",
-    primary: "bg-green-700",
+    primary: "bg-hmblack",
   };
 
   const hoverBgVariants = {
     urgent: "hover:bg-slate-600",
-    primary: "hover:bg-green-600",
+    primary: "hover:bg-slate-600",
   };
 
   return (
