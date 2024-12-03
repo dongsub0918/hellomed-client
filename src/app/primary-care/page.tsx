@@ -1,5 +1,5 @@
 import PrimaryMainBackground from "@/ui/primary-care/main-background";
-import HoursTable from "@/ui/hours-table";
+import { MobileHoursTable, DesktopHoursTable } from "@/ui/hours-table";
 import PrimaryServicesSection from "@/ui/primary-care/services-section";
 import PlusSign from "@/ui/urgent-care/plus-sign";
 import ReviewsGrid from "@/ui/reviews-grid";
@@ -27,7 +27,12 @@ export default function PrimaryHome() {
           <p className="text-center text-xl md:text-2xl lg:text-4xl">
             (Last check-in time: 30 minutes before closing)
           </p>
-          <HoursTable />
+          <div className="sm:hidden">
+            <MobileHoursTable />
+          </div>
+          <div className="hidden sm:block">
+            <DesktopHoursTable />
+          </div>
         </div>
       </div>
 
