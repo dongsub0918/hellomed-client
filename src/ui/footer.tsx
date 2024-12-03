@@ -11,7 +11,7 @@ export default function Footer() {
               Accessibility, Convenience, and Quality Care.
             </p>
           </div>
-          <div className="mb-6 md:mb-0">
+          {/* <div className="mb-6 md:mb-0">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="mt-2 space-y-2">
               <li>
@@ -35,7 +35,7 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
           <div className="mb-6 md:mb-0">
             <h3 className="text-lg font-semibold">Contact Us</h3>
             <ul className="mt-2 space-y-2">
@@ -51,7 +51,10 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold">Media</h3>
             <div className="flex mt-2 space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a
+                href="https://www.instagram.com/hellomedclinic/"
+                className="text-gray-400 hover:text-white"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -62,7 +65,10 @@ export default function Footer() {
                   <path d="M12 5.838a6.163 6.163 0 1 0 0 12.326A6.163 6.163 0 1 0 12 5.838zm0 10.163a4 4 0 1 1 0-8 4 4 0 1 1 0 8zm6.406-11.845a1.44 1.44 0 1 0-2.88 0 1.44 1.44 0 1 0 2.88 0z" />
                 </svg>
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a
+                href="https://www.facebook.com/hellomedclinic/"
+                className="text-gray-400 hover:text-white"
+              >
                 <svg
                   fill="currentColor"
                   className="w-6 h-6"
@@ -71,7 +77,7 @@ export default function Footer() {
                   <path d="M22.23 0H1.77C.79 0 0 .78 0 1.77v20.46C0 23.22.79 24 1.77 24h11.03v-8.62H9.69V10.5h3.12V7.89c0-3.1 1.9-4.79 4.67-4.79 1.33 0 2.46.1 2.79.14v3.24h-1.91c-1.5 0-1.8.71-1.8 1.76v2.3h3.59l-.47 3.88h-3.12V24h6.12c.98 0 1.77-.78 1.77-1.77V1.77C24 .78 23.22 0 22.23 0z" />
                 </svg>
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              {/* <a href="#" className="text-gray-400 hover:text-white">
                 <svg
                   fill="currentColor"
                   className="w-6 h-6"
@@ -88,7 +94,7 @@ export default function Footer() {
                 >
                   <path d="M12 2.16c-5.45 0-9.84 4.39-9.84 9.84s4.39 9.84 9.84 9.84 9.84-4.39 9.84-9.84-4.39-9.84-9.84-9.84zm5.33 13.04h-2.24v-3.97c0-.95-.02-2.16-1.33-2.16s-1.54 1.04-1.54 2.1v4.03h-2.24V9.54h2.16v1.29h.03c.3-.57 1.06-1.17 2.18-1.17 2.34 0 2.77 1.54 2.77 3.53v4.02z" />
                 </svg>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

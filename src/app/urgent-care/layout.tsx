@@ -11,7 +11,7 @@ export default function UrgentLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <div className="w-full">
       {/* Navbar */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar theme="urgent" />

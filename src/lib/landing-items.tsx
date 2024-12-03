@@ -1,4 +1,4 @@
-import HoursTable from "@/ui/hours-table";
+import { MobileHoursTable, DesktopHoursTable } from "@/ui/hours-table";
 
 export const landingItems = {
   about: {
@@ -18,14 +18,14 @@ export const landingItems = {
   hours: {
     name: "Hours",
     content: (
-      <div className="text-sm">
-        <HoursTable />
-      </div>
+      <>
+        <div className="md:hidden">
+          <MobileHoursTable />
+        </div>
+        <div className="hidden md:block">
+          <DesktopHoursTable />
+        </div>
+      </>
     ),
-  },
-  locations: {
-    name: "Locations",
-    content:
-      "Central location: Address for central \n North location: Address for north \n South location: Address for south",
   },
 };

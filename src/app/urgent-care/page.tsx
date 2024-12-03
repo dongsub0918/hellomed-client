@@ -1,5 +1,5 @@
 import UrgentMainBackground from "@/ui/urgent-care/main-background";
-import HoursTable from "@/ui/hours-table";
+import { MobileHoursTable, DesktopHoursTable } from "@/ui/hours-table";
 import UrgentServicesSection from "@/ui/urgent-care/services-section";
 import PlusSign from "@/ui/urgent-care/plus-sign";
 import UrgentReviewsGrid from "@/ui/reviews-grid";
@@ -27,7 +27,12 @@ export default function UrgentHome() {
           <p className="text-center text-xl md:text-2xl lg:text-4xl">
             (Last check-in time: 30 minutes before closing)
           </p>
-          <HoursTable />
+          <div className="md:hidden w-full">
+            <MobileHoursTable />
+          </div>
+          <div className="hidden md:block w-full">
+            <DesktopHoursTable />
+          </div>
         </div>
       </div>
 
