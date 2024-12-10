@@ -5,7 +5,7 @@ import ReviewsGrid from "@/ui/reviews-grid";
 import PlusSign from "@/ui/urgent-care/plus-sign";
 import LocationsSection from "@/ui/locations-section";
 
-export default function UrgentHome({ navbarHeight }: { navbarHeight: number }) {
+export default function UrgentHome() {
   return (
     <>
       {/* Main background image */}
