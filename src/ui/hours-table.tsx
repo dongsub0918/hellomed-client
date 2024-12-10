@@ -12,9 +12,9 @@ import {
 } from "@/ui/external/table";
 
 const locations = [
-  { name: "Central", address: "625 E Liberty St, Ann Arbor" },
-  { name: "North", address: "2731 Plymouth Rd, Ann Arbor" },
-  { name: "Meijer's", address: "Coming Soon" },
+  { name: "HELLOMED Central", address: "625 E Liberty St, Ann Arbor" },
+  { name: "HELLOMED North", address: "2731 Plymouth Rd, Ann Arbor" },
+  { name: "HELLOMED South", address: "Coming Soon" },
 ];
 
 const hours = [
@@ -51,69 +51,66 @@ export function MobileHoursTable() {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {locations.map((location) => (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {locations.map((location) => (
+        <div
+          key={location.name}
+          className="bg-white rounded-lg shadow-md overflow-hidden"
+        >
           <div
-            key={location.name}
-            className="bg-white rounded-lg shadow-md overflow-hidden"
+            className="bg-slate-600 text-white p-4 cursor-pointer flex justify-between items-center"
+            onClick={() => toggleLocation(location.name)}
           >
-            <div
-              className="bg-slate-500 text-white p-4 cursor-pointer flex justify-between items-center"
-              onClick={() => toggleLocation(location.name)}
-            >
-              <div>
-                <h3 className="text-lg font-bold">{location.name}</h3>
-                <p className="text-sm">{location.address}</p>
-              </div>
-              {expandedLocation === location.name ? (
-                <ChevronUp />
-              ) : (
-                <ChevronDown />
-              )}
+            <div>
+              <h3 className="text-lg font-bold">{location.name}</h3>
+              <p className="text-sm">{location.address}</p>
             </div>
-            {expandedLocation === location.name && (
-              <div className="p-4">
-                <table className="w-full">
-                  <tbody>
-                    {hours.map((row) => (
-                      <tr key={row.day} className="border-b last:border-b-0">
-                        <td className="py-2 pr-4 font-medium">{row.day}</td>
-                        <td className="py-2 text-right">
-                          {row[
-                            location.name.toLowerCase() as keyof typeof row
-                          ] || "Closed"}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+            {expandedLocation === location.name ? (
+              <ChevronUp />
+            ) : (
+              <ChevronDown />
             )}
           </div>
-        ))}
-      </div>
+          {expandedLocation === location.name && (
+            <div className="p-4">
+              <table className="w-full">
+                <tbody>
+                  {hours.map((row) => (
+                    <tr key={row.day} className="border-b last:border-b-0">
+                      <td className="py-2 pr-4 font-medium">{row.day}</td>
+                      <td className="py-2 text-right">
+                        {row[location.name.toLowerCase() as keyof typeof row] ||
+                          "Closed"}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 }
 
 export function DesktopHoursTable() {
   return (
-    <div className="w-full max-w-7xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-1/6 bg-slate-100 font-bold text-lg">
+            <TableHead className="w-1/12 bg-slate-100 font-bold text-2xl text-center">
               Day
             </TableHead>
             {locations.map((location) => (
               <TableHead
                 key={location.name}
-                className="w-1/4 bg-slate-500 text-white"
+                className="w-3/12 bg-slate-500 text-white"
               >
                 <div className="text-center">
-                  <p className="text-lg font-bold">{location.name}</p>
-                  <p className="text-sm">{location.address}</p>
+                  <p className="font-bold text-2xl">{location.name}</p>
+                  <p className="text-xl">{location.address}</p>
                 </div>
               </TableHead>
             ))}
@@ -121,19 +118,16 @@ export function DesktopHoursTable() {
         </TableHeader>
         <TableBody>
           {hours.map((row) => (
-            <TableRow key={row.day} className="hover:bg-slate-50">
+            <TableRow
+              key={row.day}
+              className="hover:bg-slate-50 md:text-xl xl:text-2xl text-center"
+            >
               <TableCell className="font-semibold text-slate-700">
                 {row.day}
               </TableCell>
-              <TableCell className="text-center">
-                {row.central || "Closed"}
-              </TableCell>
-              <TableCell className="text-center">
-                {row.north || "Closed"}
-              </TableCell>
-              <TableCell className="text-center">
-                {row.meijers || "Closed"}
-              </TableCell>
+              <TableCell>{row.central || "Closed"}</TableCell>
+              <TableCell>{row.north || "Closed"}</TableCell>
+              <TableCell>{row.meijers || "Closed"}</TableCell>
             </TableRow>
           ))}
         </TableBody>

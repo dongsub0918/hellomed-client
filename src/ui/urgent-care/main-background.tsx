@@ -16,17 +16,10 @@ export default function UrgentMainBackground() {
       {/* Container for logo and text */}
       <div className="absolute grid place-items-center inset-0">
         <div className="grid justify-items-center w-11/12 text-white">
-          {/* <Image
-            className="w-4/12 md:w-2/12"
-            src="/logo.png"
-            alt="urgent landing page logo"
-            height={300}
-            width={300}
-          /> */}
-          <h1 className="font-black text-center md:mb-8 mt-4 text-2xl md:text-4xl lg:text-7xl">
+          <h1 className="font-black text-center md:mb-8 mt-4 text-2xl md:text-2xl lg:text-5xl">
             Accessibility, Convenience, and Quality Care.
           </h1>
-          <h2 className="hidden md:block text-center font-black md:text-2xl lg:text-3xl">
+          <h2 className="hidden md:block text-center font-black md:text-xl lg:text-2xl">
             We are here to serve the urgent healthcare needs of the Ann Arbor
             community and have been doing so since 2014. Our team of experienced
             medical professionals is committed to providing comprehensive care

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function PrimaryMainBackground() {
   return (
-    <div className="relative max-h-[calc(100vh-152px)] overflow-hidden">
+    <div className="relative max-h-[calc(100vh-162px)] overflow-hidden">
       <div className="-m-4">
         <Image
           className="brightness-75 blur-sm"
@@ -16,10 +16,10 @@ export default function PrimaryMainBackground() {
       {/* Container for logo and text */}
       <div className="absolute grid place-items-center inset-0">
         <div className="grid justify-items-center w-11/12 text-white">
-          <h1 className="font-black text-center md:mb-8 mt-4 text-2xl md:text-4xl lg:text-7xl">
+          <h1 className="font-black text-center md:mb-8 mt-4 text-2xl md:text-2xl lg:text-5xl">
             Personalized, Preventive, and Continuous Care.
           </h1>
-          <h2 className="hidden md:block text-center font-black md:text-2xl lg:text-3xl">
+          <h2 className="hidden md:block text-center font-black md:text-xl lg:text-2xl">
             At our clinic, we believe in building long-term relationships with
             our patients to support their overall health and wellness. Since
             2014, we have proudly served the Ann Arbor community with a focus on

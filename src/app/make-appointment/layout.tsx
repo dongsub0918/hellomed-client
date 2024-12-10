@@ -13,9 +13,7 @@ export default function AppointmentLayout({
   return (
     <div>
       {/* Navbar */}
-      <div className="fixed top-0 left-0 right-0 z-50">
-        <Navbar theme="urgent" />
-      </div>
+      <Navbar theme="urgent" />
 
       {/* Main Content */}
       <div className="flex flex-col justify-center mt-[68px] md:mt-[152px] min-h-[600px] py-10">

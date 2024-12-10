@@ -10,32 +10,32 @@ const reviewItems: ReviewItem[] = [
   {
     review:
       "Clean, small office. Husband was able to get an appointment the same day. Paperwork all electronic through your phone. Chinese speaking doctor is in Wednesdays and Fridays which was helpful for another couple that was needing to be seen around the same time as us. Attentive and caring staff and doctors.",
-    name: "Kara Schetter",
+    name: "Kara S.",
   },
   {
     review:
       "Great customer services! Our family visited here for the PCR test. They advised me about my insurance coverage. It was extremely easy and fast service. We needed the result next morning and they promptly helped us to get the result less than 24 hours. Thank you so much!",
-    name: "Seong Won Choi",
+    name: "Seong Won C.",
   },
   {
     review:
       "Did immigration medical checkup from here. They were very professional. It was very easy to get appointment. Doctors and staff were very friendly and professional. They gave accurate suggestions for the required vaccinations. Highly recommended.",
-    name: "Asha Luckins",
+    name: "Asha L.",
   },
   {
     review:
       "This is the third time I have been treated at this clinic. The staff are exceptionally kind and caring. I have been seen promptly. I was given treatment immediately for my breathing difficulties. The doctor explained the treatment and medications prescribed clearly. I will continue to come here for urgent care.",
-    name: "Barbaranne Branca",
+    name: "Barbaranne B.",
   },
   {
     review:
       "Hands down the best experience with an urgent care facility.  Making an appoint was very easy through the online form, and wait time was very short.  The staff is polite and helpful.  I hope many other urgent care facilities make HELLOMED a model of how an urgent care facility should operate.",
-    name: "Yosuke Kanii",
+    name: "Yosuke K.",
   },
   {
     review:
       "I had my chest X-ray done and the DR was super nice and understanding. Staff members were polite and accommodating. I will definitely recommend them to others.",
-    name: "Farie Khan",
+    name: "Farie K.",
   },
 ];
 

@@ -93,31 +93,7 @@ export default function LabTestsPage() {
               Urine-based drug screening tests available.
             </CardContent>
           </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center xl:text-2xl">
-                <Scan className="mr-2 mb-1" />
-                On-site Digital X-ray
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="xl:text-lg">
-              Available at our North clinic location.
-            </CardContent>
-          </Card>
         </div>
-      </section>
-
-      <section className="mb-12">
-        <h2 className="text-2xl xl:text-3xl font-semibold mb-4">
-          Ultrasound Referral
-        </h2>
-        <p className="text-lg xl:text-xl">
-          We provide referrals for ultrasound services to:
-        </p>
-        <ul className="list-disc list-inside mt-2 space-y-2 xl:text-lg">
-          <li>St. Joseph Mercy Health System</li>
-          <li>University of Michigan Health System</li>
-        </ul>
       </section>
 
       <div className="text-center">

@@ -1,5 +1,3 @@
-"use client";
-
 import type { Metadata } from "next";
 import "@/ui/globals.css";
 import Navbar from "@/ui/navbar";
@@ -11,14 +9,12 @@ export default function UrgentLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="w-full">
+    <div className="">
       {/* Navbar */}
-      <div className="fixed top-0 left-0 right-0 z-50">
-        <Navbar theme="urgent" />
-      </div>
+      <Navbar theme="urgent" />
 
       {/* Main Content */}
-      <div className="mt-[68px] md:mt-[152px]">{children}</div>
+      <div className="mt-[67px] md:mt-[162px]">{children}</div>
 
       {/* Footer */}
       <Footer />

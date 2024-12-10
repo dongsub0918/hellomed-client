@@ -46,6 +46,7 @@ export default function CheckInFormPage() {
       "birthDate",
       "phone",
       "email",
+      "address",
       "reasonForVisit",
       "preferredPharmacy",
     ];
@@ -166,12 +167,13 @@ export default function CheckInFormPage() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="address">Address</Label>
+            <Label htmlFor="address">Address *</Label>
             <Textarea
               name="address"
               placeholder="Enter your full address"
               value={formInputs.address}
               onChange={handleChange}
+              required
             />
           </div>
 

@@ -96,8 +96,8 @@ export const urgentNavBarItems = [
     dropdown: [],
   },
   {
-    name: "X-ray Service",
-    href: "/urgent-care/x-ray-service",
+    name: "Imaging Services",
+    href: "/urgent-care/imaging-services",
     dropdown: [],
   },
   {
@@ -177,8 +177,8 @@ export const primaryNavBarItems = [
     dropdown: [],
   },
   {
-    name: "X-ray Service",
-    href: "/primary-care/x-ray-service",
+    name: "Imaging Services",
+    href: "/primary-care/imaging-services",
     dropdown: [],
   },
   {

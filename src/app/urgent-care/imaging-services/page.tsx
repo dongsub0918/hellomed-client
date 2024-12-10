@@ -91,6 +91,19 @@ export default function XRayServicesPage() {
         </Card>
       </section>
 
+      <section className="mb-12">
+        <h2 className="text-2xl xl:text-3xl font-semibold mb-4">
+          Ultrasound Referral
+        </h2>
+        <p className="text-lg xl:text-xl">
+          We provide referrals for ultrasound services to:
+        </p>
+        <ul className="list-disc list-inside mt-2 space-y-2 xl:text-lg">
+          <li>St. Joseph Mercy Health System</li>
+          <li>University of Michigan Health System</li>
+        </ul>
+      </section>
+
       <div className="text-center">
         <Link href="/make-appointment">
           <Button size="lg" className="mt-4 h-12 text-lg xl:text-2xl">

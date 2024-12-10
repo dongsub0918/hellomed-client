@@ -11,30 +11,26 @@ export default function PrimaryHome() {
       {/* Main background image */}
       <PrimaryMainBackground />
 
-      <div className="relative">
-        <div
-          className="absolute invisible top-[-176px] min-[1285px]:top-[-152px]"
-          id="hours"
-        />
-
+      <section className="relative">
+        {/* This invisible div is used to scroll to the hours section */}
+        <div className="absolute mt-[-94px] md:mt-[-150px]" id="hours"></div>
         {/* Hours Section after image */}
-        {/* Wrapper div needed to mark location within screen */}
-        <div className="md:h-[calc(100vh-176px)] min-[1285px]:h-[calc(100vh-152px)] grid justify-center justify-items-center pt-16 md:pt-5 gap-y-5 md:gap-y-10">
+        <div className="flex flex-col space-y-10 items-center pt-10">
           <PlusSign />
-          <strong className="uppercase text-center text-5xl md:text-7xl lg:text-9xl">
+          <strong className="uppercase text-5xl md:text-7xl">
             Clinic Hours
           </strong>
-          <p className="text-center text-xl md:text-2xl lg:text-4xl">
+          <p className="text-center text-lg md:text-2xl lg:text-4xl">
             (Last check-in time: 30 minutes before closing)
           </p>
-          <div className="sm:hidden">
+          <div className="sm:hidden w-full px-1/12">
             <MobileHoursTable />
           </div>
-          <div className="hidden sm:block">
+          <div className="hidden sm:block w-full px-1/12">
             <DesktopHoursTable />
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Services Section */}
       <PrimaryServicesSection />
@@ -42,7 +38,7 @@ export default function PrimaryHome() {
       {/* Reviews Section */}
       <div className="grid justify-center justify-items-center pt-16 md:pt-32 gap-y-5 md:gap-y-10">
         <PlusSign />
-        <strong className="uppercase text-center text-5xl md:text-7xl lg:text-8xl">
+        <strong className="uppercase text-center text-5xl md:text-7xl">
           Patient Reviews
         </strong>
         <p className="text-center text-3xl md:text-5xl lg:text-6xl text-gray-500">
@@ -60,6 +56,7 @@ export default function PrimaryHome() {
           Locations
         </strong>
       </div>
+      <div className="py-10"></div>
       <LocationsSection />
     </>
   );

@@ -11,7 +11,7 @@ export const DesktopMenu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)}
-      className="flex flex-wrap items-center pt-3"
+      className="flex flex-wrap items-center"
     >
       {children}
     </nav>

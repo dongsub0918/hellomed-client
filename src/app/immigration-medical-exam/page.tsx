@@ -278,7 +278,11 @@ export default function ImmigrationMedicalExamPage() {
         </Card>
 
         <div className="text-center">
-          <Link href={"/make-appointment"}>
+          <Link
+            href={
+              "https://calendar.google.com/calendar/u/0/appointments/AcZssZ3YAF2k-13KqDQerAO87OY9fx46q7g-8XC_OnM="
+            }
+          >
             <Button
               size="lg"
               className="text-lg xl:text-xl xl:py-3 px-4 xl:px-6"

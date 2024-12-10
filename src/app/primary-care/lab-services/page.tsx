@@ -93,17 +93,6 @@ export default function LabTestsPage() {
               Urine-based drug screening tests available.
             </CardContent>
           </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center xl:text-2xl">
-                <Scan className="mr-2 mb-1" />
-                On-site Digital X-ray
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="xl:text-lg">
-              Available at our North clinic location.
-            </CardContent>
-          </Card>
         </div>
       </section>
 

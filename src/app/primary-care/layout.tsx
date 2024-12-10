@@ -1,5 +1,3 @@
-"use client";
-
 import type { Metadata } from "next";
 import "@/ui/globals.css";
 import Navbar from "@/ui/navbar";
@@ -16,7 +14,7 @@ export default function PrimaryLayout({
       <Navbar theme="primary" />
 
       {/* Main Content */}
-      {children}
+      <div className="mt-[68px] md:mt-[162px]">{children}</div>
 
       <Footer />
     </div>
