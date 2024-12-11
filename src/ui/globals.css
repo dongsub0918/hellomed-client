@@ -4,6 +4,25 @@
 
 /* /src/ui/globals.css */
 
+.slick-prev,
+.slick-next {
+  z-index: 1;
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 @font-face {
   font-family: "AvenirNext";
   src: url("/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
