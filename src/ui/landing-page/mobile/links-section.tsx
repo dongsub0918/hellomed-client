@@ -7,7 +7,7 @@ import { MobileHoursTable } from "@/ui/hours-table";
 
 export default function MobileLinksSection() {
   return (
-    <section className="h-screen w-full flex flex-col items-center snap-start snap-always bg-hmblack">
+    <section className="min-h-screen w-full flex flex-col items-center snap-start snap-always bg-hmblack">
       <div className="w-full px-4">
         <FloatingElement>
           <h1 className="text-center text-3xl font-bold pt-14 text-white">
@@ -48,7 +48,7 @@ export default function MobileLinksSection() {
                 Immigration Medical Exam
               </Button>
             </Link>
-            <Link href="/">
+            <Link href="/future-employee">
               <Button className="w-full bg-hmblue text-lg font-semibold">
                 Future Employee
               </Button>

@@ -100,7 +100,7 @@ export default function Footer() {
         </div>
         <div className="text-center mt-8">
           <p className="text-sm text-gray-400">
-            &copy; HELLOMED 2021. All rights reserved.
+            &copy; HELLOMED 2024. All rights reserved.
           </p>
         </div>
       </div>

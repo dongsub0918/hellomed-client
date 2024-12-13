@@ -98,7 +98,7 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
       </div>
 
       {/* nav items for desktop view */}
-      <div className="hidden md:block py-3">
+      <div className="hidden md:block static px-2">
         <DesktopMenu setActive={setActive}>
           {navItems[theme].map((item, i) => (
             <DesktopMenuItem
@@ -106,6 +106,7 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
               setActive={setActive}
               active={active}
               item={item}
+              bgColor={bgVariants[theme]}
             />
           ))}
         </DesktopMenu>

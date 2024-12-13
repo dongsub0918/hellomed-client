@@ -55,7 +55,7 @@ export default function DesktopLinksSection() {
                     Immigration Medical Exam
                   </Button>
                 </Link>
-                <Link href="/">
+                <Link href="/future-employee">
                   <Button className="w-full bg-hmblue hover:bg-blue-900 text-lg font-semibold">
                     Future Employee
                   </Button>

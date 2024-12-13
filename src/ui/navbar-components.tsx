@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
+import FloatingElement from "@/ui/floating-element";
 
 export const DesktopMenu = ({
   setActive,
@@ -22,13 +23,15 @@ export const DesktopMenuItem = ({
   setActive,
   active,
   item,
+  bgColor,
 }: {
   setActive: any;
   active: any;
   item: any;
+  bgColor: any;
 }) => {
   return (
-    <div className="relative" onMouseEnter={() => setActive(item.name)}>
+    <div className="divide-y py-3" onMouseEnter={() => setActive(item.name)}>
       <div className="font-semibold lg:text-lg text-nowrap text-center mr-6 lg:mr-10">
         {item.dropdown.length === 0 ? (
           <Link href={item.href}>{item.name}</Link>
@@ -37,16 +40,22 @@ export const DesktopMenuItem = ({
         )}
       </div>
       {active === item.name && item.dropdown.length !== 0 && (
-        <div className="absolute z-50 py-2 w-48 bg-white rounded-lg border-black border-2">
-          {item.dropdown.map((subItem: any, i: number) => (
-            <Link
-              key={i}
-              href={subItem.href}
-              className="block px-4 py-2 text-center text-black hover:bg-slate-200"
-            >
-              {subItem.name}
-            </Link>
-          ))}
+        <div
+          className={`absolute top-[167px] left-0 w-full ${bgColor} py-4 px-6`}
+        >
+          <FloatingElement delay={0.2}>
+            <div className="max-w-7xl mx-auto flex flex-wrap justify-start">
+              {item.dropdown.map((subItem: any, i: number) => (
+                <Link
+                  key={i}
+                  href={subItem.href}
+                  className="w-3/12 px-4 py-2 text-center text-white hover:font-bold"
+                >
+                  {subItem.name}
+                </Link>
+              ))}
+            </div>
+          </FloatingElement>
         </div>
       )}
     </div>

@@ -11,7 +11,9 @@ export default function MobileLocationsSection() {
       <FloatingElement delay={0.2}>
         <LocationsSection appointmentLinks />
       </FloatingElement>
-      <Footer />
+      <div className="w-full">
+        <Footer />
+      </div>
     </section>
   );
 }

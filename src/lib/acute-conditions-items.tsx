@@ -91,10 +91,6 @@ export const strepInfo = {
       question: "How are strep throat, bronchitis, and pneumonia treated?",
       answer: `At HELLOMED, the doctors offer rapid testing for strep throat and treatment with antibiotics. For bronchitis and pneumonia, they may order imaging tests, perform physical exams, and recommend medications depending on whether the cause is viral or bacterial.`,
     },
-    {
-      question: "What is gout and how is it treated?",
-      answer: `Gout is a form of arthritis caused by a buildup of uric acid in the joints, leading to painful, swollen joints. Symptoms can interfere with daily tasks and mobility. At HELLOMED, the medical team provides accurate diagnosis and treatment to help manage gout and alleviate symptoms, allowing patients to return to their regular routine.`,
-    },
   ],
 };
 
@@ -145,53 +141,35 @@ export const covidInfo = {
 
 export const sinusitisInfo = {
   diseaseName: "Sinusitis",
-  description: `Infections like strep throat, bronchitis, and pneumonia are common, especially in the cold months of the year. At HELLOMED in Ann Arbor, Michigan, the experienced physicians offer comprehensive care to help you recover from these illnesses. You can visit the clinic as a walk-in, or book an appointment online or by phone.`,
+  description: `Sinusitis, also known as a sinus infection, occurs when the sinuses become inflamed or swollen due to infection or other factors. At HELLOMED in Ann Arbor, Michigan, the skilled physicians provide expert care to help alleviate sinusitis symptoms and restore your well-being. Visit the clinic as a walk-in or schedule an appointment online or by phone.`,
   questionsAndAnswers: [
     {
-      question: "What is strep throat?",
-      answer: `Strep throat is an infection caused by the A Streptococcus bacteria, affecting the throat and tonsils. Symptoms of strep throat include:
+      question: "What is sinusitis?",
+      answer: `Sinusitis is the inflammation or swelling of the tissue lining the sinuses. This condition can be triggered by infections, allergies, or nasal polyps. Symptoms of sinusitis include:
       
-      - Sore throat
-      - Pain when swallowing
-      - Fever
-      - Red spots on the roof of the mouth
-      - Swollen lymph nodes
+      - Facial pain or pressure
+      - Nasal congestion
+      - Thick nasal discharge (yellow or green)
+      - Reduced or lost sense of smell
       - Headache
-      - Nausea or vomiting
-      - In some cases, a rash (scarlet fever)
-      
-      Strep throat is contagious and spreads through contact with infected fluids from coughs or sneezes. Touching your mouth, nose, or eyes after exposure to contaminated surfaces can also lead to infection.`,
-    },
-    {
-      question: "What is the difference between bronchitis and pneumonia?",
-      answer: `Bronchitis involves inflammation of the bronchial tubes that carry air to and from the lungs, often leading to thick mucus production. Symptoms include:
-      
-      - Thick mucus
-      - Wheezing or coughing
-      - Shortness of breath
-      - Fatigue
-      - Nasal congestion
-      - Chest discomfort
-      
-      Pneumonia, on the other hand, is an inflammatory lung infection caused by viruses, bacteria, or fungi. Symptoms include:
-      
-      - Fever
       - Cough
-      - Chest pain
-      - Nasal congestion
+      - Fever
       - Fatigue
-      - Headaches
-      - Decreased appetite
+      - Dental pain or pressure
       
-      Both conditions may be contagious if caused by a virus or bacteria.`,
+      Sinusitis may be classified as acute, subacute, chronic, or recurrent, depending on the duration and frequency of symptoms.`,
     },
     {
-      question: "How are strep throat, bronchitis, and pneumonia treated?",
-      answer: `At HELLOMED, the doctors offer rapid testing for strep throat and treatment with antibiotics. For bronchitis and pneumonia, they may order imaging tests, perform physical exams, and recommend medications depending on whether the cause is viral or bacterial.`,
+      question: "What is the difference between acute and chronic sinusitis?",
+      answer: `Acute sinusitis is a short-term condition often caused by viral infections like the common cold. Symptoms typically last less than four weeks and resolve with proper care. 
+
+      Chronic sinusitis, on the other hand, is a long-term condition where symptoms persist for 12 weeks or longer, even with treatment. It may be caused by bacterial infections, allergies, or structural nasal issues like deviated septums or nasal polyps.`,
     },
     {
-      question: "What is gout and how is it treated?",
-      answer: `Gout is a form of arthritis caused by a buildup of uric acid in the joints, leading to painful, swollen joints. Symptoms can interfere with daily tasks and mobility. At HELLOMED, the medical team provides accurate diagnosis and treatment to help manage gout and alleviate symptoms, allowing patients to return to their regular routine.`,
+      question: "How is sinusitis treated?",
+      answer: `At HELLOMED, the treatment for sinusitis depends on the severity and cause of the condition. For mild cases, over-the-counter medications like decongestants, saline nasal sprays, or antihistamines may be recommended. For bacterial infections, antibiotics might be prescribed. 
+
+      Chronic or recurrent sinusitis may require additional interventions, such as imaging tests, allergy management, or, in some cases, referral for surgical options like endoscopic sinus surgery.`,
     },
   ],
 };
