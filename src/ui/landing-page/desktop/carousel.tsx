@@ -14,24 +14,23 @@ interface CarouselItem {
 
 const carouselItems: CarouselItem[] = [
   {
-    imageSrc: "/carousel/carousel-temp-0.jpg",
-    title: "Free Health Screening",
-    description:
-      "Join us for our annual free health screening event this Saturday.",
-  },
-  {
-    imageSrc: "/carousel/carousel-temp-1.jpg",
+    imageSrc: "/carousel/flu-shot-clinic.jpg",
     title: "Flu Shot Clinic",
     description:
       "Get your flu shot at our upcoming clinic. Protect yourself and your community.",
   },
   {
-    imageSrc: "/carousel/carousel-temp-2.jpg",
-    title: "Diabetes Awareness Workshop",
+    imageSrc: "/carousel/pediatric-urgent-care.png",
+    title: "Pediatric Urgent Care",
     description:
-      "Learn about diabetes prevention and management at our informative workshop.",
+      "Comprehensive urgent care services tailored for your little ones, available when you need them most.",
   },
-  // Add more items as needed
+  {
+    imageSrc: "/carousel/USCIS-immigration-medical-exam.jpg",
+    title: "USCIS Immigration Medical Exam",
+    description:
+      "Streamline your immigration process with our certified medical examination services.",
+  },
 ];
 
 export default function Carousel() {
@@ -55,7 +54,7 @@ export default function Carousel() {
                   src={item.imageSrc}
                   alt={item.title}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "contain" }}
                 />
               </div>
               <div className="p-6">

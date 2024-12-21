@@ -42,7 +42,8 @@ export default function ImmigrationMedicalExamPage() {
           </CardHeader>
           <CardContent>
             <p className="mb-4">
-              Immigration Physical Exam and Vaccination Record Forms (I-693)
+              Immigration Physical Exam and Vaccination Record Forms (I-693){" "}
+              <br />
               Located in the international community we know how we can help
               you. Please book online after you read through the following
               information. Please allow 3-5 business days to complete the form.

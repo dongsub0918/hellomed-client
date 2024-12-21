@@ -3,6 +3,12 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/ui/external/card";
 import { Check } from "lucide-react";
 
 export default function NoInsurancePlanPage() {
+  const plans = [
+    { title: "Single", price: "$49/month" },
+    { title: "Couple", price: "$89/month" },
+    { title: "Family(3-4 members)", price: "$159/month" },
+  ];
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl xl:text-5xl font-bold text-center mb-8 xl:my-10">
@@ -40,11 +46,7 @@ export default function NoInsurancePlanPage() {
         Fee Schedule
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-8 mb-8 xl:mb-12">
-        {[
-          { title: "Single", price: "$39/month" },
-          { title: "Couple", price: "$75/month" },
-          { title: "Family of 3-4", price: "$110/month" },
-        ].map((plan) => (
+        {plans.map((plan) => (
           <Card key={plan.title}>
             <CardHeader>
               <CardTitle className="text-xl xl:text-2xl">
@@ -81,14 +83,43 @@ export default function NoInsurancePlanPage() {
         </ul>
       </div>
 
-      <div className="text-center">
-        <Button
-          size="lg"
-          className="text-lg xl:text-xl py-2 xl:py-3 px-4 xl:px-6"
-        >
-          Enroll Now
-        </Button>
-      </div>
+      <form
+        className="text-center"
+        action="https://www.paypal.com/cgi-bin/webscr"
+        method="post"
+        target="_top"
+      >
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="BXEFPJV6ANCZU" />
+        <table className="w-full">
+          <tr>
+            <td>
+              <input type="hidden" name="on0" value="Budget Saving Program" />
+              Budget Saving Program
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <select name="os0">
+                <option value="Singel">Single $49.00 USD - month(s)</option>
+                <option value="Couple">Couple $89.00 USD - month(s)</option>
+                <option value="Family(3-4 members)">
+                  Family(3-4 members) $159.00 USD - month(s)
+                </option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <input type="hidden" name="currency_code" value="USD" />
+        <input
+          className="mt-4"
+          type="image"
+          src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif"
+          name="submit"
+          title="PayPal - The safer, easier way to pay online!"
+          alt="Subscribe"
+        />
+      </form>
     </div>
   );
 }
