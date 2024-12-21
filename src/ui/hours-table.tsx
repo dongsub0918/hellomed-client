@@ -12,9 +12,21 @@ import {
 } from "@/ui/external/table";
 
 const locations = [
-  { name: "HELLOMED_Central", address: "625 E Liberty St, Ann Arbor" },
-  { name: "HELLOMED_North", address: "2731 Plymouth Rd, Ann Arbor" },
-  { name: "HELLOMED_South", address: "Coming Soon" },
+  {
+    name: "HELLOMED_Central",
+    title: "HELLOMED Central",
+    address: "625 E Liberty St, Ann Arbor",
+  },
+  {
+    name: "HELLOMED_North",
+    title: "HELLOMED North",
+    address: "2731 Plymouth Rd, Ann Arbor",
+  },
+  {
+    name: "HELLOMED_South",
+    title: "HELLOMED South (Inside Meijer)",
+    address: "Coming Soon",
+  },
 ];
 
 const hours = [
@@ -87,10 +99,7 @@ export function MobileHoursTable() {
             onClick={() => toggleLocation(location.name)}
           >
             <div>
-              <h3 className="text-lg font-bold">
-                {location.name.split("_").join(" ")}
-              </h3>
-              <p className="text-sm">{location.address}</p>
+              <h3 className="font-bold">{location.title}</h3>
             </div>
             {expandedLocation === location.name ? (
               <ChevronUp />
@@ -135,9 +144,7 @@ export function DesktopHoursTable() {
                 className="w-3/12 bg-slate-500 text-white"
               >
                 <div className="text-center">
-                  <p className="font-bold text-2xl">
-                    {location.name.split("_").join(" ")}
-                  </p>
+                  <p className="font-bold text-2xl">{location.title}</p>
                   <p className="text-xl">{location.address}</p>
                 </div>
               </TableHead>

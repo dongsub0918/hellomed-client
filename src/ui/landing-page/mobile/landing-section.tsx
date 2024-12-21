@@ -4,10 +4,10 @@ import { ChevronDown } from "lucide-react";
 
 export default function MobileLandingSection() {
   return (
-    <section className="h-screen w-full flex flex-col items-center snap-start snap-always">
+    <section className="min-h-100svh w-full flex flex-col items-center snap-start snap-always">
       <div className="relative w-full">
         <FloatingElement>
-          <div className="w-full relative h-[200px]">
+          <div className="w-full relative h-[150px]">
             <Image
               src="/landing-img.webp"
               alt="landing image from original site"
@@ -19,7 +19,7 @@ export default function MobileLandingSection() {
       </div>
       <FloatingElement delay={0.2}>
         <div className="flex w-full pt-5">
-          <Image src="/logo.png" alt="Company Logo" width={300} height={150} />
+          <Image src="/logo.png" alt="Company Logo" width={200} height={100} />
         </div>
       </FloatingElement>
 
@@ -30,7 +30,7 @@ export default function MobileLandingSection() {
           </p>
         </FloatingElement>
         <FloatingElement delay={0.6}>
-          <p className="text-center pt-8 px-4">
+          <p className="text-center text-sm/5 pt-8 px-4">
             HELLOMED Walk-in Clinic is a neighborhood-focused clinic dedicated
             to providing medical care in an accessible and convenient way. We
             are here to serve the urgent healthcare needs of the Ann Arbor

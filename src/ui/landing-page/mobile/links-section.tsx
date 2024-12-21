@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/ui/external/button";
 import FloatingElement from "@/ui/floating-element";
@@ -7,10 +6,10 @@ import { MobileHoursTable } from "@/ui/hours-table";
 
 export default function MobileLinksSection() {
   return (
-    <section className="min-h-screen w-full flex flex-col items-center snap-start snap-always bg-hmblack">
+    <section className="min-h-screen w-full flex flex-col items-center snap-start bg-hmblack">
       <div className="w-full px-4">
         <FloatingElement>
-          <h1 className="text-center text-3xl font-bold pt-14 text-white">
+          <h1 className="text-center text-2xl font-bold pt-6 text-white">
             Clinic Hours
           </h1>
         </FloatingElement>
@@ -20,9 +19,9 @@ export default function MobileLinksSection() {
           </div>
         </FloatingElement>
       </div>
-      <div className="w-full px-4 pt-10">
+      <div className="w-full px-4 pt-6">
         <FloatingElement delay={0.4}>
-          <h1 className="text-center text-3xl font-bold text-white">
+          <h1 className="text-center text-2xl font-bold text-white">
             Quick Links
           </h1>
         </FloatingElement>
@@ -57,7 +56,7 @@ export default function MobileLinksSection() {
         </FloatingElement>
       </div>
       <FloatingElement delay={0.8}>
-        <div className="flex justify-center pt-16">
+        <div className="flex justify-center pt-8">
           <ChevronDown className="w-8 h-8 text-primary text-white animate-bounce" />
         </div>
       </FloatingElement>

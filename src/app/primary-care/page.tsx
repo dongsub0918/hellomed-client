@@ -52,7 +52,7 @@ export default function PrimaryHome() {
       {/* Location Section */}
       <div className="grid justify-center justify-items-center pt-16 md:pt-32 gap-y-5 md:gap-y-10">
         <PlusSign />
-        <strong className="uppercase text-center text-5xl md:text-7xl lg:text-9xl">
+        <strong className="uppercase text-center text-5xl md:text-7xl">
           Locations
         </strong>
       </div>

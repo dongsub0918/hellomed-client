@@ -39,11 +39,6 @@ export default function Footer() {
           <div className="mb-6 md:mb-0">
             <h3 className="text-lg font-semibold">Contact Us</h3>
             <ul className="mt-2 space-y-2">
-              <li>North: 2731 Plymouth Rd, Ann Arbor, MI 48105</li>
-              <li>
-                Central: Lower Level, 625 E Liberty St Suite 10, Ann Arbor, MI
-                48104
-              </li>
               <li>(734) 210-1122</li>
               <li>JWHS@hello-med.com</li>
             </ul>
