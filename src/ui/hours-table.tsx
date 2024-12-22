@@ -80,6 +80,21 @@ const hours = [
   },
 ];
 
+const holidays = {
+  HELLOMED_Central: {
+    duration: "12/14/24 - 01/07/25",
+    message: "During the winter break. Happy holidays!",
+  },
+  HELLOMED_North: {
+    duration: "12/21/24 - 01/02/25",
+    message: "During the winter break. Happy holidays!",
+  },
+  HELLOMED_South: {
+    duration: "Coming Soon",
+    message: "",
+  },
+};
+
 export function MobileHoursTable() {
   const [expandedLocation, setExpandedLocation] = useState<string | null>(null);
 
@@ -96,7 +111,10 @@ export function MobileHoursTable() {
         >
           <div
             className="bg-slate-600 text-white p-4 cursor-pointer flex justify-between items-center"
-            onClick={() => toggleLocation(location.name)}
+            onClick={() =>
+              location.name !== "HELLOMED_South" &&
+              toggleLocation(location.name)
+            }
           >
             <div>
               <h3 className="font-bold">{location.title}</h3>
@@ -108,20 +126,36 @@ export function MobileHoursTable() {
             )}
           </div>
           {expandedLocation === location.name && (
-            <div className="p-4">
-              <table className="w-full">
-                <tbody>
-                  {hours.map((row) => (
-                    <tr key={row.day} className="border-b last:border-b-0">
-                      <td className="py-2 pr-4 font-medium">{row.day}</td>
-                      <td className="py-2 text-right">
-                        {row[location.name as keyof typeof row] || "Closed"}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <>
+              {Object.keys(holidays).length > 0 ? (
+                <div className="p-4">
+                  <p className="text-center">
+                    Closed <br />
+                    From{" "}
+                    {
+                      holidays[location.name as keyof typeof holidays].duration
+                    }{" "}
+                    <br />
+                    {holidays[location.name as keyof typeof holidays].message}
+                  </p>
+                </div>
+              ) : (
+                <div className="p-4">
+                  <table className="w-full">
+                    <tbody>
+                      {hours.map((row) => (
+                        <tr key={row.day} className="border-b last:border-b-0">
+                          <td className="py-2 pr-4 font-medium">{row.day}</td>
+                          <td className="py-2 text-right">
+                            {row[location.name as keyof typeof row] || "Closed"}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </>
           )}
         </div>
       ))}
@@ -130,6 +164,60 @@ export function MobileHoursTable() {
 }
 
 export function DesktopHoursTable() {
+  const hasHolidays = Object.keys(holidays).length > 0;
+
+  if (hasHolidays) {
+    return (
+      <div className="mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-3/12 bg-slate-100 font-bold text-2xl text-center">
+                Location
+              </TableHead>
+              <TableHead className="bg-slate-500 text-white">
+                <div className="text-center">
+                  <p className="font-bold text-2xl">Holiday Schedule</p>
+                </div>
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {locations.map((location) => {
+              const holidayInfo =
+                holidays[location.name as keyof typeof holidays];
+              return (
+                <TableRow
+                  key={location.name}
+                  className="hover:bg-slate-50 md:text-xl xl:text-2xl"
+                >
+                  <TableCell className="font-semibold text-slate-700 border-r border-slate-200">
+                    <div className="text-center">
+                      <p className="font-bold">{location.title}</p>
+                      <p className="text-sm text-slate-600">
+                        {location.address}
+                      </p>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    {holidayInfo ? (
+                      <div>
+                        <p className="font-semibold">{holidayInfo.duration}</p>
+                        <p className="text-slate-600">{holidayInfo.message}</p>
+                      </div>
+                    ) : (
+                      "Regular Hours"
+                    )}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
       <Table>
