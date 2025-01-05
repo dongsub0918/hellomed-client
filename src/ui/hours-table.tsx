@@ -33,43 +33,43 @@ const hours = [
   {
     day: "Mon",
     HELLOMED_Central: "9:10 am - 6:00 pm",
-    HELLOMED_North: "9:10 am - 6:00 pm",
+    HELLOMED_North: "9:00 am - 6:00 pm",
     HELLOMED_South: "",
   },
   {
     day: "Tue",
     HELLOMED_Central: "9:10 am - 6:00 pm",
-    HELLOMED_North: "Closed",
+    HELLOMED_North: "",
     HELLOMED_South: "",
   },
   {
     day: "Wed",
     HELLOMED_Central: "Closed",
-    HELLOMED_North: "9:10 am - 6:00 pm",
+    HELLOMED_North: "9:00 am - 6:00 pm",
     HELLOMED_South: "",
   },
   {
     day: "Thu",
     HELLOMED_Central: "9:10 am - 6:00 pm",
-    HELLOMED_North: "Closed",
+    HELLOMED_North: "",
     HELLOMED_South: "",
   },
   {
     day: "Fri",
     HELLOMED_Central: "9:10 am - 5:00 pm",
-    HELLOMED_North: "9:10 am - 6:00 pm",
+    HELLOMED_North: "9:00 am - 6:00 pm",
     HELLOMED_South: "",
   },
   {
     day: "Sat",
     HELLOMED_Central: "Closed",
-    HELLOMED_North: "10:10 am - 4:00 pm",
+    HELLOMED_North: "10:00 am - 11:30 am (Immigration Medical Exam only)",
     HELLOMED_South: "",
   },
   {
     day: "Sun",
-    HELLOMED_Central: "Closed",
-    HELLOMED_North: "Closed",
+    HELLOMED_Central: "",
+    HELLOMED_North: "",
     HELLOMED_South: "",
   },
   {
@@ -85,10 +85,7 @@ const holidays = {
     duration: "12/14/24 - 01/07/25",
     message: "During the winter break. Happy holidays!",
   },
-  HELLOMED_North: {
-    duration: "12/21/24 - 01/02/25",
-    message: "During the winter break. Happy holidays!",
-  },
+  HELLOMED_North: {},
   HELLOMED_South: {
     duration: "Coming Soon",
     message: "",
@@ -127,16 +124,27 @@ export function MobileHoursTable() {
           </div>
           {expandedLocation === location.name && (
             <>
-              {Object.keys(holidays).length > 0 ? (
+              {holidays[location.name as keyof typeof holidays] &&
+              "duration" in holidays[location.name as keyof typeof holidays] ? (
                 <div className="p-4">
                   <p className="text-center">
                     Closed <br />
                     From{" "}
                     {
-                      holidays[location.name as keyof typeof holidays].duration
+                      (
+                        holidays[location.name as keyof typeof holidays] as {
+                          duration: string;
+                        }
+                      ).duration
                     }{" "}
                     <br />
-                    {holidays[location.name as keyof typeof holidays].message}
+                    {
+                      (
+                        holidays[location.name as keyof typeof holidays] as {
+                          message: string;
+                        }
+                      ).message
+                    }
                   </p>
                 </div>
               ) : (
@@ -164,60 +172,6 @@ export function MobileHoursTable() {
 }
 
 export function DesktopHoursTable() {
-  const hasHolidays = Object.keys(holidays).length > 0;
-
-  if (hasHolidays) {
-    return (
-      <div className="mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-3/12 bg-slate-100 font-bold text-2xl text-center">
-                Location
-              </TableHead>
-              <TableHead className="bg-slate-500 text-white">
-                <div className="text-center">
-                  <p className="font-bold text-2xl">Holiday Schedule</p>
-                </div>
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {locations.map((location) => {
-              const holidayInfo =
-                holidays[location.name as keyof typeof holidays];
-              return (
-                <TableRow
-                  key={location.name}
-                  className="hover:bg-slate-50 md:text-xl xl:text-2xl"
-                >
-                  <TableCell className="font-semibold text-slate-700 border-r border-slate-200">
-                    <div className="text-center">
-                      <p className="font-bold">{location.title}</p>
-                      <p className="text-sm text-slate-600">
-                        {location.address}
-                      </p>
-                    </div>
-                  </TableCell>
-                  <TableCell className="text-center">
-                    {holidayInfo ? (
-                      <div>
-                        <p className="font-semibold">{holidayInfo.duration}</p>
-                        <p className="text-slate-600">{holidayInfo.message}</p>
-                      </div>
-                    ) : (
-                      "Regular Hours"
-                    )}
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </div>
-    );
-  }
-
   return (
     <div className="mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
       <Table>
@@ -240,17 +194,41 @@ export function DesktopHoursTable() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {hours.map((row) => (
+          {hours.map((row, index) => (
             <TableRow
               key={row.day}
-              className="hover:bg-slate-50 md:text-xl xl:text-2xl text-center"
+              className="md:text-xl xl:text-2xl text-center"
             >
               <TableCell className="font-semibold text-slate-700">
                 {row.day}
               </TableCell>
-              <TableCell>{row.HELLOMED_Central || "Closed"}</TableCell>
-              <TableCell>{row.HELLOMED_North || "Closed"}</TableCell>
-              <TableCell>{row.HELLOMED_South || "Closed"}</TableCell>
+              {locations.map((location) => {
+                const holidayInfo =
+                  holidays[location.name as keyof typeof holidays];
+                if (index === 0 && holidayInfo && "duration" in holidayInfo) {
+                  return (
+                    <TableCell
+                      key={location.name}
+                      className="text-center"
+                      rowSpan={hours.length}
+                    >
+                      <div>
+                        <p className="font-semibold text-red-600">Closed</p>
+                        <p className="font-semibold">{holidayInfo.duration}</p>
+                        <p className="text-slate-600">{holidayInfo.message}</p>
+                      </div>
+                    </TableCell>
+                  );
+                } else if (holidayInfo && "duration" in holidayInfo) {
+                  return null;
+                } else {
+                  return (
+                    <TableCell key={location.name}>
+                      {row[location.name as keyof typeof row] || "Closed"}
+                    </TableCell>
+                  );
+                }
+              })}
             </TableRow>
           ))}
         </TableBody>
