@@ -74,17 +74,14 @@ const hours = [
   },
   {
     day: "Lunch Break",
-    HELLOMED_Central: "1:30 pm - 2:00 pm",
+    HELLOMED_Central: "1:00 pm - 1:30 pm",
     HELLOMED_North: "1:30 pm - 2:00 pm",
     HELLOMED_South: "",
   },
 ];
 
 const holidays = {
-  HELLOMED_Central: {
-    duration: "12/14/24 - 01/07/25",
-    message: "During the winter break. Happy holidays!",
-  },
+  HELLOMED_Central: {},
   HELLOMED_North: {},
   HELLOMED_South: {
     duration: "Coming Soon",
