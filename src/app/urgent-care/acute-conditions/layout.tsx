@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import "@/ui/globals.css";
 
 export default function AcuteConditionsLayout({

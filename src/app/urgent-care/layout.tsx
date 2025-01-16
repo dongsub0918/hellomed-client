@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import "@/ui/globals.css";
 import Navbar from "@/ui/navbar";
 import Footer from "@/ui/footer";
