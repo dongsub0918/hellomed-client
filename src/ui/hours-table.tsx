@@ -44,14 +44,14 @@ const hours = [
   },
   {
     day: "Wed",
-    HELLOMED_Central: "Closed",
+    HELLOMED_Central: "9:00 am - 6:00 pm",
     HELLOMED_North: "9:00 am - 6:00 pm",
     HELLOMED_South: "",
   },
   {
     day: "Thu",
     HELLOMED_Central: "9:10 am - 6:00 pm",
-    HELLOMED_North: "",
+    HELLOMED_North: "9:00 am - 6:00 pm",
     HELLOMED_South: "",
   },
   {
