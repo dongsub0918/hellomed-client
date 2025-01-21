@@ -11,7 +11,7 @@ export default function LocationCard({
   imageUrl,
   mapUrl,
 }: LocationCardProps) {
-  const isMeijers = name === "Meijer's";
+  const isMeijers = name === "HELLOMED South (inside Meijer's)";
   const isTelemedicine = name === "Telemedicine";
 
   return (

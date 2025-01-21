@@ -20,7 +20,7 @@ const locations = [
       "https://calendar.google.com/calendar/u/0/appointments/AcZssZ3YAF2k-13KqDQerAO87OY9fx46q7g-8XC_OnM=",
   },
   {
-    name: "HELLOMED South",
+    name: "HELLOMED South (inside Meijer's)",
     imageUrl: "meijer's-location.png",
     mapUrl: "",
     appointmentUrl: "",
@@ -50,16 +50,19 @@ export default function LocationsSection({
             imageUrl={location.imageUrl}
             mapUrl={location.mapUrl}
           />
-          {appointmentLinks && location.appointmentUrl && (
-            <Link
-              href={location.appointmentUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 text-center text-blue-600 hover:text-blue-800 transition-colors duration-200 ease-in-out"
-            >
-              Book Appointment
-            </Link>
-          )}
+          {appointmentLinks &&
+            (location.appointmentUrl ? (
+              <Link
+                href={location.appointmentUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 text-center text-blue-600 hover:text-blue-800 transition-colors duration-200 ease-in-out"
+              >
+                Book Appointment
+              </Link>
+            ) : (
+              <p className="mt-5 text-center text-blue-600 ">Coming Soon</p>
+            ))}
         </div>
       ))}
     </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import FloatingElement from "@/ui/floating-element";
 import { ChevronDown } from "lucide-react";
+import styles from "@/ui/landing-page/landing.module.css";
 
 export default function DesktopLandingSection() {
   return (
@@ -11,9 +12,10 @@ export default function DesktopLandingSection() {
             <Image
               src="/landing-img.webp"
               alt="landing image from original site"
-              fill
+              layout="fill"
+              objectFit="cover"
               priority
-              style={{ objectFit: "cover" }}
+              className={styles["object-position-top"]}
             />
           </div>
         </FloatingElement>
