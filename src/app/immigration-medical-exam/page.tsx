@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/external/card";
 import {
   Table,
@@ -10,6 +11,13 @@ import {
   TableRow,
 } from "@/ui/external/table";
 import { Button } from "@/ui/external/button";
+
+export const metadata: Metadata = {
+  title: "Immigration Medical Exam",
+  description:
+    "Learn about the Immigration Medical Exam (I-693), including the process, fees, required documents, and vaccinations. Book an appointment for a seamless and efficient immigration medical examination at HELLOMED.",
+  metadataBase: new URL("https://hello-med.com"),
+};
 
 export default function ImmigrationMedicalExamPage() {
   return (
@@ -44,7 +52,7 @@ export default function ImmigrationMedicalExamPage() {
             <p className="mb-4">
               Immigration Physical Exam and Vaccination Record Forms (I-693){" "}
               <br />
-              Located in the international community we know how we can help
+              Located in the international community, we know how we can help
               you. Please book online after you read through the following
               information. Please allow 3-5 business days to complete the form.
               If you need to expedite a process please call us ahead.

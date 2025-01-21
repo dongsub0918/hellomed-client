@@ -1,9 +1,17 @@
+import { Metadata } from "next";
 import PrimaryMainBackground from "@/ui/primary-care/main-background";
 import { MobileHoursTable, DesktopHoursTable } from "@/ui/hours-table";
 import PrimaryServicesSection from "@/ui/primary-care/services-section";
 import PlusSign from "@/ui/urgent-care/plus-sign";
 import ReviewsGrid from "@/ui/reviews-grid";
 import LocationsSection from "@/ui/locations-section";
+
+export const metadata: Metadata = {
+  title: "Primary Care",
+  description:
+    "HELLOMED provides personalized, preventize, and continuous primary care. At our clinic, we believe in building long-term relationships with our patients to support their overall health and wellness. Since 2014, we have proudly served the Ann Arbor community with a focus on preventive care, chronic disease management, and comprehensive health services for all stages of life. Our dedicated team of medical professionals is here to help you achieve your health goals and provide the guidance you need to stay well. Schedule your visit today and experience healthcare designed for you and your family.",
+  metadataBase: new URL("https://hello-med.com"),
+};
 
 export default function PrimaryHome() {
   return (

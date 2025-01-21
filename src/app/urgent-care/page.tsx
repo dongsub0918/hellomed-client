@@ -1,9 +1,17 @@
+import { Metadata } from "next";
 import UrgentMainBackground from "@/ui/urgent-care/main-background";
 import { MobileHoursTable, DesktopHoursTable } from "@/ui/hours-table";
 import UrgentServicesSection from "@/ui/urgent-care/services-section";
 import ReviewsGrid from "@/ui/reviews-grid";
 import PlusSign from "@/ui/urgent-care/plus-sign";
 import LocationsSection from "@/ui/locations-section";
+
+export const metadata: Metadata = {
+  title: "Urgent Care",
+  description:
+    "HELLOMED provides accessibility, convenience, and quality urgent care. We are here to serve the urgent healthcare needs of the Ann Arbor community and have been doing so since 2014. Our team of experienced medical professionals is committed to providing comprehensive care to individuals and families. We understand how important it is to have access to quality medical care, which is why we make it our priority to provide the best possible services for our patients. Visit us today and let us be a part of your healthcare experience.",
+  metadataBase: new URL("https://hello-med.com"),
+};
 
 export default function UrgentHome() {
   return (
