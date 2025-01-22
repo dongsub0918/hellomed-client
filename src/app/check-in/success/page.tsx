@@ -55,6 +55,7 @@ export default function CheckInFormSuccessPage() {
                 {renderField("Phone", formData?.phone)}
                 {renderField("Email", formData?.email)}
                 {renderField("Address", formData?.address)}
+                {renderField("Zipcode", formData?.zipcode)}
                 {renderField(
                   "How did you hear about us?",
                   formData?.hearAboutUs

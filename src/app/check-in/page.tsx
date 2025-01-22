@@ -28,6 +28,7 @@ export default function CheckInFormPage() {
     email: "",
     hearAboutUs: "",
     address: "",
+    zipcode: "",
     medicationAllergy: "",
     preferredPharmacy: "",
     homeMedication: "",
@@ -39,6 +40,7 @@ export default function CheckInFormPage() {
 
   const [agreedToTerms, setAgreedToTerms] = useState<boolean>(false);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   useEffect(() => {
     const requiredFields = [
@@ -47,6 +49,7 @@ export default function CheckInFormPage() {
       "phone",
       "email",
       "address",
+      "zipcode",
       "reasonForVisit",
       "preferredPharmacy",
     ];
@@ -58,6 +61,8 @@ export default function CheckInFormPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isSubmitting) return; // Prevent multiple submissions
+    setIsSubmitting(true);
     try {
       const res = await postCheckIn(formInputs);
 
@@ -68,6 +73,7 @@ export default function CheckInFormPage() {
       router.push("/check-in/success");
     } catch (error) {
       window.alert("Something went wrong. Please try again.");
+      setIsSubmitting(false); // Re-enable the submit button on error
     }
   };
 
@@ -172,6 +178,17 @@ export default function CheckInFormPage() {
               name="address"
               placeholder="Enter your full address"
               value={formInputs.address}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="zipcode">Zip code *</Label>
+            <Input
+              name="zipcode"
+              placeholder="Enter your zip code"
+              value={formInputs.zipcode}
               onChange={handleChange}
               required
             />
@@ -323,9 +340,9 @@ export default function CheckInFormPage() {
           <Button
             type="submit"
             className="w-full"
-            disabled={!isFormValid || !agreedToTerms}
+            disabled={!isFormValid || !agreedToTerms || isSubmitting}
           >
-            Submit Check-In Form
+            {isSubmitting ? "Submitting..." : "Submit Check-In Form"}
           </Button>
         </form>
       </CardContent>

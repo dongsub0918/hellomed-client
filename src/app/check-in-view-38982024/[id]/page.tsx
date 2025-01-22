@@ -75,6 +75,10 @@ async function CheckInDetails({ id }: { id: number }) {
               <dd className="mt-1">{checkIn.address}</dd>
             </div>
             <div>
+              <dt className="font-medium text-gray-500">Zipcode</dt>
+              <dd className="mt-1">{checkIn.zipcode}</dd>
+            </div>
+            <div>
               <dt className="font-medium text-gray-500">
                 How did you hear about us?
               </dt>

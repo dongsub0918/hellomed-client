@@ -5,6 +5,7 @@ export type CheckInFormInputs = {
   email: string;
   hearAboutUs: string;
   address: string;
+  zipcode: string;
   medicationAllergy: string;
   preferredPharmacy: string;
   homeMedication: string;
