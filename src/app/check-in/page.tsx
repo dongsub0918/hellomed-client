@@ -41,6 +41,8 @@ export default function CheckInFormPage() {
   const [agreedToTerms, setAgreedToTerms] = useState<boolean>(false);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [tempPreferredPharmacy, setTempPreferredPharmacy] =
+    useState<string>("");
 
   useEffect(() => {
     const requiredFields = [
@@ -53,16 +55,32 @@ export default function CheckInFormPage() {
       "reasonForVisit",
       "preferredPharmacy",
     ];
-    const isValid = requiredFields.every(
-      (field) => formInputs[field as keyof CheckInFormInputs] !== ""
-    );
+    const isValid =
+      (requiredFields.every(
+        (field) => formInputs[field as keyof CheckInFormInputs] !== ""
+      ) &&
+        formInputs["preferredPharmacy"] !== "others") ||
+      (requiredFields.every(
+        (field) => formInputs[field as keyof CheckInFormInputs] !== ""
+      ) &&
+        formInputs["preferredPharmacy"] === "others" &&
+        tempPreferredPharmacy !== "");
     setIsFormValid(isValid);
-  }, [formInputs]);
+  }, [formInputs, tempPreferredPharmacy]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isSubmitting) return; // Prevent multiple submissions
     setIsSubmitting(true);
+
+    // Assign the user custom preferred pharmacy to the form inputs
+    if (formInputs["preferredPharmacy"] === "others") {
+      formInputs["preferredPharmacy"] = tempPreferredPharmacy;
+    }
+
+    // delete later
+    console.log(formInputs);
+
     try {
       const res = await postCheckIn(formInputs);
 
@@ -226,21 +244,25 @@ export default function CheckInFormPage() {
                 <SelectItem value="Kroger - 2641 Plymouth Rd, Ann Arbor, MI 48105">
                   Kroger - 2641 Plymouth Rd, Ann Arbor, MI 48105
                 </SelectItem>
-                <SelectItem
-                  value="Walgreen - 317 S State St, Ann Arbor, MI 48104
-"
-                >
+                <SelectItem value="Walgreen - 317 S State St, Ann Arbor, MI 48104">
                   Walgreen - 317 S State St, Ann Arbor, MI 48104
                 </SelectItem>
-                <SelectItem
-                  value="Meijer pharmacy - 3145 Ann Arbor-Saline Rd, Ann Arbor, MI 48103
-"
-                >
+                <SelectItem value="Meijer pharmacy - 3145 Ann Arbor-Saline Rd, Ann Arbor, MI 48103">
                   Meijer pharmacy - 3145 Ann Arbor-Saline Rd, Ann Arbor, MI
                   48103
                 </SelectItem>
+                <SelectItem value="others">Others</SelectItem>
               </SelectContent>
             </Select>
+            {formInputs.preferredPharmacy === "others" && (
+              <Textarea
+                name="tempPreferredPharmacy"
+                placeholder="Please specify your preferred pharmacy"
+                value={tempPreferredPharmacy}
+                onChange={(e) => setTempPreferredPharmacy(e.target.value)}
+                required
+              />
+            )}
           </div>
 
           <div className="space-y-2">
