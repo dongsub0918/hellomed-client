@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html className="scroll-smooth" lang="en">
-      <body className={`relative antialiased text-gray-900 font-avenirNext`}>
+      <body className="relative antialiased text-gray-900 font-avenirNext">
         {children}
       </body>
     </html>

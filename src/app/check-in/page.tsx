@@ -78,9 +78,6 @@ export default function CheckInFormPage() {
       formInputs["preferredPharmacy"] = tempPreferredPharmacy;
     }
 
-    // delete later
-    console.log(formInputs);
-
     try {
       const res = await postCheckIn(formInputs);
 
