@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/ui/external/select";
 import { Checkbox } from "@/ui/external/checkbox";
-import { CheckInFormInputs } from "@/lib/types";
+import { CheckInFormInputs } from "@/lib/types/check-in";
 import { postCheckIn } from "@/apis/check-in";
 
 export default function CheckInFormPage() {

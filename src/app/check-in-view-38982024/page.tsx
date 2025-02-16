@@ -19,7 +19,7 @@ import {
   PaginationLink,
 } from "@/ui/external/pagination";
 import { parse, format } from "date-fns";
-import { CheckInFromBoardOutputs } from "@/lib/types";
+import { CheckInFromBoardOutputs } from "@/lib/types/check-in";
 import Link from "next/link";
 
 export default function CheckInViewPage() {

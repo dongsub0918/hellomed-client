@@ -19,7 +19,7 @@ import {
   PaginationLink,
 } from "@/ui/external/pagination";
 import { parse, format } from "date-fns";
-import { CheckInFromBoardOutputs } from "@/lib/types";
+import { CheckInFromBoardOutputs } from "@/lib/types/check-in";
 import Link from "next/link";
 
 export default function CheckInView() {
@@ -85,8 +85,7 @@ export default function CheckInView() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl text-center font-bold mb-6">View Check-Ins</h1>
+    <>
       <Card>
         <CardContent>
           <Table>
@@ -183,6 +182,6 @@ export default function CheckInView() {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-    </div>
+    </>
   );
 }

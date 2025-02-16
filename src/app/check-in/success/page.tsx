@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from "@/ui/external/card";
 import { CheckCircle } from "lucide-react";
-import { CheckInFormInputs } from "@/lib/types";
+import { CheckInFormInputs } from "@/lib/types/check-in";
 
 export default function CheckInFormSuccessPage() {
   const [formData, setFormData] = useState<CheckInFormInputs>();

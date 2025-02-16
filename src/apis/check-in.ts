@@ -1,5 +1,5 @@
 import client from "./client-config";
-import { CheckInFormInputs, GetCheckInsParams } from "@/lib/types";
+import { CheckInFormInputs, GetCheckInsParams } from "@/lib/types/check-in";
 
 export async function postCheckIn(data: CheckInFormInputs) {
   const url = `/check-in/`;
@@ -7,8 +7,7 @@ export async function postCheckIn(data: CheckInFormInputs) {
     const response = await client.post(url, data);
     return response;
   } catch (error) {
-    console.error(error);
-    return undefined;
+    throw error;
   }
 }
 
@@ -19,8 +18,7 @@ export async function getCheckIns(params: GetCheckInsParams) {
     const response = await client.get(url);
     return response.data;
   } catch (error) {
-    console.error("Error fetching check-ins:", error);
-    throw error; // Re-throw the error for the caller to handle
+    throw error;
   }
 }
 
@@ -31,7 +29,6 @@ export async function getCheckIn(id: number) {
     const response = await client.get(url);
     return response.data;
   } catch (error) {
-    console.error("Error fetching check-in:", error);
-    throw error; // Re-throw the error for the caller to handle
+    throw error;
   }
 }

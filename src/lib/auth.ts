@@ -1,5 +1,5 @@
 import { NextAuthOptions } from "next-auth";
-import { checkAdmin } from "@/apis/auth";
+import { getAdmin } from "@/apis/auth";
 import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions: NextAuthOptions = {
@@ -16,7 +16,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user }) {
       console.log(user.email);
-      const res = await checkAdmin(user.email as string);
+      const res = await getAdmin(user.email as string);
       if (res.isAdmin) {
         return true;
       } else {
