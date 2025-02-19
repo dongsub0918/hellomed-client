@@ -87,6 +87,7 @@ export default function CheckInViewPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl text-center font-bold mb-6">Check-Ins</h1>
+      {/* Table Section */}
       <Card>
         <CardContent>
           <Table>
@@ -136,6 +137,7 @@ export default function CheckInViewPage() {
         </CardContent>
       </Card>
 
+      {/* Pagination Section */}
       <Pagination className="mt-4">
         <PaginationContent>
           <PaginationItem>
