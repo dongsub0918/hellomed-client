@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { getCheckIn } from "@/apis/check-in";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/external/card";
-import { format, parse, parseISO } from "date-fns";
+import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 
 async function CheckInDetails({ id }: { id: number }) {
@@ -14,15 +14,6 @@ async function CheckInDetails({ id }: { id: number }) {
     error_message =
       "Something went wrong. Please navigate to the previous page.";
   }
-
-  const formatDate = (dateString: Date) => {
-    return dateString.toLocaleTimeString([], {
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
 
   if (error_message) {
     return (
@@ -52,14 +43,7 @@ async function CheckInDetails({ id }: { id: number }) {
             <div>
               <dt className="font-medium text-gray-500">Birth Date</dt>
               <dd className="mt-1">
-                {format(
-                  parse(
-                    checkIn.birthDate,
-                    "EEE, dd MMM yyyy HH:mm:ss 'GMT'",
-                    new Date()
-                  ),
-                  "MMM dd, yyyy"
-                )}
+                {formatDate(checkIn.birthDate, "MM/dd/yyyy")}
               </dd>
             </div>
             <div>
@@ -127,7 +111,7 @@ async function CheckInDetails({ id }: { id: number }) {
             <div>
               <dt className="font-medium text-gray-500">Check-In Time</dt>
               <dd className="mt-1">
-                {formatDate(new Date(checkIn.created_at))}
+                {formatDate(checkIn.created_at, "MM/dd/yyyy hh:mm:ss a (zzz)")}
               </dd>
             </div>
           </dl>

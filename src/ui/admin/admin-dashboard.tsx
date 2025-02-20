@@ -48,7 +48,7 @@ export default function AdminDashboard() {
       </div>
       {/* main content */}
       <div className="container px-4 py-8">
-        <h1 className="text-2xl font-bold mb-6">
+        <h1 className="text-2xl font-bold">
           {menus.find((menu) => menu.key === expandedMenu)?.name}
         </h1>
         {menus.find((menu) => menu.key === expandedMenu)?.component}

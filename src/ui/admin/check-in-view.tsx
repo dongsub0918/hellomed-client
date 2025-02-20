@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { getCheckIns } from "@/apis/check-in";
 import { Button } from "@/ui/external/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/ui/external/card";
+import { Card, CardContent } from "@/ui/external/card";
 import {
   Table,
   TableBody,
@@ -18,9 +18,9 @@ import {
   PaginationItem,
   PaginationLink,
 } from "@/ui/external/pagination";
-import { parse, format } from "date-fns";
 import { CheckInFromBoardOutputs } from "@/lib/types/check-in";
 import Link from "next/link";
+import { formatDate } from "@/lib/utils";
 
 export default function CheckInView() {
   const [checkIns, setCheckIns] = useState<CheckInFromBoardOutputs>();
@@ -29,7 +29,7 @@ export default function CheckInView() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const pageSize = 15;
+  const pageSize = 20;
 
   useEffect(() => {
     fetchCheckIns();
@@ -47,15 +47,6 @@ export default function CheckInView() {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const formatDate = (dateString: Date) => {
-    return dateString.toLocaleTimeString([], {
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
   };
 
   const handlePreviousPage = () => {
@@ -77,7 +68,7 @@ export default function CheckInView() {
   };
 
   if (isLoading) {
-    return <div className="w-full text-center mt-8">Loading...</div>;
+    return <div className="text-center mt-8">Loading...</div>;
   }
 
   if (error) {
@@ -85,17 +76,18 @@ export default function CheckInView() {
   }
 
   return (
-    <>
+    <div className="container mx-auto px-4 py-8">
+      {/* Table Section */}
       <Card>
-        <CardContent>
+        <CardContent className="overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Birth Date</TableHead>
-                <TableHead>Submitted</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Reason for Visit</TableHead>
+                <TableHead className="w-1/12">Name</TableHead>
+                <TableHead className="w-1/12">Birth Date</TableHead>
+                <TableHead className="w-1/12">Submitted</TableHead>
+                <TableHead className="w-2/12">Email</TableHead>
+                <TableHead className="w-5/12">Reason for Visit</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -105,27 +97,26 @@ export default function CheckInView() {
                     href={`/check-in-view-38982024/${checkIn.id}`}
                     className="contents"
                   >
-                    <TableCell className="group-hover:bg-gray-100">
-                      {checkIn.name}
+                    <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
+                      <span className="block truncate">{checkIn.name}</span>
                     </TableCell>
-                    <TableCell className="group-hover:bg-gray-100">
-                      {format(
-                        parse(
-                          checkIn.birthDate,
-                          "EEE, dd MMM yyyy HH:mm:ss 'GMT'",
-                          new Date()
-                        ),
-                        "MMM dd, yyyy"
-                      )}
+                    <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
+                      <span className="block truncate">
+                        {formatDate(checkIn.birthDate, "MM/dd/yyyy")}
+                      </span>
                     </TableCell>
-                    <TableCell className="group-hover:bg-gray-100">
-                      {formatDate(new Date(checkIn.created_at))}
+                    <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
+                      <span className="block truncate">
+                        {formatDate(checkIn.created_at, "MM/dd/yyyy HH:mm")}
+                      </span>
                     </TableCell>
-                    <TableCell className="group-hover:bg-gray-100">
-                      {checkIn.email}
+                    <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
+                      <span className="block truncate">{checkIn.email}</span>
                     </TableCell>
-                    <TableCell className="group-hover:bg-gray-100">
-                      {checkIn.reasonForVisit}
+                    <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
+                      <span className="block truncate">
+                        {checkIn.reasonForVisit}
+                      </span>
                     </TableCell>
                   </Link>
                 </TableRow>
@@ -135,6 +126,7 @@ export default function CheckInView() {
         </CardContent>
       </Card>
 
+      {/* Pagination Section */}
       <Pagination className="mt-4">
         <PaginationContent>
           <PaginationItem>
@@ -182,6 +174,6 @@ export default function CheckInView() {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-    </>
+    </div>
   );
 }

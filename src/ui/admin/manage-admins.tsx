@@ -62,7 +62,7 @@ export default function ManageAdmins() {
   return (
     <>
       {/* Notes on admin accounts */}
-      <ul className="w-full border-4 border-black p-4">
+      <ul className="w-full border-4 border-black p-4 mt-6">
         <li className="text-lg text-center font-bold text-red-600 pb-5">
           Notes on admin accounts
         </li>

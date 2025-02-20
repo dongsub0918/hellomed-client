@@ -13,7 +13,6 @@ export async function postCheckIn(body: CheckInFormInputs) {
 
 export async function getCheckIns(params: GetCheckInsParams) {
   const url = `/check-in/?size=${params.size}&page=${params.page}`;
-
   try {
     const response = await client.get(url);
     return response.data;
@@ -24,7 +23,6 @@ export async function getCheckIns(params: GetCheckInsParams) {
 
 export async function getCheckIn(id: number) {
   const url = `/check-in/${id}/`;
-
   try {
     const response = await client.get(url);
     return response.data;

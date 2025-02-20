@@ -7,6 +7,7 @@ import { Label } from "@/ui/external/label";
 import { Input } from "@/ui/external/input";
 import { Textarea } from "@/ui/external/textarea";
 import { ChangeEvent } from "react";
+import { formatDate } from "@/lib/utils";
 
 export default function ChangeHours() {
   const [formData, setFormData] = useState<LocationInfo[]>([]);
@@ -24,8 +25,11 @@ export default function ChangeHours() {
       setFormData(
         res.map((location: LocationInfo) => ({
           ...location,
-          holiday_start: convertToEST(location.holiday_start),
-          holiday_end: convertToEST(location.holiday_end),
+          holiday_start: formatDate(
+            location.holiday_start,
+            "MM/dd/yyyy, hh:mm a"
+          ),
+          holiday_end: formatDate(location.holiday_end, "MM/dd/yyyy, hh:mm a"),
         }))
       );
 
@@ -67,13 +71,6 @@ export default function ChangeHours() {
     );
   };
 
-  const convertToEST = (date: string | null) => {
-    if (!date) return "";
-    const utcDate = new Date(date);
-    const estDate = new Date(utcDate.getTime() - 5 * 60 * 60 * 1000);
-    return estDate.toISOString().slice(0, 16);
-  };
-
   useEffect(() => {
     if (dataStale) {
       fetchLocationsInfo();
@@ -86,7 +83,7 @@ export default function ChangeHours() {
   }
 
   return (
-    <section className="space-y-4">
+    <section className="space-y-4 mt-6">
       {formData.map(
         ({
           code,
@@ -176,7 +173,10 @@ export default function ChangeHours() {
                         <Input
                           id="holiday_start"
                           type="datetime-local"
-                          value={convertToEST(holiday_start)}
+                          value={formatDate(
+                            holiday_start,
+                            "yyyy-MM-dd'T'HH:mm"
+                          )}
                           onChange={handleFormChange}
                           disabled={!open}
                         />
@@ -187,7 +187,7 @@ export default function ChangeHours() {
                         <Input
                           id="holiday_end"
                           type="datetime-local"
-                          value={convertToEST(holiday_end)}
+                          value={formatDate(holiday_end, "yyyy-MM-dd'T'HH:mm")}
                           onChange={handleFormChange}
                           disabled={!open}
                         />
