@@ -6,14 +6,18 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const formatDate = (dateString: string, resultFormat: string) => {
+export const formatDate = (
+  dateString: string | undefined,
+  resultFormat: string,
+  timezone: "UTC" | "EST" = "EST"
+) => {
   if (!dateString) return "";
 
   const parsedDate = new Date(dateString);
   if (isNaN(parsedDate.getTime())) return "";
 
-  const zonedDate = toZonedTime(new Date(dateString), "America/New_York");
-  return format(zonedDate, resultFormat, {
-    timeZone: "America/New_York",
-  });
+  let timeZone = timezone === "UTC" ? "UTC" : "America/New_York";
+
+  const zonedDate = toZonedTime(new Date(dateString), timeZone);
+  return format(zonedDate, resultFormat, { timeZone });
 };

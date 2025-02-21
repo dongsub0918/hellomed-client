@@ -29,7 +29,7 @@ export default function CheckInView() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const pageSize = 20;
+  const pageSize = 15;
 
   useEffect(() => {
     fetchCheckIns();
@@ -86,15 +86,18 @@ export default function CheckInView() {
                 <TableHead className="w-1/12">Name</TableHead>
                 <TableHead className="w-1/12">Birth Date</TableHead>
                 <TableHead className="w-1/12">Submitted</TableHead>
-                <TableHead className="w-2/12">Email</TableHead>
-                <TableHead className="w-5/12">Reason for Visit</TableHead>
+                <TableHead className="w-1/12">Email</TableHead>
+                <TableHead className="w-2/12">Reason for Visit</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {checkIns?.checkIns.map((checkIn) => (
-                <TableRow key={checkIn.id} className="group">
+                <TableRow
+                  key={checkIn.id}
+                  className={`group ${!checkIn.viewed ? "font-bold" : ""}`}
+                >
                   <Link
-                    href={`/check-in-view-38982024/${checkIn.id}`}
+                    href={`/admin/check-in-view/${checkIn.id}`}
                     className="contents"
                   >
                     <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
@@ -102,7 +105,7 @@ export default function CheckInView() {
                     </TableCell>
                     <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
                       <span className="block truncate">
-                        {formatDate(checkIn.birthDate, "MM/dd/yyyy")}
+                        {formatDate(checkIn.birthDate, "MM/dd/yyyy", "UTC")}
                       </span>
                     </TableCell>
                     <TableCell className="group-hover:bg-gray-100 truncate max-w-0">

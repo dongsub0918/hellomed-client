@@ -1,11 +1,10 @@
-export type CheckInFormInputs = {
+export interface CheckInBase {
   name: string;
   birthDate: string;
   phone: string;
   email: string;
   hearAboutUs: string;
   address: string;
-  zipcode: string;
   medicationAllergy: string;
   preferredPharmacy: string;
   homeMedication: string;
@@ -13,39 +12,31 @@ export type CheckInFormInputs = {
   exposures: string;
   recentTests: string;
   recentVisits: string;
-};
+}
 
-export type CheckInFormOutputs = {
+export interface CheckInFormInputs extends CheckInBase {
+  zipcode: string;
+}
+
+export interface CheckInFormOutputs extends CheckInFormInputs {
+  id: number;
+  created_at: string;
+}
+
+export interface CheckInFormBoardDisplay {
   id: number;
   name: string;
   birthDate: string;
-  phone: string;
   email: string;
-  hearAboutUs: string;
-  address: string;
-  medicationAllergy: string;
-  preferredPharmacy: string;
-  homeMedication: string;
   reasonForVisit: string;
-  exposures: string;
-  recentTests: string;
-  recentVisits: string;
   created_at: string;
-};
+  viewed: boolean;
+}
 
-export type CheckInFromBoardOutputs = {
+export interface CheckInFromBoardOutputs {
   checkIns: CheckInFormBoardDisplay[];
   totalCheckIns: number;
-};
-
-export type CheckInFormBoardDisplay = {
-  id: number;
-  name: string;
-  birthDate: string;
-  email: string;
-  reasonForVisit: string;
-  created_at: string;
-};
+}
 
 export interface GetCheckInsParams {
   size?: number;
