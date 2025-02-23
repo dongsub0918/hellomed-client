@@ -1,5 +1,5 @@
 import AcuteConditionsText from "@/ui/urgent-care/acute-conditions-text";
-import { styeInfo } from "@/lib/acute-conditions-items";
+import { styeInfo } from "@/lib/content/acute-conditions-items";
 
 export default function StyePage() {
   return (

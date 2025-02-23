@@ -1,5 +1,5 @@
 import AcuteConditionsText from "@/ui/urgent-care/acute-conditions-text";
-import { earInfectionInfo } from "@/lib/acute-conditions-items";
+import { earInfectionInfo } from "@/lib/content/acute-conditions-items";
 
 export default function ColdFluPage() {
   return (

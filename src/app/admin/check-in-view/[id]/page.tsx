@@ -2,7 +2,7 @@
 
 import { getCheckIn } from "@/apis/check-in";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/external/card";
-import { formatDate } from "@/lib/utils";
+import { formatDate } from "@/lib/features/utils";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CheckInFormOutputs } from "@/lib/types/check-in";

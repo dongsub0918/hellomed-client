@@ -1,5 +1,5 @@
 import AcuteConditionsText from "@/ui/urgent-care/acute-conditions-text";
-import { covidInfo } from "@/lib/acute-conditions-items";
+import { covidInfo } from "@/lib/content/acute-conditions-items";
 
 export default function CovidPage() {
   return (

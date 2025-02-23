@@ -1,5 +1,5 @@
 import AcuteConditionsText from "@/ui/urgent-care/acute-conditions-text";
-import { utiInfo } from "@/lib/acute-conditions-items";
+import { utiInfo } from "@/lib/content/acute-conditions-items";
 
 export default function UTIPage() {
   return (

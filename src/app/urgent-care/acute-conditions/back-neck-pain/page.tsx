@@ -1,5 +1,5 @@
 import AcuteConditionsText from "@/ui/urgent-care/acute-conditions-text";
-import { backAndNeckPainInfo } from "@/lib/acute-conditions-items";
+import { backAndNeckPainInfo } from "@/lib/content/acute-conditions-items";
 
 export default function BackAndNeckPainPage() {
   return (

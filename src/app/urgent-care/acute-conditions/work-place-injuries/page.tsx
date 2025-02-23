@@ -1,5 +1,5 @@
 import AcuteConditionsText from "@/ui/urgent-care/acute-conditions-text";
-import { workplaceInjuriesInfo } from "@/lib/acute-conditions-items";
+import { workplaceInjuriesInfo } from "@/lib/content/acute-conditions-items";
 
 export default function WorkPlaceInjuriesPage() {
   return (

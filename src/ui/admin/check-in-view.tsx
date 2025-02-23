@@ -20,7 +20,7 @@ import {
 } from "@/ui/external/pagination";
 import { CheckInFromBoardOutputs } from "@/lib/types/check-in";
 import Link from "next/link";
-import { formatDate } from "@/lib/utils";
+import { formatDate } from "@/lib/features/utils";
 
 export default function CheckInView() {
   const [checkIns, setCheckIns] = useState<CheckInFromBoardOutputs>();
@@ -29,7 +29,7 @@ export default function CheckInView() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const pageSize = 15;
+  const pageSize = 20;
 
   useEffect(() => {
     fetchCheckIns();

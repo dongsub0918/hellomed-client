@@ -7,7 +7,7 @@ import { Label } from "@/ui/external/label";
 import { Input } from "@/ui/external/input";
 import { Textarea } from "@/ui/external/textarea";
 import { ChangeEvent } from "react";
-import { formatDate } from "@/lib/utils";
+import { formatDate } from "@/lib/features/utils";
 
 export default function ChangeHours() {
   const [formData, setFormData] = useState<LocationInfo[]>([]);

@@ -1,5 +1,5 @@
 import AcuteConditionsText from "@/ui/urgent-care/acute-conditions-text";
-import { skinInfectionInfo } from "@/lib/acute-conditions-items";
+import { skinInfectionInfo } from "@/lib/content/acute-conditions-items";
 
 export default function SkinInfectionPage() {
   return (

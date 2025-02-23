@@ -1,5 +1,5 @@
 import AcuteConditionsText from "@/ui/urgent-care/acute-conditions-text";
-import { ankleSprainInfo } from "@/lib/acute-conditions-items";
+import { ankleSprainInfo } from "@/lib/content/acute-conditions-items";
 
 export default function AnkleSprainPage() {
   return (
