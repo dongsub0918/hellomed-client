@@ -1,29 +1,36 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import CheckInView from "@/ui/admin/check-in-view";
 import ChangeHours from "@/ui/admin/change-hours";
 import ManageAdmins from "@/ui/admin/manage-admins";
 
 export default function AdminDashboard() {
   const [expandedMenu, setExpandedMenu] = useState<string>("check-in-view");
-  const menus = [
-    {
-      name: "View check-ins",
-      key: "check-in-view",
-      component: <CheckInView />,
-    },
-    { name: "Change hours", key: "change-hours", component: <ChangeHours /> },
-    {
-      name: "Update carousel",
-      key: "update-carousel",
-      component: <CheckInView />,
-    },
-    {
-      name: "Manage admins",
-      key: "manage-admins",
-      component: <ManageAdmins />,
-    },
-  ];
+  const menus = useMemo(
+    () => [
+      {
+        name: "View check-ins",
+        key: "check-in-view",
+        component: CheckInView,
+      },
+      { name: "Change hours", key: "change-hours", component: ChangeHours },
+      {
+        name: "Update carousel",
+        key: "update-carousel",
+        component: ChangeHours,
+      },
+      {
+        name: "Manage admins",
+        key: "manage-admins",
+        component: ManageAdmins,
+      },
+    ],
+    []
+  );
+
+  const ActiveComponent = menus.find(
+    (menu) => menu.key === expandedMenu
+  )?.component;
   return (
     <div className="flex h-[calc(100svh-76px)]">
       {/* sidebar */}
@@ -51,7 +58,8 @@ export default function AdminDashboard() {
         <h1 className="text-2xl font-bold">
           {menus.find((menu) => menu.key === expandedMenu)?.name}
         </h1>
-        {menus.find((menu) => menu.key === expandedMenu)?.component}
+        {/* {menus.find((menu) => menu.key === expandedMenu)?.component} */}
+        {ActiveComponent && <ActiveComponent />}
       </div>
     </div>
   );

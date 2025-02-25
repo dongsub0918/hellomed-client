@@ -22,6 +22,7 @@ export default async function AdminLayout({
             src={session?.user?.image!}
             width={60}
             height={60}
+            priority
             alt="Google session image"
           />
           <div className="font-bold bg-slate-500 hover:bg-slate-400 p-2 rounded-lg">

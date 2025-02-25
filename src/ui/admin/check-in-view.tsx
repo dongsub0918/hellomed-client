@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { getCheckIns } from "@/apis/check-in";
 import { Button } from "@/ui/external/button";
 import { Card, CardContent } from "@/ui/external/card";
@@ -19,8 +19,8 @@ import {
   PaginationLink,
 } from "@/ui/external/pagination";
 import { CheckInFromBoardOutputs } from "@/lib/types/check-in";
-import Link from "next/link";
 import { formatDate } from "@/lib/features/utils";
+import useCheckInListUpdaterSocket from "@/lib/hooks/socket";
 
 export default function CheckInView() {
   const [checkIns, setCheckIns] = useState<CheckInFromBoardOutputs>();
@@ -29,11 +29,14 @@ export default function CheckInView() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const pageSize = 20;
+  const pageSize = 15;
 
   useEffect(() => {
     fetchCheckIns();
   }, [currentPage]);
+
+  // Set web socket to manage real-time updates
+  useCheckInListUpdaterSocket(setCheckIns, currentPage);
 
   const fetchCheckIns = async () => {
     setIsLoading(true);
@@ -47,24 +50,6 @@ export default function CheckInView() {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handlePreviousPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    setCurrentPage(currentPage + 1);
-  };
-
-  const handleLastPage = () => {
-    setCurrentPage(totalPages);
-  };
-
-  const handleFirstPage = () => {
-    setCurrentPage(0);
   };
 
   if (isLoading) {
@@ -95,33 +80,31 @@ export default function CheckInView() {
                 <TableRow
                   key={checkIn.id}
                   className={`group ${!checkIn.viewed ? "font-bold" : ""}`}
+                  onClick={() =>
+                    (location.href = `/admin/check-in-view/${checkIn.id}`)
+                  }
                 >
-                  <Link
-                    href={`/admin/check-in-view/${checkIn.id}`}
-                    className="contents"
-                  >
-                    <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
-                      <span className="block truncate">{checkIn.name}</span>
-                    </TableCell>
-                    <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
-                      <span className="block truncate">
-                        {formatDate(checkIn.birthDate, "MM/dd/yyyy", "UTC")}
-                      </span>
-                    </TableCell>
-                    <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
-                      <span className="block truncate">
-                        {formatDate(checkIn.created_at, "MM/dd/yyyy HH:mm")}
-                      </span>
-                    </TableCell>
-                    <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
-                      <span className="block truncate">{checkIn.email}</span>
-                    </TableCell>
-                    <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
-                      <span className="block truncate">
-                        {checkIn.reasonForVisit}
-                      </span>
-                    </TableCell>
-                  </Link>
+                  <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
+                    <span className="block truncate">{checkIn.name}</span>
+                  </TableCell>
+                  <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
+                    <span className="block truncate">
+                      {formatDate(checkIn.birthDate, "MM/dd/yyyy", "UTC")}
+                    </span>
+                  </TableCell>
+                  <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
+                    <span className="block truncate">
+                      {formatDate(checkIn.created_at, "MM/dd/yyyy HH:mm")}
+                    </span>
+                  </TableCell>
+                  <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
+                    <span className="block truncate">{checkIn.email}</span>
+                  </TableCell>
+                  <TableCell className="group-hover:bg-gray-100 truncate max-w-0">
+                    <span className="block truncate">
+                      {checkIn.reasonForVisit}
+                    </span>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -134,7 +117,7 @@ export default function CheckInView() {
         <PaginationContent>
           <PaginationItem>
             <Button
-              onClick={handleFirstPage}
+              onClick={() => setCurrentPage(0)}
               disabled={currentPage === 0}
               variant="outline"
             >
@@ -143,7 +126,7 @@ export default function CheckInView() {
           </PaginationItem>
           <PaginationItem>
             <Button
-              onClick={handlePreviousPage}
+              onClick={() => setCurrentPage(currentPage - 1)}
               disabled={currentPage === 0}
               variant="outline"
             >
@@ -155,7 +138,7 @@ export default function CheckInView() {
           </PaginationItem>
           <PaginationItem>
             <Button
-              onClick={handleNextPage}
+              onClick={() => setCurrentPage(currentPage + 1)}
               disabled={
                 checkIns === undefined
                   ? true
@@ -168,7 +151,7 @@ export default function CheckInView() {
           </PaginationItem>
           <PaginationItem>
             <Button
-              onClick={handleLastPage}
+              onClick={() => setCurrentPage(totalPages)}
               disabled={currentPage === totalPages}
               variant="outline"
             >
