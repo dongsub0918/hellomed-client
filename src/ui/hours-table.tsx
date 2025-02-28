@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import {
   Table,
@@ -10,226 +10,173 @@ import {
   TableHeader,
   TableRow,
 } from "@/ui/external/table";
+import { getLocationsInfo } from "@/apis/locations";
+import { LocationInfo } from "@/lib/types/locations";
+import { isAfter, isBefore, differenceInDays } from "date-fns";
+import { toZonedTime } from "date-fns-tz";
+import { formatDate } from "@/lib/features/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
-const locations = [
-  {
-    name: "HELLOMED_Central",
-    title: "HELLOMED Central",
-    address: "625 E Liberty St, Ann Arbor",
-  },
-  {
-    name: "HELLOMED_North",
-    title: "HELLOMED North",
-    address: "2731 Plymouth Rd, Ann Arbor",
-  },
-  {
-    name: "HELLOMED_South",
-    title: "HELLOMED South (Inside Meijer)",
-    address: "Coming Soon",
-  },
-];
-
-const hours = [
-  {
-    day: "Mon",
-    HELLOMED_Central: "9:10 am - 6:00 pm",
-    HELLOMED_North: "9:00 am - 6:00 pm",
-    HELLOMED_South: "",
-  },
-  {
-    day: "Tue",
-    HELLOMED_Central: "9:10 am - 6:00 pm",
-    HELLOMED_North: "",
-    HELLOMED_South: "",
-  },
-  {
-    day: "Wed",
-    HELLOMED_Central: "9:00 am - 6:00 pm",
-    HELLOMED_North: "9:00 am - 6:00 pm",
-    HELLOMED_South: "",
-  },
-  {
-    day: "Thu",
-    HELLOMED_Central: "9:10 am - 6:00 pm",
-    HELLOMED_North: "9:00 am - 6:00 pm",
-    HELLOMED_South: "",
-  },
-  {
-    day: "Fri",
-    HELLOMED_Central: "9:10 am - 5:00 pm",
-    HELLOMED_North: "9:00 am - 6:00 pm",
-    HELLOMED_South: "",
-  },
-  {
-    day: "Sat",
-    HELLOMED_Central: "Closed",
-    HELLOMED_North: "10:00 am - 11:30 am (Immigration Medical Exam only)",
-    HELLOMED_South: "",
-  },
-  {
-    day: "Sun",
-    HELLOMED_Central: "",
-    HELLOMED_North: "",
-    HELLOMED_South: "",
-  },
-  {
-    day: "Lunch Break",
-    HELLOMED_Central: "1:00 pm - 1:30 pm",
-    HELLOMED_North: "1:30 pm - 2:00 pm",
-    HELLOMED_South: "",
-  },
-];
-
-const holidays = {
-  HELLOMED_Central: {},
-  HELLOMED_North: {},
-  HELLOMED_South: {
-    duration: "Coming Soon",
-    message: "",
-  },
-};
-
-export function MobileHoursTable() {
+export default function HoursTable() {
+  const [locations, setLocations] = useState<LocationInfo[]>([]);
   const [expandedLocation, setExpandedLocation] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const toggleLocation = (location: string) => {
-    setExpandedLocation(expandedLocation === location ? null : location);
-  };
+  async function fetchLocations() {
+    try {
+      setError(null);
+      const res = await getLocationsInfo();
+      setLocations(res);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setError(null);
+    }
+  }
 
+  enum HolidayStatus {
+    None,
+    Upcoming,
+    Ongoing,
+  }
+
+  function getHolidayStatus(holidayStart: string, holidayEnd: string) {
+    if (!holidayStart || !holidayEnd) return null;
+
+    const now = toZonedTime(new Date(), "America/New_York");
+    const start = toZonedTime(new Date(holidayStart), "America/New_York");
+    const end = toZonedTime(new Date(holidayEnd), "America/New_York");
+    const daysUntilStart = differenceInDays(start, now);
+
+    if (daysUntilStart > 7) {
+      return HolidayStatus.None;
+    } else if (daysUntilStart <= 7 && isAfter(start, now)) {
+      return HolidayStatus.Upcoming;
+    } else if (isBefore(start, now) && isAfter(end, now)) {
+      return HolidayStatus.Ongoing;
+    }
+  }
+
+  useEffect(() => {
+    fetchLocations();
+  }, []);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
   return (
     <div className="grid grid-cols-1 gap-6">
-      {locations.map((location) => (
-        <div
-          key={location.name}
-          className="bg-white rounded-lg shadow-md overflow-hidden"
-        >
-          <div
-            className="bg-slate-600 text-white p-4 cursor-pointer flex justify-between items-center"
-            onClick={() =>
-              location.name !== "HELLOMED_South" &&
-              toggleLocation(location.name)
-            }
-          >
-            <div>
-              <h3 className="font-bold">{location.title}</h3>
-            </div>
-            {expandedLocation === location.name ? (
-              <ChevronUp />
-            ) : (
-              <ChevronDown />
-            )}
-          </div>
-          {expandedLocation === location.name && (
-            <>
-              {holidays[location.name as keyof typeof holidays] &&
-              "duration" in holidays[location.name as keyof typeof holidays] ? (
-                <div className="p-4">
-                  <p className="text-center">
-                    Closed <br />
-                    From{" "}
-                    {
-                      (
-                        holidays[location.name as keyof typeof holidays] as {
-                          duration: string;
-                        }
-                      ).duration
-                    }{" "}
-                    <br />
-                    {
-                      (
-                        holidays[location.name as keyof typeof holidays] as {
-                          message: string;
-                        }
-                      ).message
-                    }
-                  </p>
-                </div>
-              ) : (
-                <div className="p-4">
-                  <table className="w-full">
-                    <tbody>
-                      {hours.map((row) => (
-                        <tr key={row.day} className="border-b last:border-b-0">
-                          <td className="py-2 pr-4 font-medium">{row.day}</td>
-                          <td className="py-2 text-right">
-                            {row[location.name as keyof typeof row] || "Closed"}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-export function DesktopHoursTable() {
-  return (
-    <div className="mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-1/12 bg-slate-100 font-bold text-2xl text-center">
-              Day
-            </TableHead>
-            {locations.map((location) => (
-              <TableHead
-                key={location.name}
-                className="w-3/12 bg-slate-500 text-white"
-              >
-                <div className="text-center">
-                  <p className="font-bold text-2xl">{location.title}</p>
-                  <p className="text-xl">{location.address}</p>
-                </div>
-              </TableHead>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {hours.map((row, index) => (
-            <TableRow
-              key={row.day}
-              className="md:text-xl xl:text-2xl text-center"
+      {locations.map(
+        ({
+          code,
+          title,
+          address,
+          holiday_start,
+          holiday_end,
+          holiday_message,
+          mon,
+          tue,
+          wed,
+          thu,
+          fri,
+          sat,
+          sun,
+          lunch_break,
+          open,
+        }) => (
+          <div key={code} className="bg-white rounded-lg overflow-hidden">
+            {/* Clickable bar */}
+            <button
+              className="bg-slate-600 text-white p-4 cursor-pointer flex justify-between items-center w-full md:text-xl lg:text-2xl"
+              onClick={() =>
+                code === expandedLocation
+                  ? setExpandedLocation(null)
+                  : setExpandedLocation(code)
+              }
             >
-              <TableCell className="font-semibold text-slate-700">
-                {row.day}
-              </TableCell>
-              {locations.map((location) => {
-                const holidayInfo =
-                  holidays[location.name as keyof typeof holidays];
-                if (index === 0 && holidayInfo && "duration" in holidayInfo) {
-                  return (
-                    <TableCell
-                      key={location.name}
-                      className="text-center"
-                      rowSpan={hours.length}
-                    >
-                      <div>
-                        <p className="font-semibold text-red-600">Closed</p>
-                        <p className="font-semibold">{holidayInfo.duration}</p>
-                        <p className="text-slate-600">{holidayInfo.message}</p>
-                      </div>
-                    </TableCell>
-                  );
-                } else if (holidayInfo && "duration" in holidayInfo) {
-                  return null;
-                } else {
-                  return (
-                    <TableCell key={location.name}>
-                      {row[location.name as keyof typeof row] || "Closed"}
-                    </TableCell>
-                  );
-                }
-              })}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+              <h3 className="font-bold">{title}</h3>
+              {expandedLocation === code ? <ChevronUp /> : <ChevronDown />}
+            </button>
+
+            {/* Expanded content */}
+            <AnimatePresence initial={false}>
+              {expandedLocation === code && (
+                <motion.div
+                  key={code}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden bg-transparent"
+                >
+                  {!open ? (
+                    <div className="text-center p-4 bg-red-100 text-red-800">
+                      <p className="font-bold text-lg">Closed</p>
+                      <p>Coming soon</p>
+                    </div>
+                  ) : (
+                    <>
+                      {/* Table is displayed unless holiday is ongoing */}
+                      {getHolidayStatus(holiday_start, holiday_end) !==
+                        HolidayStatus.Ongoing && (
+                        <Table className="font-semibold mt-2 md:text-lg">
+                          <TableBody>
+                            {[
+                              { day: "Mon", hours: mon },
+                              { day: "Tue", hours: tue },
+                              { day: "Wed", hours: wed },
+                              { day: "Thu", hours: thu },
+                              { day: "Fri", hours: fri },
+                              { day: "Sat", hours: sat },
+                              { day: "Sun", hours: sun },
+                              { day: "Lunch Break", hours: lunch_break },
+                            ].map(({ day, hours }) => (
+                              <TableRow key={day}>
+                                <TableCell className="w-1/2 text-left">
+                                  {day}
+                                </TableCell>
+                                <TableCell className="w-1/2 text-right">
+                                  {hours}
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      )}
+
+                      {/* Upcoming holiday message is displayed with the table */}
+                      {getHolidayStatus(holiday_start, holiday_end) ===
+                        HolidayStatus.Upcoming && (
+                        <div className="text-center rounded-lg mt-4 p-4 bg-red-100 text-red-800">
+                          <p className="font-bold text-lg">Upcoming Holiday</p>
+                          <p>
+                            {formatDate(holiday_start, "MMM dd yyyy")} -{" "}
+                            {formatDate(holiday_end, "MMM dd yyyy")}
+                          </p>
+                          <p className="mt-4">{holiday_message}</p>
+                        </div>
+                      )}
+
+                      {/* Ongoing holiday message is displayed without the table */}
+                      {getHolidayStatus(holiday_start, holiday_end) ===
+                        HolidayStatus.Ongoing && (
+                        <div className="text-center p-4 bg-red-100 text-red-800">
+                          <p className="font-bold text-lg">Closed</p>
+                          <p>
+                            {formatDate(holiday_start, "MMM dd yyyy")} -{" "}
+                            {formatDate(holiday_end, "MMM dd yyyy")}
+                          </p>
+                          <p className="mt-4">{holiday_message}</p>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        )
+      )}
     </div>
   );
 }

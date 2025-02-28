@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 import UrgentMainBackground from "@/ui/urgent-care/main-background";
-import { MobileHoursTable, DesktopHoursTable } from "@/ui/hours-table";
 import UrgentServicesSection from "@/ui/urgent-care/services-section";
 import ReviewsGrid from "@/ui/reviews-grid";
 import PlusSign from "@/ui/urgent-care/plus-sign";
 import LocationsSection from "@/ui/locations-section";
+import HoursTable from "@/ui/hours-table";
 
 export const metadata: Metadata = {
   title: "Urgent Care",
@@ -31,11 +31,8 @@ export default function UrgentHome() {
           <p className="text-center text-lg md:text-2xl lg:text-4xl">
             (Last check-in time: 30 minutes before closing)
           </p>
-          <div className="md:hidden w-full px-1/12">
-            <MobileHoursTable />
-          </div>
-          <div className="hidden md:block w-full px-1/12">
-            <DesktopHoursTable />
+          <div className="w-full px-1/12">
+            <HoursTable />
           </div>
         </div>
       </section>

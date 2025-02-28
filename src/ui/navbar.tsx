@@ -3,7 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { urgentNavBarItems, primaryNavBarItems } from "@/lib/navbar-items";
+import {
+  urgentNavBarItems,
+  primaryNavBarItems,
+} from "@/lib/content/navbar-items";
 import { HamburgerX } from "@/ui/hamburger-x";
 import {
   DesktopMenu,

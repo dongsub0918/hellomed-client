@@ -14,11 +14,11 @@ export default function AdminDashboard() {
         component: CheckInView,
       },
       { name: "Change hours", key: "change-hours", component: ChangeHours },
-      {
-        name: "Update carousel",
-        key: "update-carousel",
-        component: ChangeHours,
-      },
+      // {
+      //   name: "Update carousel",
+      //   key: "update-carousel",
+      //   component: ChangeHours,
+      // },
       {
         name: "Manage admins",
         key: "manage-admins",

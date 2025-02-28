@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "@/ui/external/button";
 import FloatingElement from "@/ui/floating-element";
 import { ChevronDown } from "lucide-react";
-import { MobileHoursTable } from "@/ui/hours-table";
+import HoursTable from "@/ui/hours-table";
 import Carousel from "@/ui/landing-page/desktop/carousel";
 
 export default function DesktopLinksSection() {
@@ -23,7 +23,7 @@ export default function DesktopLinksSection() {
             </FloatingElement>
             <FloatingElement delay={0.2}>
               <div className="pt-4">
-                <MobileHoursTable />
+                <HoursTable />
               </div>
             </FloatingElement>
           </div>

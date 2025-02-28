@@ -1,7 +1,7 @@
 import client from "./client-config";
 import { LocationInfo } from "@/lib/types/locations";
 
-export async function getLocationsInfo() {
+export async function getLocationsInfo(): Promise<LocationInfo[]> {
   const url = `/locations/`;
   try {
     const response = await client.get(url);
