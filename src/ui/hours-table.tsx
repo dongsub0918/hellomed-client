@@ -2,14 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/ui/external/table";
+import { Table, TableBody, TableCell, TableRow } from "@/ui/external/table";
 import { getLocationsInfo } from "@/apis/locations";
 import { LocationInfo } from "@/lib/types/locations";
 import { isAfter, isBefore, differenceInDays } from "date-fns";

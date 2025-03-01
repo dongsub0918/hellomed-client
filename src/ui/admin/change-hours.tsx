@@ -78,9 +78,9 @@ export default function ChangeHours() {
     }
   }, [dataStale]);
 
-  if (error) {
-    return <div className="text-center mt-8 text-red-500">{error}</div>;
-  }
+  // if (error) {
+  //   return <div className="text-center mt-8 text-red-500">{error}</div>;
+  // }
 
   return (
     <section className="space-y-4 mt-6">
