@@ -61,7 +61,6 @@ export default function useCheckInListUpdaterSocket(
     }
     socketRef.current = io(process.env.NEXT_PUBLIC_WEBSOCKET_ORIGIN, {
       transports: ["websocket"],
-      ackTimeout: 3600000 * 3, // 3 hours
     });
 
     socketRef.current.on("new-checkin", handleNewCheckin);

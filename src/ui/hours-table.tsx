@@ -129,7 +129,7 @@ export default function HoursTable() {
                                   {day}
                                 </TableCell>
                                 <TableCell className="w-1/2 text-right">
-                                  {hours}
+                                  {hours ? hours : "Closed"}
                                 </TableCell>
                               </TableRow>
                             ))}
