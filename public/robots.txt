@@ -1,2 +1,9 @@
+# *
 User-agent: *
-Disallow: /admin/*
+Allow: /
+
+# Host
+Host: https://www.hello-med.com
+
+# Sitemaps
+Sitemap: https://www.hello-med.com/sitemap.xml
