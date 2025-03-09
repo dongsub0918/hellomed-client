@@ -1,3 +1,2 @@
 User-agent: *
-Disallow: /check-in/*
-Disallow: /check-in-view-38982024/*
+Disallow: /admin/*

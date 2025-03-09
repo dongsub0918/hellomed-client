@@ -4,11 +4,24 @@ import MobileLocationsSection from "@/ui/landing-page/mobile/locations-section";
 import DesktopLandingSection from "@/ui/landing-page/desktop/landing-section";
 import DesktopLinksSection from "@/ui/landing-page/desktop/links-section";
 import DesktopLocationsSection from "@/ui/landing-page/desktop/locations-section";
+import structuredData from "@/lib/content/structured-data";
+import Head from "next/head";
 
 export default function LandingPage() {
   return (
     <main>
-      <main className="sm:hidden h-screen overflow-y-auto snap-y snap-mandatory">
+      <Head>
+        <title>
+          HELLOMED | Walk-In Urgent Care & Primary Care in Ann Arbor
+        </title>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData, null, 2),
+          }}
+        ></script>
+      </Head>
+      <div className="sm:hidden h-screen overflow-y-auto snap-y snap-mandatory">
         <MobileLandingSection />
         <section className="h-screen w-full flex flex-col items-center">
           <div className="h-full w-full bg-white"></div>
@@ -24,9 +37,9 @@ export default function LandingPage() {
           <div className="h-full w-full bg-gradient-to-b from-hmblack to-white"></div>
         </section>
         <MobileLocationsSection />
-      </main>
+      </div>
 
-      <main className="hidden sm:block h-screen overflow-y-auto snap-y snap-mandatory">
+      <div className="hidden sm:block h-screen overflow-y-auto snap-y snap-mandatory">
         <DesktopLandingSection />
         <section className="h-screen w-full flex flex-col items-center">
           <div className="h-full w-full bg-white"></div>
@@ -42,7 +55,7 @@ export default function LandingPage() {
           <div className="h-full w-full bg-gradient-to-b from-hmblack to-white"></div>
         </section>
         <DesktopLocationsSection />
-      </main>
+      </div>
     </main>
   );
 }
