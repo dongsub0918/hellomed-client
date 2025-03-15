@@ -1,9 +1,8 @@
-# *
 User-agent: *
 Allow: /
 
-# Host
-Host: https://www.hello-med.com
+# Disallow URLs starting with /admin
+Disallow: /admin/
 
 # Sitemaps
 Sitemap: https://www.hello-med.com/sitemap.xml
