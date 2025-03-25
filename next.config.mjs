@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "drive.google.com",
       },
+      {
+        protocol: "https",
+        hostname: "hellomed-image.s3.amazonaws.com",
+      },
     ],
   },
   reactStrictMode: false,
@@ -95,6 +99,11 @@ const nextConfig = {
       },
       {
         source: "/pink-eye",
+        destination: "/urgent-care/acute-conditions/pink-eye",
+        permanent: false,
+      },
+      {
+        source: "/services/pink-eye",
         destination: "/urgent-care/acute-conditions/pink-eye",
         permanent: false,
       },
@@ -225,6 +234,11 @@ const nextConfig = {
       },
       {
         source: "/bookings-checkout/flu-shot",
+        destination: "/not-found",
+        permanent: false,
+      },
+      {
+        source: "/bookings-checkout/physical-exam",
         destination: "/not-found",
         permanent: false,
       },
