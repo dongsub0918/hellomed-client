@@ -5,7 +5,7 @@ export async function postCheckIn(body: CheckInFormInputs) {
   const url = `/check-in/`;
   try {
     const response = await client.post(url, body);
-    return response;
+    return response.data;
   } catch (error) {
     throw error;
   }

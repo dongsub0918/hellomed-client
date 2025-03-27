@@ -302,6 +302,11 @@ const nextConfig = {
         destination: "/not-found",
         permanent: false,
       },
+      {
+        source: "/post/who-really-owns-your-medical-records",
+        destination: "/not-found",
+        permanent: false,
+      },
     ];
   },
 };

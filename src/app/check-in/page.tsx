@@ -18,6 +18,7 @@ import {
 import { Checkbox } from "@/ui/external/checkbox";
 import { CheckInFormInputs } from "@/lib/types/check-in";
 import { postCheckIn } from "@/apis/check-in";
+import { uploadImageToS3 } from "@/lib/features/image";
 
 export default function CheckInFormPage() {
   const router = useRouter();
@@ -38,6 +39,10 @@ export default function CheckInFormPage() {
     recentVisits: "",
   });
 
+  const [idImageFile, setIdImageFile] = useState<File | null>(null);
+  const [insuranceImageFile, setInsuranceImageFile] = useState<File | null>(
+    null
+  );
   const [agreedToTerms, setAgreedToTerms] = useState<boolean>(false);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -68,6 +73,26 @@ export default function CheckInFormPage() {
     setIsFormValid(isValid);
   }, [formInputs, tempPreferredPharmacy]);
 
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    const name = e.target.name;
+
+    if (file && file.type.startsWith("image/")) {
+      if (name === "idUpload") {
+        setIdImageFile(file);
+      } else {
+        setInsuranceImageFile(file);
+      }
+    } else {
+      if (name === "idUpload") {
+        setIdImageFile(null);
+      } else {
+        setInsuranceImageFile(null);
+      }
+      alert("Please select a valid image file");
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isSubmitting) return; // Prevent multiple submissions
@@ -79,10 +104,31 @@ export default function CheckInFormPage() {
     }
 
     try {
-      const res = await postCheckIn(formInputs);
+      // Upload check in form data to database
+      const { id } = await postCheckIn(formInputs);
+
+      // Upload images to S3
+      if (idImageFile) {
+        await uploadImageToS3(
+          idImageFile,
+          `id/checkin-${id}-${new Date().toISOString()}`
+        );
+      }
+      if (insuranceImageFile) {
+        await uploadImageToS3(
+          insuranceImageFile,
+          `insurance/checkin-${id}-${new Date().toISOString()}`
+        );
+      }
+
+      // Add into formInputs just the filename
+      const formInputsCopy = { ...formInputs };
+      formInputsCopy["idImageFileName"] = idImageFile?.name || "Not uploaded";
+      formInputsCopy["insuranceImageFileName"] =
+        insuranceImageFile?.name || "Not uploaded";
 
       // Store form data in sessionStorage
-      sessionStorage.setItem("formData", JSON.stringify(formInputs));
+      sessionStorage.setItem("formData", JSON.stringify(formInputsCopy));
 
       // Redirect to the success page
       router.push("/check-in/success");
@@ -328,6 +374,30 @@ export default function CheckInFormPage() {
               placeholder="Describe any recent medical visits and prescribed medications"
               value={formInputs.recentVisits}
               onChange={handleChange}
+            />
+          </div>
+
+          <div className="flex flex-col space-y-2">
+            <Label htmlFor="idUpload">Upload Identification</Label>
+            <input
+              id="idUpload"
+              name="idUpload"
+              type="file"
+              accept="image/*"
+              className="text-sm"
+              onChange={handleFileChange}
+            />
+          </div>
+
+          <div className="flex flex-col space-y-2">
+            <Label htmlFor="insuranceUpload">Upload Insurance Card</Label>
+            <input
+              id="insuranceUpload"
+              name="insuranceUpload"
+              type="file"
+              accept="image/*"
+              className="text-sm"
+              onChange={handleFileChange}
             />
           </div>
 
