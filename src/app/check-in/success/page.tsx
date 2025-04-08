@@ -25,10 +25,14 @@ export default function CheckInFormSuccessPage() {
     }
   }, []);
 
-  const renderField = (label: string, value: string | undefined) => (
+  const renderField = (label: string, value: string | boolean | undefined) => (
     <div className="border-b border-gray-200 py-2">
       <h3 className="font-semibold text-sm text-gray-600">{label}</h3>
-      <p className="mt-1">{value || "N/A"}</p>
+      {label === "ID Image" || label === "Insurance Card Image" ? (
+        <p className="mt-1">{value ? "Submitted" : "Not submitted"}</p>
+      ) : (
+        <p className="mt-1">{value || "N/A"}</p>
+      )}
     </div>
   );
 
@@ -60,6 +64,8 @@ export default function CheckInFormSuccessPage() {
                   "How did you hear about us?",
                   formData?.hearAboutUs
                 )}
+                {renderField("ID Image", formData?.idImage)}
+                {renderField("Insurance Card Image", formData?.insuranceImage)}
               </div>
               <div className="space-y-4">
                 <h2 className="text-xl font-semibold">Medical Information</h2>

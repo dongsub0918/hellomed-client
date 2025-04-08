@@ -12,6 +12,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "hellomed-image.s3.us-east-2.amazonaws.com",
+      },
+      {
+        protocol: "https",
         hostname: "hellomed-image.s3.amazonaws.com",
       },
     ],

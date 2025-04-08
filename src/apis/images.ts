@@ -1,35 +1,33 @@
 // starting with "/images" endpoint
 
 import client from "@/apis/client-config";
-import {
-  PostPresignedURLRequestBody,
-  PostPresignedURL,
-  GetPresignedURL,
-} from "@/lib/types/images";
+
+type PostPresignedURLRequestBody = {
+  fileKey: string;
+  fileType: string;
+};
 
 export async function postPresignedURL(
   body: PostPresignedURLRequestBody
-): Promise<PostPresignedURL | undefined> {
+): Promise<string | undefined> {
   const url = "/images/presigned_url/";
   try {
     const response = await client.post(url, body);
 
-    return response?.data;
+    return response?.data.presignedUrl;
   } catch (error) {
     console.log(error);
     return undefined;
   }
 }
 
-export async function getPresignedURL({
-  fileKey,
-  fileType,
-}: PostPresignedURLRequestBody): Promise<GetPresignedURL | undefined> {
-  const url = `/images/presigned_url/?fileKey=${fileKey}&fileType=${fileType}`;
+export async function getPresignedURL(
+  fileKey: string
+): Promise<string | undefined> {
+  const url = `/images/presigned_url/?fileKey=${fileKey}`;
   try {
     const response = await client.get(url);
-
-    return response?.data;
+    return response?.data.presignedUrl;
   } catch (error) {
     console.log(error);
     return undefined;

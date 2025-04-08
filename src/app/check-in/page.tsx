@@ -29,7 +29,6 @@ export default function CheckInFormPage() {
     email: "",
     hearAboutUs: "",
     address: "",
-    zipcode: "",
     medicationAllergy: "",
     preferredPharmacy: "",
     homeMedication: "",
@@ -37,6 +36,9 @@ export default function CheckInFormPage() {
     exposures: "",
     recentTests: "",
     recentVisits: "",
+    zipcode: "",
+    idImage: false,
+    insuranceImage: false,
   });
 
   const [idImageFile, setIdImageFile] = useState<File | null>(null);
@@ -80,14 +82,18 @@ export default function CheckInFormPage() {
     if (file && file.type.startsWith("image/")) {
       if (name === "idUpload") {
         setIdImageFile(file);
+        setFormInputs((prev) => ({ ...prev, ["idImage"]: true }));
       } else {
         setInsuranceImageFile(file);
+        setFormInputs((prev) => ({ ...prev, ["insuranceImage"]: true }));
       }
     } else {
       if (name === "idUpload") {
         setIdImageFile(null);
+        setFormInputs((prev) => ({ ...prev, ["idImage"]: false }));
       } else {
         setInsuranceImageFile(null);
+        setFormInputs((prev) => ({ ...prev, ["insuranceImage"]: false }));
       }
       alert("Please select a valid image file");
     }
@@ -109,16 +115,10 @@ export default function CheckInFormPage() {
 
       // Upload images to S3
       if (idImageFile) {
-        await uploadImageToS3(
-          idImageFile,
-          `id/checkin-${id}-${new Date().toISOString()}`
-        );
+        await uploadImageToS3(idImageFile, `id/checkin-${id}`);
       }
       if (insuranceImageFile) {
-        await uploadImageToS3(
-          insuranceImageFile,
-          `insurance/checkin-${id}-${new Date().toISOString()}`
-        );
+        await uploadImageToS3(insuranceImageFile, `insurance/checkin-${id}`);
       }
 
       // Add into formInputs just the filename

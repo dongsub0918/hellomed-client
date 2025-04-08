@@ -6,6 +6,8 @@ import { formatDate } from "@/lib/features/utils";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CheckInFormOutputs } from "@/lib/types/check-in";
+import { getImageFromS3 } from "@/lib/features/image";
+import Image from "next/image";
 
 export default function CheckInDetailsPage({
   params,
@@ -15,6 +17,10 @@ export default function CheckInDetailsPage({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [checkIn, setCheckIn] = useState<CheckInFormOutputs>();
+  const [idImageSrc, setIdImageSrc] = useState<string | null>(null);
+  const [insuranceImageSrc, setInsuranceImageSrc] = useState<string | null>(
+    null
+  );
   const router = useRouter();
 
   useEffect(() => {
@@ -24,6 +30,15 @@ export default function CheckInDetailsPage({
       try {
         const res = await getCheckIn(params.id);
         setCheckIn(res);
+
+        if (res.idImage) {
+          setIdImageSrc(await getImageFromS3(`id/checkin-${params.id}`));
+        }
+        if (res.insuranceImage) {
+          setInsuranceImageSrc(
+            await getImageFromS3(`insurance/checkin-${params.id}`)
+          );
+        }
       } catch (error) {
         if (error instanceof Error) {
           setError(error.message);
@@ -34,8 +49,9 @@ export default function CheckInDetailsPage({
         setLoading(false);
       }
     }
+
     fetchCheckIn();
-  }, []);
+  }, [params.id]);
 
   if (error) {
     return (
@@ -138,7 +154,41 @@ export default function CheckInDetailsPage({
           </dl>
         </CardContent>
         <CardContent>
-          <dl>
+          <dl className="grid grid-cols-1 gap-4 gap-y-10">
+            <div>
+              <dt className="font-medium text-gray-500">ID</dt>
+              <dd className="flex justify-center mt-1">
+                {idImageSrc && (
+                  <div className="relative w-full max-w-full">
+                    <Image
+                      src={idImageSrc}
+                      alt="ID card image"
+                      layout="responsive"
+                      width={200}
+                      height={200}
+                      className="object-contain"
+                    />
+                  </div>
+                )}
+              </dd>
+            </div>
+            <div>
+              <dt className="font-medium text-gray-500">Insurance Card</dt>
+              <dd className="flex justify-center mt-1">
+                {insuranceImageSrc && (
+                  <div className="relative w-full max-w-full">
+                    <Image
+                      src={insuranceImageSrc}
+                      alt="Insurance card image"
+                      layout="responsive"
+                      width={200}
+                      height={200}
+                      className="object-contain"
+                    />
+                  </div>
+                )}
+              </dd>
+            </div>
             <div>
               <dt className="font-medium text-gray-500">Check-In Time</dt>
               <dd className="mt-1">
