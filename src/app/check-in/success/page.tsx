@@ -28,7 +28,9 @@ export default function CheckInFormSuccessPage() {
   const renderField = (label: string, value: string | boolean | undefined) => (
     <div className="border-b border-gray-200 py-2">
       <h3 className="font-semibold text-sm text-gray-600">{label}</h3>
-      {label === "ID Image" || label === "Insurance Card Image" ? (
+      {label === "ID Image" ||
+      label === "Insurance Card Front Image" ||
+      label === "Insurance Card Back Image" ? (
         <p className="mt-1">{value ? "Submitted" : "Not submitted"}</p>
       ) : (
         <p className="mt-1">{value || "N/A"}</p>
@@ -65,7 +67,14 @@ export default function CheckInFormSuccessPage() {
                   formData?.hearAboutUs
                 )}
                 {renderField("ID Image", formData?.idImage)}
-                {renderField("Insurance Card Image", formData?.insuranceImage)}
+                {renderField(
+                  "Insurance Card Image",
+                  formData?.insuranceImageFront
+                )}
+                {renderField(
+                  "Insurance Card Image",
+                  formData?.insuranceImageBack
+                )}
               </div>
               <div className="space-y-4">
                 <h2 className="text-xl font-semibold">Medical Information</h2>

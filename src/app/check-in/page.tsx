@@ -38,13 +38,15 @@ export default function CheckInFormPage() {
     recentVisits: "",
     zipcode: "",
     idImage: false,
-    insuranceImage: false,
+    insuranceImageFront: false,
+    insuranceImageBack: false,
   });
 
   const [idImageFile, setIdImageFile] = useState<File | null>(null);
-  const [insuranceImageFile, setInsuranceImageFile] = useState<File | null>(
-    null
-  );
+  const [insuranceImageFrontFile, setInsuranceImageFrontFile] =
+    useState<File | null>(null);
+  const [insuranceImageBackFile, setInsuranceImageBackFile] =
+    useState<File | null>(null);
   const [agreedToTerms, setAgreedToTerms] = useState<boolean>(false);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -83,17 +85,32 @@ export default function CheckInFormPage() {
       if (name === "idUpload") {
         setIdImageFile(file);
         setFormInputs((prev) => ({ ...prev, ["idImage"]: true }));
+      } else if (name === "insuranceFrontUpload") {
+        setInsuranceImageFrontFile(file);
+        setFormInputs((prev) => ({ ...prev, ["insuranceImageFront"]: true }));
       } else {
-        setInsuranceImageFile(file);
-        setFormInputs((prev) => ({ ...prev, ["insuranceImage"]: true }));
+        setInsuranceImageBackFile(file);
+        setFormInputs((prev) => ({
+          ...prev,
+          ["insuranceImageBack"]: true,
+        }));
       }
     } else {
       if (name === "idUpload") {
         setIdImageFile(null);
         setFormInputs((prev) => ({ ...prev, ["idImage"]: false }));
+      } else if (name === "insuranceFrontUpload") {
+        setInsuranceImageFrontFile(null);
+        setFormInputs((prev) => ({
+          ...prev,
+          ["insuranceImageFront"]: false,
+        }));
       } else {
-        setInsuranceImageFile(null);
-        setFormInputs((prev) => ({ ...prev, ["insuranceImage"]: false }));
+        setInsuranceImageBackFile(null);
+        setFormInputs((prev) => ({
+          ...prev,
+          ["insuranceImageBack"]: false,
+        }));
       }
       alert("Please select a valid image file");
     }
@@ -117,15 +134,26 @@ export default function CheckInFormPage() {
       if (idImageFile) {
         await uploadImageToS3(idImageFile, `id/checkin-${id}`);
       }
-      if (insuranceImageFile) {
-        await uploadImageToS3(insuranceImageFile, `insurance/checkin-${id}`);
+      if (insuranceImageFrontFile) {
+        await uploadImageToS3(
+          insuranceImageFrontFile,
+          `insurance-front/checkin-${id}`
+        );
+      }
+      if (insuranceImageBackFile) {
+        await uploadImageToS3(
+          insuranceImageBackFile,
+          `insurance-back/checkin-${id}`
+        );
       }
 
       // Add into formInputs just the filename
       const formInputsCopy = { ...formInputs };
       formInputsCopy["idImageFileName"] = idImageFile?.name || "Not uploaded";
-      formInputsCopy["insuranceImageFileName"] =
-        insuranceImageFile?.name || "Not uploaded";
+      formInputsCopy["insuranceImageFrontFileName"] =
+        insuranceImageFrontFile?.name || "Not uploaded";
+      formInputsCopy["insuranceImageBackFileName"] =
+        insuranceImageBackFile?.name || "Not uploaded";
 
       // Store form data in sessionStorage
       sessionStorage.setItem("formData", JSON.stringify(formInputsCopy));
@@ -377,8 +405,8 @@ export default function CheckInFormPage() {
             />
           </div>
 
-          <div className="flex flex-col space-y-2">
-            <Label htmlFor="idUpload">Upload Identification</Label>
+          <div className="flex flex-col space-y-2 py-4">
+            <Label htmlFor="idUpload">Please upload your ID.</Label>
             <input
               id="idUpload"
               name="idUpload"
@@ -389,11 +417,27 @@ export default function CheckInFormPage() {
             />
           </div>
 
-          <div className="flex flex-col space-y-2">
-            <Label htmlFor="insuranceUpload">Upload Insurance Card</Label>
+          <div className="flex flex-col space-y-2 py-4">
+            <Label htmlFor="insuranceFrontUpload">
+              Please upload the FRONT SIDE of your insurance card.
+            </Label>
             <input
-              id="insuranceUpload"
-              name="insuranceUpload"
+              id="insuranceFrontUpload"
+              name="insuranceFrontUpload"
+              type="file"
+              accept="image/*"
+              className="text-sm"
+              onChange={handleFileChange}
+            />
+          </div>
+
+          <div className="flex flex-col space-y-2 py-4">
+            <Label htmlFor="insuranceBackUpload">
+              Please upload the BACK SIDE of your insurance card.
+            </Label>
+            <input
+              id="insuranceBackUpload"
+              name="insuranceBackUpload"
               type="file"
               accept="image/*"
               className="text-sm"

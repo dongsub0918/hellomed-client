@@ -18,9 +18,12 @@ export default function CheckInDetailsPage({
   const [error, setError] = useState<string | null>(null);
   const [checkIn, setCheckIn] = useState<CheckInFormOutputs>();
   const [idImageSrc, setIdImageSrc] = useState<string | null>(null);
-  const [insuranceImageSrc, setInsuranceImageSrc] = useState<string | null>(
-    null
-  );
+  const [insuranceImageFrontSrc, setInsuranceImageFrontSrc] = useState<
+    string | null
+  >(null);
+  const [insuranceImageBackSrc, setInsuranceImageBackSrc] = useState<
+    string | null
+  >(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -34,9 +37,14 @@ export default function CheckInDetailsPage({
         if (res.idImage) {
           setIdImageSrc(await getImageFromS3(`id/checkin-${params.id}`));
         }
-        if (res.insuranceImage) {
-          setInsuranceImageSrc(
-            await getImageFromS3(`insurance/checkin-${params.id}`)
+        if (res.insuranceImageFront) {
+          setInsuranceImageFrontSrc(
+            await getImageFromS3(`insurance-front/checkin-${params.id}`)
+          );
+        }
+        if (res.insuranceImageBack) {
+          setInsuranceImageBackSrc(
+            await getImageFromS3(`insurance-back/checkin-${params.id}`)
           );
         }
       } catch (error) {
@@ -159,32 +167,74 @@ export default function CheckInDetailsPage({
               <dt className="font-medium text-gray-500">ID</dt>
               <dd className="flex justify-center mt-1">
                 {idImageSrc && (
-                  <div className="relative w-full max-w-full">
+                  <div
+                    className="relative w-fit cursor-pointer"
+                    onClick={() => window.open(idImageSrc, "_blank")}
+                  >
                     <Image
                       src={idImageSrc}
                       alt="ID card image"
-                      layout="responsive"
-                      width={200}
-                      height={200}
-                      className="object-contain"
+                      width={350}
+                      height={250}
+                      className="object-contain hover:opacity-80 transition-opacity"
                     />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                      <span className="bg-black bg-opacity-50 text-white px-2 py-1 rounded text-sm">
+                        Click to enlarge
+                      </span>
+                    </div>
                   </div>
                 )}
               </dd>
             </div>
             <div>
-              <dt className="font-medium text-gray-500">Insurance Card</dt>
+              <dt className="font-medium text-gray-500">
+                Insurance Card Front
+              </dt>
               <dd className="flex justify-center mt-1">
-                {insuranceImageSrc && (
-                  <div className="relative w-full max-w-full">
+                {insuranceImageFrontSrc && (
+                  <div
+                    className="relative w-fit cursor-pointer"
+                    onClick={() =>
+                      window.open(insuranceImageFrontSrc, "_blank")
+                    }
+                  >
                     <Image
-                      src={insuranceImageSrc}
-                      alt="Insurance card image"
-                      layout="responsive"
-                      width={200}
+                      src={insuranceImageFrontSrc}
+                      alt="Insurance card image front"
+                      width={300}
                       height={200}
-                      className="object-contain"
+                      className="object-contain hover:opacity-80 transition-opacity"
                     />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                      <span className="bg-black bg-opacity-50 text-white px-2 py-1 rounded text-sm">
+                        Click to enlarge
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </dd>
+            </div>
+            <div>
+              <dt className="font-medium text-gray-500">Insurance Card Back</dt>
+              <dd className="flex justify-center mt-1">
+                {insuranceImageBackSrc && (
+                  <div
+                    className="relative w-fit cursor-pointer"
+                    onClick={() => window.open(insuranceImageBackSrc, "_blank")}
+                  >
+                    <Image
+                      src={insuranceImageBackSrc}
+                      alt="Insurance card image back"
+                      width={300}
+                      height={200}
+                      className="object-contain hover:opacity-80 transition-opacity"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                      <span className="bg-black bg-opacity-50 text-white px-2 py-1 rounded text-sm">
+                        Click to enlarge
+                      </span>
+                    </div>
                   </div>
                 )}
               </dd>

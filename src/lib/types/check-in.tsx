@@ -18,7 +18,8 @@ export interface CheckInFormInputs extends CheckInBase {
   recentVisits: string;
   zipcode: string;
   idImage: boolean;
-  insuranceImage: boolean;
+  insuranceImageFront: boolean;
+  insuranceImageBack: boolean;
 }
 
 // GET API response for entire check in form
