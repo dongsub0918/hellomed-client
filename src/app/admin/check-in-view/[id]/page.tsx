@@ -166,7 +166,7 @@ export default function CheckInDetailsPage({
             <div>
               <dt className="font-medium text-gray-500">ID</dt>
               <dd className="flex justify-center mt-1">
-                {idImageSrc && (
+                {idImageSrc ? (
                   <div
                     className="relative w-fit cursor-pointer"
                     onClick={() => window.open(idImageSrc, "_blank")}
@@ -184,6 +184,8 @@ export default function CheckInDetailsPage({
                       </span>
                     </div>
                   </div>
+                ) : (
+                  <span className="text-gray-500 italic">Not submitted</span>
                 )}
               </dd>
             </div>
@@ -192,7 +194,7 @@ export default function CheckInDetailsPage({
                 Insurance Card Front
               </dt>
               <dd className="flex justify-center mt-1">
-                {insuranceImageFrontSrc && (
+                {insuranceImageFrontSrc ? (
                   <div
                     className="relative w-fit cursor-pointer"
                     onClick={() =>
@@ -202,8 +204,8 @@ export default function CheckInDetailsPage({
                     <Image
                       src={insuranceImageFrontSrc}
                       alt="Insurance card image front"
-                      width={300}
-                      height={200}
+                      width={350}
+                      height={250}
                       className="object-contain hover:opacity-80 transition-opacity"
                     />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
@@ -212,13 +214,15 @@ export default function CheckInDetailsPage({
                       </span>
                     </div>
                   </div>
+                ) : (
+                  <span className="text-gray-500 italic">Not submitted</span>
                 )}
               </dd>
             </div>
             <div>
               <dt className="font-medium text-gray-500">Insurance Card Back</dt>
               <dd className="flex justify-center mt-1">
-                {insuranceImageBackSrc && (
+                {insuranceImageBackSrc ? (
                   <div
                     className="relative w-fit cursor-pointer"
                     onClick={() => window.open(insuranceImageBackSrc, "_blank")}
@@ -226,8 +230,8 @@ export default function CheckInDetailsPage({
                     <Image
                       src={insuranceImageBackSrc}
                       alt="Insurance card image back"
-                      width={300}
-                      height={200}
+                      width={350}
+                      height={250}
                       className="object-contain hover:opacity-80 transition-opacity"
                     />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
@@ -236,6 +240,8 @@ export default function CheckInDetailsPage({
                       </span>
                     </div>
                   </div>
+                ) : (
+                  <span className="text-gray-500 italic">Not submitted</span>
                 )}
               </dd>
             </div>
