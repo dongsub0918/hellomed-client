@@ -68,11 +68,11 @@ export default function CheckInFormSuccessPage() {
                 )}
                 {renderField("ID Image", formData?.idImage)}
                 {renderField(
-                  "Insurance Card Image",
+                  "Insurance Card Front Image",
                   formData?.insuranceImageFront
                 )}
                 {renderField(
-                  "Insurance Card Image",
+                  "Insurance Card Back Image",
                   formData?.insuranceImageBack
                 )}
               </div>
