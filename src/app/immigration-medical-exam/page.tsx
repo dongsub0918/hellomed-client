@@ -15,7 +15,7 @@ import { Button } from "@/ui/external/button";
 export const metadata: Metadata = {
   title: "Immigration Medical Exam",
   description:
-    "Learn about the Immigration Medical Exam (I-693), including the process, fees, required documents, and vaccinations. Book an appointment for a seamless and efficient immigration medical examination at HELLOMED.",
+    "Certified immigration medical exams at HELLOMED. Our USCIS-approved civil surgeons provide comprehensive immigration medical examinations in Ann Arbor.",
   metadataBase: new URL("https://hello-med.com"),
 };
 

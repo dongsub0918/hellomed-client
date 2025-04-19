@@ -11,6 +11,13 @@ import {
   Stethoscope,
   Calendar,
 } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Lab Tests",
+  description: "Lab tests at HELLOMED in Ann Arbor, Michigan.",
+  metadataBase: new URL("https://hello-med.com"),
+};
 
 export default function LabTestsPage() {
   return (

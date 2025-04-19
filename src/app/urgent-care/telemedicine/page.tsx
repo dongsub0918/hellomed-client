@@ -10,6 +10,14 @@ import {
   ThumbsUp,
   Calendar,
 } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Telemedicine",
+  description:
+    "Access quality healthcare from anywhere through HELLOMED's telemedicine services. Connect with our experienced providers via secure video consultations.",
+  metadataBase: new URL("https://hello-med.com"),
+};
 
 export default function TelemedicinePage() {
   return (

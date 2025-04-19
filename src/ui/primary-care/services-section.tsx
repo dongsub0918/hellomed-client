@@ -26,7 +26,7 @@ const primaryServices = [
   {
     name: "Imaging Services",
     src: "/primary-service-4.jpg",
-    href: "/primary-care/x-ray-service",
+    href: "/primary-care/imaging-services",
   },
   {
     name: "IV Infusion",

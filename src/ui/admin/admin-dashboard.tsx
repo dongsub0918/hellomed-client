@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import CheckInView from "@/ui/admin/check-in-view";
 import ChangeHours from "@/ui/admin/change-hours";
 import ManageAdmins from "@/ui/admin/manage-admins";
+import ManageCarousel from "@/ui/admin/manage-carousel";
 
 export default function AdminDashboard() {
   const [expandedMenu, setExpandedMenu] = useState<string>("check-in-view");
@@ -14,11 +15,11 @@ export default function AdminDashboard() {
         component: CheckInView,
       },
       { name: "Change hours", key: "change-hours", component: ChangeHours },
-      // {
-      //   name: "Update carousel",
-      //   key: "update-carousel",
-      //   component: ChangeHours,
-      // },
+      {
+        name: "Manage carousel",
+        key: "manage-carousel",
+        component: ManageCarousel,
+      },
       {
         name: "Manage admins",
         key: "manage-admins",

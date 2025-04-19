@@ -9,6 +9,14 @@ import {
   Clock,
   Calendar,
 } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "X-Ray & Imaging Services",
+  description:
+    "Comprehensive diagnostic imaging services at HELLOMED for primary care patients. Our North location offers X-rays, imaging, and diagnostic services to support your ongoing healthcare needs in Ann Arbor.",
+  metadataBase: new URL("https://hello-med.com"),
+};
 
 export default function XRayServicesPage() {
   return (

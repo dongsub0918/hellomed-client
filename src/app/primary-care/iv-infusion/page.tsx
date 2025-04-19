@@ -9,6 +9,13 @@ import {
   Calendar,
   Syringe,
 } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "IV Infusion",
+  description: "IV infusion services at HELLOMED in Ann Arbor, Michigan.",
+  metadataBase: new URL("https://hello-med.com"),
+};
 
 export default function IVInfusionPage() {
   return (

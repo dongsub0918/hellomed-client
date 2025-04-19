@@ -6,6 +6,14 @@ import DesktopLinksSection from "@/ui/landing-page/desktop/links-section";
 import DesktopLocationsSection from "@/ui/landing-page/desktop/locations-section";
 import structuredData from "@/lib/content/structured-data";
 import Head from "next/head";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Welcome to HELLOMED Walk-In Urgent Clinic in Ann Arbor. We provide accessible, convenient, and quality healthcare services for the community.",
+  metadataBase: new URL("https://hello-med.com"),
+};
 
 export default function LandingPage() {
   return (

@@ -9,6 +9,14 @@ import {
   CardTitle,
 } from "@/ui/external/card";
 import styles from "@/app/future-employee/future-employee.module.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Careers",
+  description:
+    "Join the HELLOMED team. Explore career opportunities at our Ann Arbor healthcare clinic and become part of our mission to provide quality medical care.",
+  metadataBase: new URL("https://hello-med.com"),
+};
 
 export default function FutureEmployeePage() {
   return (

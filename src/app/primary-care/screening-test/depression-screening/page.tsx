@@ -10,6 +10,13 @@ import {
   Calendar,
   ShieldCheck,
 } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Depression Screening",
+  description: "Depression screening at HELLOMED in Ann Arbor, Michigan.",
+  metadataBase: new URL("https://hello-med.com"),
+};
 
 export default function DepressionScreeningPage() {
   return (

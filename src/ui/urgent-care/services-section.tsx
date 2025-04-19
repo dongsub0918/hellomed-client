@@ -20,7 +20,7 @@ const urgentServices = [
   {
     name: "Imaging Services",
     src: "/urgent-service-4.jpg",
-    href: "/urgent-care/x-ray-service",
+    href: "/urgent-care/imaging-services",
   },
   {
     name: "STD Testing",

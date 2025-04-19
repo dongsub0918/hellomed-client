@@ -12,6 +12,13 @@ import {
   FileText,
   ShieldCheck,
 } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "STD Testing",
+  description: "STD testing at HELLOMED in Ann Arbor, Michigan.",
+  metadataBase: new URL("https://hello-med.com"),
+};
 
 export default function STDScreeningPage() {
   return (
