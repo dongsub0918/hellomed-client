@@ -1,4 +1,3 @@
-"use client";
 import { InboxIcon as EnvelopeIcon, PhoneIcon } from "lucide-react";
 import { Button } from "@/ui/external/button";
 import { ChevronLeft } from "lucide-react";
