@@ -1,7 +1,7 @@
 // starting with "/images" endpoint
 
 import client from "@/apis/client-config";
-
+import { CarouselItem } from "@/lib/types/carousel";
 type PostPresignedURLRequestBody = {
   fileKey: string;
   fileType: string;
@@ -47,5 +47,16 @@ export async function putImageToS3(
   } catch (error) {
     console.log(error);
     return undefined;
+  }
+}
+
+export async function getCarouselItems(): Promise<CarouselItem[]> {
+  const url = "/carousel/";
+  try {
+    const response = await client.get(url);
+    return response?.data;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
 }
