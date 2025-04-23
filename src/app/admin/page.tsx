@@ -35,7 +35,7 @@ export default function AdminDashboard() {
   return (
     <div className="flex h-[calc(100svh-76px)]">
       {/* sidebar */}
-      <div className="bg-slate-700 w-52 p-6">
+      <div className="bg-slate-700 w-52 p-6 overflow-y-auto">
         <ul className="space-y-4">
           {menus.map((menu) => (
             <li key={menu.key}>
@@ -55,12 +55,13 @@ export default function AdminDashboard() {
         </ul>
       </div>
       {/* main content */}
-      <div className="container px-4 py-8">
-        <h1 className="text-2xl font-bold">
-          {menus.find((menu) => menu.key === expandedMenu)?.name}
-        </h1>
-        {/* {menus.find((menu) => menu.key === expandedMenu)?.component} */}
-        {ActiveComponent && <ActiveComponent />}
+      <div className="flex-1 overflow-y-auto">
+        <div className="w-full px-12 py-10">
+          <h1 className="text-2xl font-bold">
+            {menus.find((menu) => menu.key === expandedMenu)?.name}
+          </h1>
+          {ActiveComponent && <ActiveComponent />}
+        </div>
       </div>
     </div>
   );

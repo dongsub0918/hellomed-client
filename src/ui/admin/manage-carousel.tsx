@@ -1,10 +1,171 @@
 "use client";
+import { useManageCarousel } from "@/lib/hooks/useCarousel";
+import Carousel from "@/ui/landing-page/desktop/carousel";
+import { Label } from "@/ui/external/label";
+import { Input } from "@/ui/external/input";
+import { Button } from "@/ui/external/button";
+import { Plus, Trash2, ArrowUp, ArrowDown } from "lucide-react";
 
 export default function ManageCarousel() {
+  const {
+    formCarousel,
+    selectedIndex,
+    handleItemChange,
+    handleSelectChange,
+    addNewItem,
+    removeItem,
+    moveItem,
+  } = useManageCarousel();
+
   return (
-    <div>
+    <>
       {/* Current carousel preview */}
-      <h1>Manage Carousel</h1>
-    </div>
+      <h1 className="text-lg mt-6">Carousel Preview</h1>
+      <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center justify-center mb-8">
+          {formCarousel.length > 0 ? (
+            <Carousel items={[formCarousel[selectedIndex]]} preview={true} />
+          ) : (
+            <div className="w-full max-w-4xl h-[30vh] animate-pulse" />
+          )}
+        </div>
+
+        {/* Edit form */}
+        <div className="border-t-2 pt-6 w-full">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl font-bold text-center">
+              Edit Carousel Items
+            </h2>
+            <Button onClick={addNewItem} variant="outline" size="sm">
+              <Plus className="h-4 w-4 mr-2" />
+              Add New Item
+            </Button>
+          </div>
+
+          <div className="mb-6">
+            <Label>Carousel Items</Label>
+            <div className="space-y-2">
+              {formCarousel.map((item, index) => (
+                <div
+                  key={index}
+                  className={`p-3 border rounded-lg cursor-pointer transition-colors ${
+                    index === selectedIndex
+                      ? "bg-blue-50 border-blue-200"
+                      : "hover:bg-gray-50"
+                  }`}
+                  onClick={() => handleSelectChange(index)}
+                >
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">
+                      {item.title || `Card ${index + 1}`}
+                    </span>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          moveItem(index, "up");
+                        }}
+                        disabled={index === 0}
+                      >
+                        <ArrowUp className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          moveItem(index, "down");
+                        }}
+                        disabled={index === formCarousel.length - 1}
+                      >
+                        <ArrowDown className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          removeItem(index);
+                        }}
+                        disabled={formCarousel.length === 1}
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-8 p-4 border rounded-lg">
+            <h3 className="font-semibold mb-4 text-center">
+              {formCarousel[selectedIndex]?.title ||
+                `Item ${selectedIndex + 1}`}
+            </h3>
+
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor={`title-${selectedIndex}`}>Title</Label>
+                <Input
+                  id={`title-${selectedIndex}`}
+                  value={formCarousel[selectedIndex]?.title || ""}
+                  onChange={(e) =>
+                    handleItemChange(selectedIndex, "title", e.target.value)
+                  }
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor={`description-${selectedIndex}`}>
+                  Description
+                </Label>
+                <Input
+                  id={`description-${selectedIndex}`}
+                  value={formCarousel[selectedIndex]?.description || ""}
+                  onChange={(e) =>
+                    handleItemChange(
+                      selectedIndex,
+                      "description",
+                      e.target.value
+                    )
+                  }
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor={`imageSrc-${selectedIndex}`}>Image URL</Label>
+                <Input
+                  id={`imageSrc-${selectedIndex}`}
+                  value={formCarousel[selectedIndex]?.imageSrc || ""}
+                  onChange={(e) =>
+                    handleItemChange(selectedIndex, "imageSrc", e.target.value)
+                  }
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor={`href-${selectedIndex}`}>
+                  Link URL (optional)
+                </Label>
+                <Input
+                  id={`href-${selectedIndex}`}
+                  value={formCarousel[selectedIndex]?.href || ""}
+                  onChange={(e) =>
+                    handleItemChange(selectedIndex, "href", e.target.value)
+                  }
+                  className="w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

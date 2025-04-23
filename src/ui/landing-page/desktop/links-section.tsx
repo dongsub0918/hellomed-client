@@ -13,7 +13,7 @@ export default function DesktopLinksSection() {
           <Carousel />
         </div>
       </FloatingElement>
-      <div className="h-full w-screen flex flex-col items-center justify-between">
+      <div className="h-full w-full flex flex-col items-center justify-between">
         <div className="block lg:flex w-full p-10">
           <div className="w-full px-1/12">
             <FloatingElement>

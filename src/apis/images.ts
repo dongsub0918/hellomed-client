@@ -49,14 +49,3 @@ export async function putImageToS3(
     return undefined;
   }
 }
-
-export async function getCarouselItems(): Promise<CarouselItem[]> {
-  const url = "/carousel/";
-  try {
-    const response = await client.get(url);
-    return response?.data;
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-}
