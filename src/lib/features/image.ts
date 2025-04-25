@@ -1,13 +1,17 @@
 import { postPresignedURL, getPresignedURL, putImageToS3 } from "@/apis/images";
 
-export async function uploadImageToS3(file: File, fileKey: string) {
+export async function uploadImageToS3(
+  file: File,
+  fileKey: string,
+  public_upload: boolean = false
+) {
   if (process.env.NEXT_PUBLIC_ENVIRONMENT) {
     fileKey = `test/${fileKey}`;
   }
 
   // get post-presigned url
   let fileType = file.type;
-  const postRes = await postPresignedURL({ fileKey, fileType });
+  const postRes = await postPresignedURL({ fileKey, fileType, public_upload });
 
   // put image to s3 using post-presigned url
   await putImageToS3(postRes, file);

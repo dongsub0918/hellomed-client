@@ -5,9 +5,19 @@ export async function getCarouselItems(): Promise<CarouselItem[]> {
   const url = "/carousel/";
   try {
     const response = await client.get(url);
-    return response?.data;
+    return response.data;
   } catch (error) {
-    console.log(error);
-    return [];
+    console.error("Failed to fetch carousel items:", error);
+    throw error;
+  }
+}
+
+export async function putCarouselItems(items: CarouselItem[]): Promise<void> {
+  const url = "/carousel/";
+  try {
+    await client.put(url, items);
+  } catch (error) {
+    console.error("Failed to update carousel items:", error);
+    throw error;
   }
 }

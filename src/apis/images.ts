@@ -1,10 +1,10 @@
 // starting with "/images" endpoint
 
 import client from "@/apis/client-config";
-import { CarouselItem } from "@/lib/types/carousel";
 type PostPresignedURLRequestBody = {
   fileKey: string;
   fileType: string;
+  public_upload: boolean;
 };
 
 export async function postPresignedURL(

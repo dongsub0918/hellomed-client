@@ -9,6 +9,54 @@ import { useCarousel } from "@/lib/hooks/useCarousel";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+function PrevArrow(props: any) {
+  const { onClick } = props;
+  return (
+    <button
+      onClick={onClick}
+      className="absolute -left-12 top-1/2 -translate-y-1/2 z-10"
+      aria-label="Previous slide"
+    >
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="white"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    </button>
+  );
+}
+
+function NextArrow(props: any) {
+  const { onClick } = props;
+  return (
+    <button
+      onClick={onClick}
+      className="absolute -right-12 top-1/2 -translate-y-1/2 z-10"
+      aria-label="Next slide"
+    >
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="white"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M9 18l6-6-6-6" />
+      </svg>
+    </button>
+  );
+}
+
 const carouselStyles = `
   .slick-dots li button:before {
     color: white !important;
@@ -43,6 +91,8 @@ function CarouselContent({
       autoplaySpeed: 7000,
       arrows: true,
       dots: true,
+      prevArrow: <PrevArrow />,
+      nextArrow: <NextArrow />,
     }),
     []
   );
@@ -72,7 +122,7 @@ function CarouselContent({
   const renderCarouselItem = (item: CarouselItem) =>
     item.href ? (
       <Link href={item.href} target="_blank" rel="noopener noreferrer">
-        <div className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+        <div className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer min-w-[600px]">
           <div className="relative h-[30vh]">
             <Image
               src={item.imageSrc || ""}
@@ -82,16 +132,18 @@ function CarouselContent({
               style={{ objectFit: "contain" }}
             />
           </div>
-          <div className="p-6">
+          <div className="p-6 min-h-[100px]">
             <h3 className="text-xl font-semibold text-black mb-2">
-              {item.title}
+              {item.title || "<Empty title>"}
             </h3>
-            <p className="text-black">{item.description}</p>
+            <p className="text-black">
+              {item.description || "No description available"}
+            </p>
           </div>
         </div>
       </Link>
     ) : (
-      <div className="bg-white rounded-lg overflow-hidden">
+      <div className="bg-white rounded-lg overflow-hidden min-w-[600px]">
         <div className="relative h-[30vh]">
           <Image
             src={item.imageSrc || ""}
@@ -101,11 +153,13 @@ function CarouselContent({
             style={{ objectFit: "contain" }}
           />
         </div>
-        <div className="p-6">
+        <div className="p-6 min-h-[100px]">
           <h3 className="text-xl font-semibold text-black mb-2">
-            {item.title}
+            {item.title || "<Empty title>"}
           </h3>
-          <p className="text-black">{item.description}</p>
+          <p className="text-black">
+            {item.description || "No description available"}
+          </p>
         </div>
       </div>
     );

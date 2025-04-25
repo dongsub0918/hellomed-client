@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { CarouselItem } from "@/lib/types/carousel";
-import { getCarouselItems } from "@/apis/carousel";
+import { CarouselItem, CarouselFormItem } from "@/lib/types/carousel";
+import { getCarouselItems, putCarouselItems } from "@/apis/carousel";
+import { uploadImageToS3 } from "@/lib/features/image";
 
 export function useCarousel() {
   const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
@@ -31,24 +32,31 @@ export function useCarousel() {
 }
 
 export function useManageCarousel() {
-  const [formCarousel, setFormCarousel] = useState<CarouselItem[]>([]);
+  const [formCarousel, setFormCarousel] = useState<CarouselFormItem[]>([]);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const tempUrls = useRef<string[]>([]);
 
   useEffect(() => {
     const fetchInitialData = async () => {
       try {
         const items = await getCarouselItems();
-        setFormCarousel(items);
+        // Convert CarouselItem[] to CarouselFormItem[]
+        setFormCarousel(items.map((item) => ({ ...item })));
       } catch (err) {
         console.error("Failed to fetch initial carousel items:", err);
       }
     };
     fetchInitialData();
+
+    return () => {
+      tempUrls.current.forEach((url) => URL.revokeObjectURL(url));
+    };
   }, []);
 
   const handleItemChange = (
     index: number,
-    field: keyof CarouselItem,
+    field: keyof CarouselItem, // Note: using CarouselItem here as we don't want to allow changing imageFile through this method
     value: string
   ) => {
     const updatedItems = [...formCarousel];
@@ -59,15 +67,35 @@ export function useManageCarousel() {
     setFormCarousel(updatedItems);
   };
 
+  const handleImagePreview = (index: number, file: File) => {
+    const prevUrl = formCarousel[index]?.imageSrc;
+    if (prevUrl?.startsWith("blob:")) {
+      URL.revokeObjectURL(prevUrl);
+      tempUrls.current = tempUrls.current.filter((url) => url !== prevUrl);
+    }
+
+    const tempUrl = URL.createObjectURL(file);
+    tempUrls.current.push(tempUrl);
+
+    const updatedItems = [...formCarousel];
+    updatedItems[index] = {
+      ...updatedItems[index],
+      imageSrc: tempUrl,
+      imageFile: file,
+    };
+    setFormCarousel(updatedItems);
+    console.log(updatedItems);
+  };
+
   const handleSelectChange = (index: number) => {
     setSelectedIndex(index);
   };
 
   const addNewItem = () => {
-    const newItem: CarouselItem = {
+    const newItem: CarouselFormItem = {
       title: "",
       description: "",
-      imageSrc: "/placeholder.jpg",
+      imageSrc: "/placeholder.png",
       href: null,
     };
     const updatedItems = [...formCarousel, newItem];
@@ -76,6 +104,14 @@ export function useManageCarousel() {
   };
 
   const removeItem = (index: number) => {
+    const itemToRemove = formCarousel[index];
+    if (itemToRemove?.imageSrc?.startsWith("blob:")) {
+      URL.revokeObjectURL(itemToRemove.imageSrc);
+      tempUrls.current = tempUrls.current.filter(
+        (url) => url !== itemToRemove.imageSrc
+      );
+    }
+
     const updatedItems = formCarousel.filter((_, i) => i !== index);
     setFormCarousel(updatedItems);
     setSelectedIndex(Math.min(index, updatedItems.length - 1));
@@ -99,13 +135,58 @@ export function useManageCarousel() {
     setSelectedIndex(newIndex);
   };
 
+  const handleSubmit = async () => {
+    try {
+      setIsSubmitting(true);
+      const updatedItems: CarouselItem[] = [];
+
+      // Process each item in formCarousel
+      for (const item of formCarousel) {
+        let finalItem = { ...item };
+
+        // If the image is a temporary one (blob URL), upload it to S3
+        if (item.imageSrc.startsWith("blob:") && item.imageFile) {
+          const fileKey = `carousel/${item.imageFile.name}`;
+          await uploadImageToS3(item.imageFile, fileKey, true);
+
+          // Update the imageSrc to the S3 URL, using the correct bucket based on environment
+          const bucket = process.env.NEXT_PUBLIC_ENVIRONMENT
+            ? "https://hellomed-image-public.s3.us-east-2.amazonaws.com/test"
+            : "https://hellomed-image-public.s3.us-east-2.amazonaws.com";
+          finalItem.imageSrc = `${bucket}/${fileKey}`;
+        }
+
+        // Clean the item by removing imageFile property
+        const { imageFile, ...cleanItem } = finalItem;
+        updatedItems.push(cleanItem);
+      }
+
+      // Send updated items to API endpoint
+      await putCarouselItems(updatedItems);
+
+      // Clean up all temporary URLs
+      tempUrls.current.forEach((url) => URL.revokeObjectURL(url));
+      tempUrls.current = [];
+
+      return updatedItems;
+    } catch (error) {
+      console.error("Error during submission:", error);
+      throw error;
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return {
     formCarousel,
     selectedIndex,
     handleItemChange,
+    handleImagePreview,
     handleSelectChange,
     addNewItem,
     removeItem,
     moveItem,
+    handleSubmit,
+    isSubmitting,
   };
 }

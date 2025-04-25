@@ -11,11 +11,37 @@ export default function ManageCarousel() {
     formCarousel,
     selectedIndex,
     handleItemChange,
+    handleImagePreview,
     handleSelectChange,
     addNewItem,
     removeItem,
     moveItem,
+    handleSubmit,
+    isSubmitting,
   } = useManageCarousel();
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      handleImagePreview(selectedIndex, file);
+    }
+  };
+
+  const onSubmit = async () => {
+    try {
+      await handleSubmit();
+      if (
+        window.confirm(
+          "Your changes to the carousel have been applied. Would you like to redirect to the main page to check?"
+        )
+      ) {
+        window.open("/", "_blank");
+      }
+    } catch (error) {
+      // TODO: Show error message
+      console.error("Failed to save carousel:", error);
+    }
+  };
 
   return (
     <>
@@ -43,7 +69,7 @@ export default function ManageCarousel() {
           </div>
 
           <div className="mb-6">
-            <Label>Carousel Items</Label>
+            <Label>Current Carousel Items</Label>
             <div className="space-y-2">
               {formCarousel.map((item, index) => (
                 <div
@@ -57,7 +83,7 @@ export default function ManageCarousel() {
                 >
                   <div className="flex justify-between items-center">
                     <span className="font-medium">
-                      {item.title || `Card ${index + 1}`}
+                      {item.title || "<Empty title>"}
                     </span>
                     <div className="flex gap-2">
                       <Button
@@ -138,14 +164,19 @@ export default function ManageCarousel() {
               </div>
 
               <div>
-                <Label htmlFor={`imageSrc-${selectedIndex}`}>Image URL</Label>
-                <Input
-                  id={`imageSrc-${selectedIndex}`}
-                  value={formCarousel[selectedIndex]?.imageSrc || ""}
-                  onChange={(e) =>
-                    handleItemChange(selectedIndex, "imageSrc", e.target.value)
-                  }
-                  className="w-full"
+                <Label htmlFor={`image-${selectedIndex}`}>Image</Label>
+                <input
+                  id={`image-${selectedIndex}`}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="block w-full text-sm text-gray-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-md file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-blue-50 file:text-blue-700
+                    hover:file:bg-blue-100
+                    cursor-pointer"
                 />
               </div>
 
@@ -163,6 +194,17 @@ export default function ManageCarousel() {
                 />
               </div>
             </div>
+          </div>
+
+          <div className="flex justify-center mt-8 mb-4">
+            <Button
+              onClick={onSubmit}
+              disabled={isSubmitting || formCarousel.length === 0}
+              size="lg"
+              className="px-8"
+            >
+              {isSubmitting ? "Saving..." : "Save Changes"}
+            </Button>
           </div>
         </div>
       </div>
