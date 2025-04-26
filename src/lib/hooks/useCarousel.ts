@@ -74,6 +74,14 @@ export function useManageCarousel() {
 
   const handleImagePreview = (index: number, file: File) => {
     const prevUrl = formCarousel[index]?.imageSrc;
+
+    // If the previous image was from S3, add its key to keysToDelete
+    if (prevUrl?.startsWith("https://hellomed-image-public.s3")) {
+      const key = prevUrl.split(".com/")[1];
+      keysToDelete.current.push(key);
+    }
+
+    // If the previous image was a blob URL, revoke it
     if (prevUrl?.startsWith("blob:")) {
       URL.revokeObjectURL(prevUrl);
       tempUrls.current = tempUrls.current.filter((url) => url !== prevUrl);
@@ -89,7 +97,6 @@ export function useManageCarousel() {
       imageFile: file,
     };
     setFormCarousel(updatedItems);
-    console.log(updatedItems);
   };
 
   const handleSelectChange = (index: number) => {
@@ -166,8 +173,8 @@ export function useManageCarousel() {
           // Update the imageSrc to the S3 URL, using the correct bucket based on environment
           const bucket =
             process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
-              ? "https://hellomed-image-public.s3.us-east-2.amazonaws.com/hellomed-image-public/test"
-              : "https://hellomed-image-public.s3.us-east-2.amazonaws.com/hellomed-image-public";
+              ? "https://hellomed-image-public.s3.us-east-2.amazonaws.com/test"
+              : "https://hellomed-image-public.s3.us-east-2.amazonaws.com";
           finalItem = {
             ...finalItem,
             imageSrc: `${bucket}/${fileKey}`,
