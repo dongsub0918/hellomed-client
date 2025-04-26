@@ -1,5 +1,5 @@
 import client from "@/apis/client-config";
-import { CarouselItem } from "@/lib/types/carousel";
+import { CarouselItem, CarouselFormData } from "@/lib/types/carousel";
 
 export async function getCarouselItems(): Promise<CarouselItem[]> {
   const url = "/carousel/";
@@ -12,10 +12,10 @@ export async function getCarouselItems(): Promise<CarouselItem[]> {
   }
 }
 
-export async function putCarouselItems(items: CarouselItem[]): Promise<void> {
+export async function putCarouselItems(data: CarouselFormData): Promise<void> {
   const url = "/carousel/";
   try {
-    await client.put(url, items);
+    await client.put(url, data);
   } catch (error) {
     console.error("Failed to update carousel items:", error);
     throw error;

@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { CarouselItem, CarouselFormItem } from "@/lib/types/carousel";
+import {
+  CarouselItem,
+  CarouselFormItem,
+  CarouselFormData,
+} from "@/lib/types/carousel";
 import { getCarouselItems, putCarouselItems } from "@/apis/carousel";
 import { uploadImageToS3 } from "@/lib/features/image";
 
@@ -36,6 +40,7 @@ export function useManageCarousel() {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const tempUrls = useRef<string[]>([]);
+  const keysToDelete = useRef<string[]>([]);
 
   useEffect(() => {
     const fetchInitialData = async () => {
@@ -105,6 +110,15 @@ export function useManageCarousel() {
 
   const removeItem = (index: number) => {
     const itemToRemove = formCarousel[index];
+
+    // If the image is from S3, add its key to the deletion list
+    if (
+      itemToRemove?.imageSrc?.startsWith("https://hellomed-image-public.s3")
+    ) {
+      const key = itemToRemove.imageSrc.split(".com/")[1];
+      keysToDelete.current.push(key);
+    }
+
     if (itemToRemove?.imageSrc?.startsWith("blob:")) {
       URL.revokeObjectURL(itemToRemove.imageSrc);
       tempUrls.current = tempUrls.current.filter(
@@ -138,7 +152,7 @@ export function useManageCarousel() {
   const handleSubmit = async () => {
     try {
       setIsSubmitting(true);
-      const updatedItems: CarouselItem[] = [];
+      const cleanedItems: CarouselItem[] = [];
 
       // Process each item in formCarousel
       for (const item of formCarousel) {
@@ -150,25 +164,32 @@ export function useManageCarousel() {
           await uploadImageToS3(item.imageFile, fileKey, true);
 
           // Update the imageSrc to the S3 URL, using the correct bucket based on environment
-          const bucket = process.env.NEXT_PUBLIC_ENVIRONMENT
-            ? "https://hellomed-image-public.s3.us-east-2.amazonaws.com/test"
-            : "https://hellomed-image-public.s3.us-east-2.amazonaws.com";
-          finalItem.imageSrc = `${bucket}/${fileKey}`;
+          const bucket =
+            process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
+              ? "https://hellomed-image-public.s3.us-east-2.amazonaws.com/hellomed-image-public/test"
+              : "https://hellomed-image-public.s3.us-east-2.amazonaws.com/hellomed-image-public";
+          finalItem = {
+            ...finalItem,
+            imageSrc: `${bucket}/${fileKey}`,
+          };
         }
 
         // Clean the item by removing imageFile property
         const { imageFile, ...cleanItem } = finalItem;
-        updatedItems.push(cleanItem);
+        cleanedItems.push(cleanItem);
       }
 
-      // Send updated items to API endpoint
-      await putCarouselItems(updatedItems);
+      // Send cleaned data to API endpoint
+      const formData: CarouselFormData = {
+        carouselItems: cleanedItems,
+        keysToDelete: keysToDelete.current,
+      };
+      await putCarouselItems(formData);
 
-      // Clean up all temporary URLs
+      // Clean up all temporary URLs and reset keysToDelete
       tempUrls.current.forEach((url) => URL.revokeObjectURL(url));
       tempUrls.current = [];
-
-      return updatedItems;
+      keysToDelete.current = [];
     } catch (error) {
       console.error("Error during submission:", error);
       throw error;

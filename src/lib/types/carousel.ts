@@ -10,3 +10,8 @@ export interface CarouselItem {
 export interface CarouselFormItem extends CarouselItem {
   imageFile?: File; // Only used in the form, never sent to API
 }
+
+export interface CarouselFormData {
+  carouselItems: CarouselFormItem[];
+  keysToDelete: string[];
+}
