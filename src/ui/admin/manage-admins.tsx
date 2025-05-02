@@ -76,9 +76,9 @@ export default function ManageAdmins() {
       </ul>
 
       {/* Manage admins */}
-      <div className="flex w-full mt-10 h-8/12 border-2 border-black">
+      <div className="flex w-full mt-10 border-2 border-black h-[400px]">
         {/* Reserved Admins */}
-        <div className="flex flex-col items-center w-1/2 border-r border-black">
+        <div className="flex flex-col items-center w-1/2 border-r border-black h-full">
           <span className="bg-slate-200 py-2 w-full text-center font-bold">
             Reserved admins
           </span>
@@ -96,12 +96,12 @@ export default function ManageAdmins() {
         </div>
 
         {/* Add / remove admins */}
-        <div className="flex flex-col items-center w-1/2">
+        <div className="flex flex-col items-center w-1/2 h-full">
           <span className="bg-slate-200 py-2 w-full text-center font-bold">
             Remove / add Admins
           </span>
-          <div className="w-full h-full border-t border-black">
-            <div className="h-1/2 border-b border-black p-4">
+          <div className="w-full h-full border-t border-black flex flex-col">
+            <div className="flex-1 border-b border-black p-4">
               <div className="text-lg font-semibold">
                 Select an admin email from the left
               </div>
@@ -117,23 +117,25 @@ export default function ManageAdmins() {
                 </div>
               )}
             </div>
-            <div className="p-4 h-1/2">
+            <div className="flex-1 p-4 flex flex-col">
               <Label htmlFor="email" className="text-lg font-semibold">
                 Email to add to admin
               </Label>
-              <form onSubmit={handleSubmit} className="space-y-4 w-full h-full">
-                <div className="flex flex-col h-full pt-10 space-y-2">
-                  <Textarea
-                    name="email"
-                    placeholder="Enter new admin email"
-                    value={adminToAdd}
-                    onChange={handleChange}
-                    required
-                  />
-                  <Button type="submit" disabled={adminToAdd === ""}>
-                    Add to Admin
-                  </Button>
-                </div>
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col flex-1 space-y-2 pt-4"
+              >
+                <Textarea
+                  name="email"
+                  placeholder="Enter new admin email"
+                  value={adminToAdd}
+                  onChange={handleChange}
+                  required
+                  className="flex-1"
+                />
+                <Button type="submit" disabled={adminToAdd === ""}>
+                  Add to Admin
+                </Button>
               </form>
             </div>
           </div>
