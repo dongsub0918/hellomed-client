@@ -38,8 +38,12 @@ export default function ManageCarousel() {
         window.open("/", "_blank");
       }
     } catch (error) {
-      // TODO: Show error message
-      console.error("Failed to save carousel:", error);
+      if (error instanceof Error) {
+        window.alert(error.message);
+      } else {
+        window.alert("An unexpected error occurred. Please try again.");
+        console.error("Failed to save carousel:", error);
+      }
     }
   };
 

@@ -156,8 +156,35 @@ export function useManageCarousel() {
     setSelectedIndex(newIndex);
   };
 
+  const isCardComplete = (item: CarouselFormItem): boolean => {
+    return (
+      item.title.trim() !== "" &&
+      item.description.trim() !== "" &&
+      item.imageSrc !== "/placeholder.png"
+    );
+  };
+
   const handleSubmit = async () => {
     try {
+      // Check for incomplete cards
+      const incompleteCards = formCarousel
+        .map((item, index) => ({ item, index }))
+        .filter(({ item }) => !isCardComplete(item));
+
+      if (incompleteCards.length > 0) {
+        // Set selectedIndex to the first incomplete card
+        setSelectedIndex(incompleteCards[0].index);
+
+        // Create a message listing incomplete cards
+        const message = incompleteCards
+          .map(({ index }) => `Card ${index + 1}`)
+          .join(", ");
+
+        throw new Error(
+          `Please fill in all required fields (title, description, and image) for the following cards: ${message}`
+        );
+      }
+
       setIsSubmitting(true);
       const cleanedItems: CarouselItem[] = [];
 

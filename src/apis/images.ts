@@ -4,7 +4,7 @@ import client from "@/apis/client-config";
 type PostPresignedURLRequestBody = {
   fileKey: string;
   fileType: string;
-  public_upload: boolean;
+  publicUpload: boolean;
 };
 
 export async function postPresignedURL(
