@@ -11,7 +11,6 @@ export default function LocationCard({
   imageUrl,
   mapUrl,
 }: LocationCardProps) {
-  const isMeijers = name === "HELLOMED South (inside Meijer's)";
   const isTelemedicine = name === "Telemedicine";
 
   return (
@@ -19,30 +18,22 @@ export default function LocationCard({
       <div className="relative">
         <img src={imageUrl} alt={name} className="w-full h-48 object-cover" />
         <div className="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center opacity-100 md:opacity-0 md:hover:opacity-100 md:transition-opacity md:duration-300">
-          {isMeijers ? (
-            <span className="bg-white text-black py-2 px-4 rounded cursor-not-allowed">
-              Coming soon
-            </span>
+          {isTelemedicine ? (
+            <a
+              href="urgent-care/telemedicine/"
+              className="bg-white text-black py-2 px-4 rounded"
+            >
+              More information
+            </a>
           ) : (
-            <>
-              {isTelemedicine ? (
-                <a
-                  href="urgent-care/telemedicine/"
-                  className="bg-white text-black py-2 px-4 rounded"
-                >
-                  More information
-                </a>
-              ) : (
-                <a
-                  href={mapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white text-black py-2 px-4 rounded"
-                >
-                  View on Google Maps
-                </a>
-              )}
-            </>
+            <a
+              href={mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-black py-2 px-4 rounded"
+            >
+              View on Google Maps
+            </a>
           )}
         </div>
       </div>

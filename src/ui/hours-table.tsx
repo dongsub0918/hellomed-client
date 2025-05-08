@@ -170,6 +170,20 @@ export default function HoursTable() {
           </div>
         )
       )}
+      {(() => {
+        const now = toZonedTime(new Date(), "America/New_York");
+        const openingDate = toZonedTime(
+          new Date("2025-05-12T00:00:00"),
+          "America/New_York"
+        );
+        return (
+          isBefore(now, openingDate) && (
+            <div className="bg-red-100 rounded-lg text-center font-bold p-4">
+              <p>HELLOMED South is opening on May 12th!</p>
+            </div>
+          )
+        );
+      })()}
     </div>
   );
 }
