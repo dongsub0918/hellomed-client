@@ -28,9 +28,9 @@ export default function DesktopLandingSection() {
 
       <div className="h-full flex flex-col items-center justify-between py-10">
         <FloatingElement delay={0.4}>
-          <p className="text-center font-semibold text-2xl lg:text-3xl xl:text-4xl">
-            Medical Attention You Can Rely On
-          </p>
+          <h1 className="text-center font-semibold text-2xl lg:text-3xl xl:text-4xl">
+            Urgent Care Clinic Ann Arbor - Medical Attention You Can Rely On
+          </h1>
         </FloatingElement>
 
         <FloatingElement delay={0.6}>

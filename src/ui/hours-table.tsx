@@ -80,7 +80,7 @@ export default function HoursTable() {
           <div key={code} className="bg-white rounded-lg overflow-hidden">
             {/* Clickable bar */}
             <button
-              className="bg-slate-600 text-white p-4 cursor-pointer flex justify-between items-center w-full md:text-xl lg:text-2xl"
+              className="bg-slate-600 text-white p-4 cursor-pointer flex justify-between items-center w-full md:text-xl"
               onClick={() =>
                 code === expandedLocation
                   ? setExpandedLocation(null)

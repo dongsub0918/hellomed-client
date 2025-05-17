@@ -15,16 +15,21 @@ import {
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "STD Testing",
-  description: "STD testing at HELLOMED in Ann Arbor, Michigan.",
+  title: "Confidential STD Testing in Ann Arbor | Fast & Affordable | HelloMed",
+  description:
+    "Get reliable and confidential STD testing in Ann Arbor at HelloMed. Same-day appointments, fast results, and compassionate care from experienced providers. Book now.",
   metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical: "https://www.hello-med.com/primary-care/std-testing",
+  },
+  keywords: ["STD testing Ann Arbor"],
 };
 
 export default function STDScreeningPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl xl:text-6xl font-bold text-center mb-8 xl:my-12">
-        STD SCREENING & TREATMENT
+        STD TESTING, SCREENING & TREATMENT
       </h1>
 
       <section className="mb-12">
@@ -40,7 +45,7 @@ export default function STDScreeningPage() {
 
       <section className="mb-12">
         <h2 className="text-2xl xl:text-3xl font-semibold mb-4">
-          Who needs STD testing?
+          Who Needs STD Testing in Ann Arbor?
         </h2>
         <Card>
           <CardContent className="pt-6">
@@ -146,7 +151,7 @@ export default function STDScreeningPage() {
 
       <section className="mb-12">
         <h2 className="text-2xl xl:text-3xl font-semibold mb-4">
-          What to Expect During STD Testing
+          What to Expect During STD Testing in Ann Arbor
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card>

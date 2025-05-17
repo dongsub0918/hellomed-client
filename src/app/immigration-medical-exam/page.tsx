@@ -13,10 +13,22 @@ import {
 import { Button } from "@/ui/external/button";
 
 export const metadata: Metadata = {
-  title: "Immigration Medical Exam",
+  title:
+    "Immigration Medical Exam Blood Test | Immigration Body Check Up | Health Test | HELLOMED",
   description:
-    "Certified immigration medical exams at HELLOMED. Our USCIS-approved civil surgeons provide comprehensive immigration medical examinations in Ann Arbor.",
+    "Complete your immigration medical exam with HelloMed – including blood tests, chest X-ray, body check-up, and health assessment. IRCC-approved panel physician. Fast, affordable service.",
   metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical: "https://www.hello-med.com/immigration-medical-exam",
+  },
+  keywords: [
+    "immigration medical exam blood test",
+    "immigration check up",
+    "immigration body check",
+    "immigration health test",
+    "immigration medical examination",
+    "immigration health exam",
+  ],
 };
 
 export default function ImmigrationMedicalExamPage() {
@@ -25,7 +37,7 @@ export default function ImmigrationMedicalExamPage() {
       <div className="w-full h-[20vh] sm:h-[30vh] md:h-[40vh] lg:h-[45vh] xl:h-[50vh] relative">
         <Image
           src="/immigration-medical-exam-uscis.jpg"
-          alt="Immigration Medical Exam"
+          alt="immigration medical exam"
           layout="fill"
           objectFit="cover"
           priority
@@ -84,9 +96,9 @@ export default function ImmigrationMedicalExamPage() {
             <ul className="list-disc pl-6 space-y-2">
               <li>
                 $349: Includes all paper works in a sealed envelope, Physical
-                Exam, TB blood Test, Syphilis Blood test, and Gonorrhoeae Urine
-                Test. Vaccination record review and counseling. Chest X-ray if
-                necessary
+                Health Exam, TB blood Test, Syphilis Blood test, and Gonorrhoeae
+                Urine Test. Vaccination record review and counseling. Chest
+                X-ray if necessary
               </li>
               <li>
                 $249: If you have a health insurance benefit for preventive TB
@@ -105,7 +117,9 @@ export default function ImmigrationMedicalExamPage() {
 
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle>What to Bring</CardTitle>
+            <h2 className="text-2xl font-bold">
+              What to Bring With for Immigration Medical Exam Blood Test
+            </h2>
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-2">
@@ -133,12 +147,14 @@ export default function ImmigrationMedicalExamPage() {
 
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle>Process</CardTitle>
+            <h2 className="text-2xl font-bold">
+              Immigration Body Check Up Process
+            </h2>
           </CardHeader>
           <CardContent>
             <p className="mb-4">
-              To Complete the I-693 medical examination form you need to meet
-              three required parts:
+              To Complete the I-693 immigration medical examination form you
+              need to meet three required parts:
             </p>
             <ol className="list-decimal pl-6 space-y-2 mb-4">
               <li>
@@ -206,9 +222,7 @@ export default function ImmigrationMedicalExamPage() {
 
             <h3 className="font-semibold mb-2 mt-6">2. Physical Exam</h3>
             <p className="mb-4">
-              This part includes physical or mental disorders with associated
-              harmful behavior, drug abuse or addiction, and other medical
-              conditions. Our civil surgeon will thoroughly review your medical
+              Our civil surgeon will thoroughly review your immigration medical
               record, then conduct a medical exam. Your medical records will be
               reviewed.
             </p>

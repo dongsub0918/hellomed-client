@@ -9,9 +9,10 @@ import Head from "next/head";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title:
+    "Best Urgent Care Ann Arbor-Saline Rd | Healthcare Solutions & After Hours Walk in Clinic | HELLOMED",
   description:
-    "Welcome to HELLOMED Walk-In Urgent Clinic in Ann Arbor. We provide accessible, convenient, and quality healthcare services for the community.",
+    "Looking for the best urgent care in Ann Arbor? HelloMed offers fast, affordable healthcare solutions at our walk-in clinics on Plymouth Rd & Ann Arbor-Saline Rd. Open after hours.",
   metadataBase: new URL("https://hello-med.com"),
 };
 

@@ -28,9 +28,9 @@ export default function MobileLandingSection() {
 
       <div className="h-full">
         <FloatingElement delay={0.4}>
-          <p className="text-center text-lg font-semibold pt-2">
-            Medical Attention You Can Rely On
-          </p>
+          <h1 className="text-center text-lg font-semibold pt-2">
+            Urgent Care Clinic Ann Arbor - Medical Attention You Can Rely On
+          </h1>
         </FloatingElement>
         <FloatingElement delay={0.6}>
           <p className="text-center text-sm/5 pt-8 px-4">

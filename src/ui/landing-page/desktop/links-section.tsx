@@ -9,6 +9,9 @@ export default function DesktopLinksSection() {
   return (
     <section className="min-h-screen py-8 flex flex-col items-center snap-start snap-always bg-hmblack">
       <FloatingElement>
+        <h2 className="text-center text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-5">
+          After Hours Walk-In Clinic Ann Arbor
+        </h2>
         <div className="hidden lg:block">
           <Carousel />
         </div>
@@ -17,9 +20,9 @@ export default function DesktopLinksSection() {
         <div className="block lg:flex w-full p-10">
           <div className="w-full px-1/12">
             <FloatingElement>
-              <h1 className="text-center text-3xl lg:text-4xl xl:text-5xl font-bold text-white">
+              <h3 className="text-center text-3xl font-bold text-white">
                 Clinic Hours
-              </h1>
+              </h3>
             </FloatingElement>
             <FloatingElement delay={0.2}>
               <div className="pt-4">
@@ -29,9 +32,9 @@ export default function DesktopLinksSection() {
           </div>
           <div className="w-full px-1/12">
             <FloatingElement delay={0.4}>
-              <h1 className="text-center text-3xl lg:text-4xl xl:text-5xl font-bold text-white pt-10 lg:pt-0">
+              <h3 className="text-center text-3xl font-bold text-white pt-10 lg:pt-0">
                 Quick Links
-              </h1>
+              </h3>
             </FloatingElement>
             <FloatingElement delay={0.6}>
               <div className="flex flex-col space-y-5 pt-5">

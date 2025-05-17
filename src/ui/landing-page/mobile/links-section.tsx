@@ -9,9 +9,12 @@ export default function MobileLinksSection() {
     <section className="min-h-screen w-full flex flex-col items-center snap-start bg-hmblack">
       <div className="w-full px-4">
         <FloatingElement>
-          <h1 className="text-center text-2xl font-bold pt-6 text-white">
+          <h2 className="text-center text-lg font-bold text-white mt-10">
+            After Hours Walk-In Clinic Ann Arbor
+          </h2>
+          <h3 className="text-center text-2xl font-bold pt-6 text-white">
             Clinic Hours
-          </h1>
+          </h3>
         </FloatingElement>
         <FloatingElement delay={0.2}>
           <div className="pt-4">
@@ -21,9 +24,9 @@ export default function MobileLinksSection() {
       </div>
       <div className="w-full px-4 pt-6">
         <FloatingElement delay={0.4}>
-          <h1 className="text-center text-2xl font-bold text-white">
+          <h3 className="text-center text-2xl font-bold text-white">
             Quick Links
-          </h1>
+          </h3>
         </FloatingElement>
         <FloatingElement delay={0.6}>
           <div className="flex flex-col space-y-3 pt-4">
