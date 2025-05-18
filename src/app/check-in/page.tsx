@@ -19,7 +19,6 @@ import { Checkbox } from "@/ui/external/checkbox";
 import { CheckInFormInputs } from "@/lib/types/check-in";
 import { postCheckIn } from "@/apis/check-in";
 import { uploadImageToS3 } from "@/lib/features/image";
-import { Metadata } from "next";
 
 export default function CheckInFormPage() {
   const router = useRouter();
@@ -501,12 +500,3 @@ export default function CheckInFormPage() {
     </Card>
   );
 }
-
-export const metadata: Metadata = {
-  title: "Check In",
-  description: "Check in for your appointment at HELLOMED.",
-  metadataBase: new URL("https://hello-med.com"),
-  alternates: {
-    canonical: "https://www.hello-med.com/check-in",
-  },
-};
