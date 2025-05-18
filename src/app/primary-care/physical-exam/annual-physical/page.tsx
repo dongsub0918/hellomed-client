@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   title: "Annual Physical",
   description: "Annual physical exams at HELLOMED in Ann Arbor, Michigan.",
   metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical:
+      "https://www.hello-med.com/primary-care/physical-exam/annual-physical",
+  },
 };
 
 export default function PhysicalExamPage() {

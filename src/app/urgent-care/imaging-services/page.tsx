@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   description:
     "Immediate access to X-ray and diagnostic imaging services at HELLOMED for urgent care patients. Our North location provides prompt imaging services for injuries, fractures, and acute conditions in Ann Arbor.",
   metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical: "https://www.hello-med.com/urgent-care/imaging-services",
+  },
 };
 
 export default function XRayServicesPage() {

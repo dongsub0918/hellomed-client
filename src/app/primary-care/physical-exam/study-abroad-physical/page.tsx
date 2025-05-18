@@ -12,6 +12,7 @@ import {
   Thermometer,
   ShieldCheck,
 } from "lucide-react";
+import { Metadata } from "next";
 
 export default function StudyAbroadPhysicalPage() {
   return (
@@ -219,3 +220,14 @@ export default function StudyAbroadPhysicalPage() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Study Abroad Physical Exam",
+  description:
+    "Study abroad physical exams at HELLOMED in Ann Arbor, Michigan.",
+  metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical:
+      "https://www.hello-med.com/primary-care/physical-exam/study-abroad-physical",
+  },
+};

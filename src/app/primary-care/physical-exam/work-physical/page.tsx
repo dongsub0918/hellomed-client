@@ -11,6 +11,7 @@ import {
   Clock,
   Calendar,
 } from "lucide-react";
+import { Metadata } from "next";
 
 export default function WorkPhysicalPage() {
   return (
@@ -181,3 +182,13 @@ export default function WorkPhysicalPage() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Work Physical Exam",
+  description: "Work physical exams at HELLOMED in Ann Arbor, Michigan.",
+  metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical:
+      "https://www.hello-med.com/primary-care/physical-exam/work-physical",
+  },
+};

@@ -1,5 +1,6 @@
 import AcuteConditionsText from "@/ui/urgent-care/acute-conditions-text";
 import { allergyInfo } from "@/lib/content/acute-conditions-items";
+import { Metadata } from "next";
 
 export default function AllergyPage() {
   return (
@@ -10,3 +11,12 @@ export default function AllergyPage() {
     />
   );
 }
+
+export const metadata: Metadata = {
+  title: "Allergy",
+  description: "Allergy treatment at HELLOMED in Ann Arbor, Michigan.",
+  metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical: "https://www.hello-med.com/urgent-care/acute-conditions/allergy",
+  },
+};

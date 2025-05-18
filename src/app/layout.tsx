@@ -2,16 +2,10 @@ import type { Metadata } from "next";
 import "@/ui/globals.css";
 
 export const metadata: Metadata = {
-  title: {
-    template: "%s | HELLOMED Walk-In Urgent Clinic",
-    default: "HELLOMED Walk-In Urgent Clinic Ann Arbor",
-  },
+  title: "HELLOMED Walk-In Urgent Clinic Ann Arbor",
   description:
     "HELLOMED is your trusted walk-in urgent care clinic in Ann Arbor. Visit us for fast, reliable medical care without an appointment.",
   metadataBase: new URL("https://hello-med.com"),
-  alternates: {
-    canonical: "https://www.hello-med.com",
-  },
   icons: {
     icon: "/favicon.png",
   },

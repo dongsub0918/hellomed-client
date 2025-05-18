@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   description:
     "HELLOMED provides accessibility, convenience, and quality urgent care. We are here to serve the urgent healthcare needs of the Ann Arbor community and have been doing so since 2014. Our team of experienced medical professionals is committed to providing comprehensive care to individuals and families. We understand how important it is to have access to quality medical care, which is why we make it our priority to provide the best possible services for our patients. Visit us today and let us be a part of your healthcare experience.",
   metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical: "https://www.hello-med.com/urgent-care",
+  },
 };
 
 export default function UrgentHome() {

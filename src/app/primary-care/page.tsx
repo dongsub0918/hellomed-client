@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   description:
     "Comprehensive primary care services at HELLOMED. Our experienced healthcare providers offer personalized medical care for you and your family in Ann Arbor.",
   metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical: "https://www.hello-med.com/primary-care",
+  },
 };
 
 export default function PrimaryHome() {

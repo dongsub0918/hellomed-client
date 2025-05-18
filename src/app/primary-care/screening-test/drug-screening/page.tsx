@@ -16,6 +16,7 @@ import {
   Thermometer,
   Scissors,
 } from "lucide-react";
+import { Metadata } from "next";
 
 export default function DrugScreeningPage() {
   return (
@@ -272,3 +273,13 @@ export default function DrugScreeningPage() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Drug Screening",
+  description: "Drug screening at HELLOMED in Ann Arbor, Michigan.",
+  metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical:
+      "https://www.hello-med.com/primary-care/screening-test/drug-screening",
+  },
+};

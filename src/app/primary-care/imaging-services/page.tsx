@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   description:
     "Comprehensive diagnostic imaging services at HELLOMED for primary care patients. Our North location offers X-rays, imaging, and diagnostic services to support your ongoing healthcare needs in Ann Arbor.",
   metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical: "https://www.hello-med.com/primary-care/imaging-services",
+  },
 };
 
 export default function XRayServicesPage() {

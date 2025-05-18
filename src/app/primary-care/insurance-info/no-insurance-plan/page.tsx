@@ -1,6 +1,7 @@
 import { Button } from "@/ui/external/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/ui/external/card";
 import { Check } from "lucide-react";
+import { Metadata } from "next";
 
 export default function NoInsurancePlanPage() {
   return (
@@ -92,3 +93,14 @@ export default function NoInsurancePlanPage() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "No Insurance Plan",
+  description:
+    "No insurance plan information at HELLOMED in Ann Arbor, Michigan.",
+  metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical:
+      "https://www.hello-med.com/primary-care/insurance-info/no-insurance-plan",
+  },
+};

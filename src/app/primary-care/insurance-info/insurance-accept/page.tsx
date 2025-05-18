@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/ui/external/card";
+import { Metadata } from "next";
 
 const insurancePlans = [
   { name: "AARP", logo: "/insurance-aarp.jpg" },
@@ -72,3 +73,13 @@ export default function InsurancePlansPage() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Insurance Accepted",
+  description: "Insurance plans accepted at HELLOMED in Ann Arbor, Michigan.",
+  metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical:
+      "https://www.hello-med.com/primary-care/insurance-info/insurance-accept",
+  },
+};

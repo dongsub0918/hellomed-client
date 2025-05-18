@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: "IV Infusion",
   description: "IV infusion services at HELLOMED in Ann Arbor, Michigan.",
   metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical: "https://www.hello-med.com/primary-care/iv-infusion",
+  },
 };
 
 export default function IVInfusionPage() {

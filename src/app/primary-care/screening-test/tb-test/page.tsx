@@ -13,6 +13,7 @@ import {
   Hourglass,
   UserCheck,
 } from "lucide-react";
+import { Metadata } from "next";
 
 export default function TBTestPage() {
   return (
@@ -218,3 +219,12 @@ export default function TBTestPage() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "TB Test",
+  description: "TB testing at HELLOMED in Ann Arbor, Michigan.",
+  metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical: "https://www.hello-med.com/primary-care/screening-test/tb-test",
+  },
+};

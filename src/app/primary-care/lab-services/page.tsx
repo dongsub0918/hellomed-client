@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "Lab Tests",
   description: "Lab tests at HELLOMED in Ann Arbor, Michigan.",
   metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical: "https://www.hello-med.com/primary-care/lab-services",
+  },
 };
 
 export default function LabTestsPage() {

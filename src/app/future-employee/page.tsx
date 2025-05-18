@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   description:
     "Join the HELLOMED team. Explore career opportunities at our Ann Arbor healthcare clinic and become part of our mission to provide quality medical care.",
   metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical: "https://www.hello-med.com/future-employee",
+  },
 };
 
 export default function FutureEmployeePage() {

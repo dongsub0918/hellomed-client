@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   title: "Depression Screening",
   description: "Depression screening at HELLOMED in Ann Arbor, Michigan.",
   metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical:
+      "https://www.hello-med.com/primary-care/screening-test/depression-screening",
+  },
 };
 
 export default function DepressionScreeningPage() {

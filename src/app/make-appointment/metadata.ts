@@ -5,4 +5,7 @@ export const metadata: Metadata = {
   description:
     "Schedule your appointment at HELLOMED. Book online for urgent care, primary care, or immigration medical exams in Ann Arbor.",
   metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical: "https://www.hello-med.com/make-appointment",
+  },
 };

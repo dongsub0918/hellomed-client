@@ -13,6 +13,7 @@ import {
   BookOpen,
   Syringe,
 } from "lucide-react";
+import { Metadata } from "next";
 
 export default function AntibodyTestPage() {
   return (
@@ -191,3 +192,13 @@ export default function AntibodyTestPage() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Antibody Test",
+  description: "Antibody testing at HELLOMED in Ann Arbor, Michigan.",
+  metadataBase: new URL("https://hello-med.com"),
+  alternates: {
+    canonical:
+      "https://www.hello-med.com/primary-care/screening-test/antibody-test",
+  },
+};
