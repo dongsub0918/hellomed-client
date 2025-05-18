@@ -302,9 +302,9 @@ export default function ImmigrationMedicalExamPage() {
 
         <div className="text-center">
           <Link
-            href={
-              "https://calendar.google.com/calendar/u/0/appointments/AcZssZ3YAF2k-13KqDQerAO87OY9fx46q7g-8XC_OnM="
-            }
+            href="https://calendar.app.google/gTVcD5f2k28t8qJD8"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <Button
               size="lg"
