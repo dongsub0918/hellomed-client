@@ -161,8 +161,30 @@ export default function CheckInFormPage() {
       // Redirect to the success page
       router.push("/check-in/success");
     } catch (error) {
-      window.alert("Something went wrong. Please try again.");
-      setIsSubmitting(false); // Re-enable the submit button on error
+      // Log error details if it's an Error instance
+      if (error instanceof Error) {
+        console.error("Check-in Error:", {
+          message: error.message,
+          stack: error.stack,
+          url: window.location.href,
+          userAgent: navigator.userAgent,
+          formInputs: {
+            ...formInputs,
+            // Exclude sensitive data
+            phone: "[REDACTED]",
+            email: "[REDACTED]",
+            address: "[REDACTED]",
+          },
+        });
+      }
+
+      // Show user-friendly message
+      window.alert(
+        "Check-in submission failed. Please try again after checking your internet connection."
+      );
+      setIsSubmitting(false);
+      // Reload the page to reset all state
+      window.location.reload();
     }
   };
 

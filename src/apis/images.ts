@@ -45,7 +45,7 @@ export async function putImageToS3(
       },
     });
   } catch (error) {
-    console.log(error);
-    return undefined;
+    console.error("Failed to upload image to S3:", error);
+    throw error;
   }
 }
