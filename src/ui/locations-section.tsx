@@ -59,14 +59,24 @@ export default function LocationsSection({
           />
           {appointmentLinks &&
             (location.appointmentUrl ? (
-              <Link
-                href={location.appointmentUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 text-center text-blue-600 hover:text-blue-800 transition-colors duration-200 ease-in-out"
-              >
-                Book Appointment
-              </Link>
+              // <Link
+              //   href={location.appointmentUrl}
+              //   target="_blank"
+              //   rel="noopener noreferrer"
+              //   className="mt-5 text-center text-blue-600 hover:text-blue-800 transition-colors duration-200 ease-in-out"
+              // >
+              //   Book Appointment
+              // </Link>
+              <div className="flex justify-center items-center mt-4">
+                <Link
+                  href={location.appointmentUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-2 border border-transparent rounded-lg bg-hmblue text-white hover:bg-opacity-90 hover:scale-105 transition-all duration-200 ease-in-out"
+                >
+                  Book Appointment
+                </Link>
+              </div>
             ) : (
               <p className="mt-5 text-center text-blue-600 ">Coming Soon</p>
             ))}
