@@ -52,9 +52,25 @@ export default function ImmigrationMedicalExamPage() {
           ← Back to Home
         </Link>
 
-        <h1 className="text-3xl font-bold pb-12">
-          IMMIGRATION MEDICAL EXAM (I-693)
-        </h1>
+        <div className="text-center space-y-4 mb-6 lg:space-y-0 lg:flex lg:justify-between">
+          <h1 className="text-lg md:text-3xl font-bold">
+            IMMIGRATION MEDICAL EXAM (I-693)
+          </h1>
+          <div className="text-center">
+            <Link
+              href="https://calendar.app.google/gTVcD5f2k28t8qJD8"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                size="lg"
+                className="text-lg xl:text-xl xl:py-3 px-4 xl:px-6"
+              >
+                Make appointment
+              </Button>
+            </Link>
+          </div>
+        </div>
 
         <Card className="mb-8">
           <CardHeader>
@@ -289,7 +305,7 @@ export default function ImmigrationMedicalExamPage() {
                   <TableCell>Required effective 05/01/2024</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>Influenza & Covid-19 vaccine</TableCell>
+                  <TableCell>Influenza</TableCell>
                   <TableCell>
                     Can waive only if vaccine is not available in the location
                     where the civil surgeon practices
@@ -299,21 +315,6 @@ export default function ImmigrationMedicalExamPage() {
             </Table>
           </CardContent>
         </Card>
-
-        <div className="text-center">
-          <Link
-            href="https://calendar.app.google/gTVcD5f2k28t8qJD8"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button
-              size="lg"
-              className="text-lg xl:text-xl xl:py-3 px-4 xl:px-6"
-            >
-              Make appointment
-            </Button>
-          </Link>
-        </div>
       </div>
     </div>
   );
