@@ -30,8 +30,9 @@ export default function XRayServicesPage() {
 
       <section className="mb-12">
         <p className="text-lg xl:text-xl mb-4">
-          Our X-ray services are available at the North location, and is for
-          patients who need diagnostic imaging for a wide range of conditions.
+          Our X-ray services are available at North and South locations, and is
+          for patients who need diagnostic imaging for a wide range of
+          conditions.
         </p>
         <br />
         <h2 className="text-2xl xl:text-3xl font-semibold mb-4">
