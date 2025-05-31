@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/ui/external/card";
-import styles from "@/app/future-employee/future-employee.module.css";
+import styles from "@/app/(public)/future-employee/future-employee.module.css";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
