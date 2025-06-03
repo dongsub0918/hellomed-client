@@ -66,7 +66,7 @@ export default function ImmigrationMedicalExamPage() {
                 size="lg"
                 className="text-lg xl:text-xl xl:py-3 px-4 xl:px-6"
               >
-                Make appointment
+                Book appointment
               </Button>
             </Link>
           </div>

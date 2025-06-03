@@ -22,7 +22,7 @@ const locations = [
     alt: "healthcare solutions Ann Arbor MI",
   },
   {
-    name: "HELLOMED South (inside Meijers)",
+    name: "HELLOMED South (inside Meijer)",
     imageUrl: "meijer's-location.png",
     mapUrl:
       "https://www.google.com/maps/place/HELLOMED+South(Inside+Meijer)+Urgent+Care+Ann+Arbor/@42.2398356,-83.7690996,17z/data=!3m1!4b1!4m6!3m5!1s0x883cb16d1922f951:0x3491d30ab536b7e9!8m2!3d42.2398356!4d-83.7665247!16s%2Fg%2F11x38v5w5c?entry=ttu&g_ep=EgoyMDI1MDUwNS4wIKXMDSoASAFQAw%3D%3D",
