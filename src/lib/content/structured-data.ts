@@ -3,7 +3,7 @@ const structuredData = {
   "@graph": [
     {
       "@type": "MedicalBusiness",
-      name: "HELLOMED Central ",
+      name: "HELLOMED Central",
       url: "https://hello-med.com",
       telephone: "+1-734-210-1122",
       address: {
