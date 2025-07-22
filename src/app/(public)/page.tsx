@@ -4,8 +4,9 @@ import MobileLocationsSection from "@/ui/landing-page/mobile/locations-section";
 import DesktopLandingSection from "@/ui/landing-page/desktop/landing-section";
 import DesktopLinksSection from "@/ui/landing-page/desktop/links-section";
 import DesktopLocationsSection from "@/ui/landing-page/desktop/locations-section";
-import structuredData from "@/lib/content/structured-data";
+
 import { Metadata } from "next";
+import homeStructuredData from "@/lib/content/structured-data/home";
 
 export const metadata: Metadata = {
   title:
@@ -21,7 +22,7 @@ export default function LandingPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(homeStructuredData).replace(/</g, "\\u003c"),
         }}
       ></script>
       <div className="sm:hidden h-screen overflow-y-auto snap-y snap-mandatory">
