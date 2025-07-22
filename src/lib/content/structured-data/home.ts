@@ -4,9 +4,17 @@ const homeStructuredData = {
   name: "HELLOMED Urgent Care",
   url: "https://hello-med.com",
   telephone: "+1-734-210-1122",
-  email: "JWHS@hello-med.com",
+  email: "mailto:JWHS@hello-med.com",
   image: "https://hello-med.com/landing-img.webp",
   description: `HELLOMED Urgent Care is a walk-in clinic that provides urgent care services to the community. We are located in Ann Arbor, Michigan and serve the surrounding areas.`,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "2731 Plymouth Rd",
+    addressLocality: "Ann Arbor",
+    addressRegion: "Michigan",
+    postalCode: "48105",
+    addressCountry: "US",
+  },
   containsPlace: [
     {
       "@type": "MedicalClinic",
