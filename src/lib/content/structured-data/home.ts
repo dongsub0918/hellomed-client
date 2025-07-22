@@ -18,6 +18,7 @@ const homeStructuredData = {
         addressLocality: "Ann Arbor",
         addressRegion: "Michigan",
         postalCode: "48105",
+        addressCountry: "US",
       },
       potentialAction: {
         "@type": "ReserveAction",
@@ -42,6 +43,7 @@ const homeStructuredData = {
         addressLocality: "Ann Arbor",
         addressRegion: "Michigan",
         postalCode: "48104",
+        addressCountry: "US",
       },
       potentialAction: {
         "@type": "ReserveAction",
@@ -66,6 +68,7 @@ const homeStructuredData = {
         addressLocality: "Ann Arbor",
         addressRegion: "Michigan",
         postalCode: "48103",
+        addressCountry: "US",
       },
       potentialAction: {
         "@type": "ReserveAction",
@@ -73,23 +76,6 @@ const homeStructuredData = {
           "@type": "EntryPoint",
           urlTemplate:
             "https://calendar.google.com/calendar/u/0/appointments/AcZssZ2R7wwx1LOxXF4t5LsMP16McAcJxCW3AX3pI4Y=",
-          actionPlatform: [
-            "http://schema.org/DesktopWebPlatform",
-            "http://schema.org/MobileWebPlatform",
-          ],
-        },
-      },
-    },
-    {
-      "@type": "MedicalClinic",
-      name: "HELLOMED Telemedicine",
-      image: "https://hello-med.com/telemedicine-location.jpg",
-      potentialAction: {
-        "@type": "ReserveAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate:
-            "https://calendar.google.com/calendar/u/0/appointments/AcZssZ1x0Q-g6WSa_xtiFrXkbd5fX9M-JQxk5aoiUGk=",
           actionPlatform: [
             "http://schema.org/DesktopWebPlatform",
             "http://schema.org/MobileWebPlatform",
