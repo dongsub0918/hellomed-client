@@ -26,7 +26,7 @@ export default function LandingPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData, null, 2),
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
           }}
         ></script>
       </Head>
