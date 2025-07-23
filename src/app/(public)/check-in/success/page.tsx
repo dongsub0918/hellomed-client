@@ -12,9 +12,12 @@ import {
 } from "@/ui/external/card";
 import { CheckCircle } from "lucide-react";
 import { CheckInFormInputs } from "@/lib/types/check-in";
+import styles from "./page.module.css";
 
 export default function CheckInFormSuccessPage() {
+  const timer = 10;
   const [formData, setFormData] = useState<CheckInFormInputs>();
+  const [countdown, setCountdown] = useState(timer);
   const router = useRouter();
 
   useEffect(() => {
@@ -23,7 +26,31 @@ export default function CheckInFormSuccessPage() {
     if (storedData) {
       setFormData(JSON.parse(storedData));
     }
+
+    // Start countdown timer
+    const timerInterval = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    // Cleanup timer on component unmount
+    return () => clearInterval(timerInterval);
   }, []);
+
+  // Separate useEffect for handling redirect when countdown reaches 0
+  useEffect(() => {
+    if (countdown === 0) {
+      router.push("/check-in");
+    }
+  }, [countdown, router]);
+
+  // Calculate progress percentage for the CSS
+  const progressPercentage = ((timer - countdown) / timer) * 100;
 
   const renderField = (label: string, value: string | boolean | undefined) => (
     <div className="border-b border-gray-200 py-2">
@@ -39,9 +66,19 @@ export default function CheckInFormSuccessPage() {
   );
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <Card className="w-full max-w-3xl mx-auto">
+    <div className="container mx-auto px-4">
+      <Card className="w-full">
         <CardHeader>
+          <p
+            className={`${styles.countdown} text-center text-sm text-muted-foreground`}
+            style={
+              {
+                "--progress-width": `${100 - progressPercentage}%`,
+              } as React.CSSProperties
+            }
+          >
+            This message will close in {countdown} seconds
+          </p>
           <CardTitle className="text-2xl font-bold flex items-center justify-center text-green-600">
             <CheckCircle className="mr-2" />
             Check-In Successfully Submitted
@@ -94,13 +131,13 @@ export default function CheckInFormSuccessPage() {
             onClick={() => router.push("/urgent-care")}
             className="w-full sm:w-auto bg-hmred"
           >
-            Go back to Urgent Care
+            HELLOMED Urgent Care
           </Button>
           <Button
             onClick={() => router.push("/primary-care")}
             className="w-full sm:w-auto bg-hmgreen-dark"
           >
-            Go back to Primary Care
+            HELLOMED Primary Care
           </Button>
         </CardFooter>
       </Card>
