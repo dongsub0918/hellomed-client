@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { getCheckIns } from "@/apis/check-in";
 import { Button } from "@/ui/external/button";
 import { Card, CardContent } from "@/ui/external/card";
@@ -23,13 +24,19 @@ import { formatDate } from "@/lib/features/utils";
 import useCheckInListUpdaterSocket from "@/lib/hooks/socket";
 
 export default function CheckInView() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const [checkIns, setCheckIns] = useState<CheckInFromBoardOutputs>();
-  const [currentPage, setCurrentPage] = useState(0);
-  const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const pageSize = 15;
+
+  // Get current page from URL search params, default to 0
+  const currentPage = parseInt(searchParams.get("page") || "0");
+  const totalPages = checkIns
+    ? Math.floor(checkIns.totalCheckIns / pageSize)
+    : 0;
 
   useEffect(() => {
     fetchCheckIns();
@@ -44,12 +51,18 @@ export default function CheckInView() {
     try {
       const data = await getCheckIns({ size: pageSize, page: currentPage });
       setCheckIns(data);
-      setTotalPages(Math.floor(data.totalCheckIns / pageSize));
     } catch (err) {
       setError("Failed to fetch check-ins. Please try again later.");
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // Function to update page in URL
+  const updatePage = (newPage: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("page", newPage.toString());
+    router.push(`/admin/check-in-view?${params.toString()}`);
   };
 
   if (isLoading) {
@@ -61,10 +74,11 @@ export default function CheckInView() {
   }
 
   return (
-    <div className="py-6">
+    <div className="flex flex-col gap-6">
+      <h2 className="text-2xl font-bold">View check-ins</h2>
       {/* Table Section */}
       <Card>
-        <CardContent className="overflow-x-auto">
+        <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
@@ -113,11 +127,11 @@ export default function CheckInView() {
       </Card>
 
       {/* Pagination Section */}
-      <Pagination className="mt-4">
+      <Pagination>
         <PaginationContent>
           <PaginationItem>
             <Button
-              onClick={() => setCurrentPage(0)}
+              onClick={() => updatePage(0)}
               disabled={currentPage === 0}
               variant="outline"
             >
@@ -126,7 +140,7 @@ export default function CheckInView() {
           </PaginationItem>
           <PaginationItem>
             <Button
-              onClick={() => setCurrentPage(currentPage - 1)}
+              onClick={() => updatePage(currentPage - 1)}
               disabled={currentPage === 0}
               variant="outline"
             >
@@ -138,7 +152,7 @@ export default function CheckInView() {
           </PaginationItem>
           <PaginationItem>
             <Button
-              onClick={() => setCurrentPage(currentPage + 1)}
+              onClick={() => updatePage(currentPage + 1)}
               disabled={
                 checkIns === undefined
                   ? true
@@ -151,7 +165,7 @@ export default function CheckInView() {
           </PaginationItem>
           <PaginationItem>
             <Button
-              onClick={() => setCurrentPage(totalPages)}
+              onClick={() => updatePage(totalPages)}
               disabled={currentPage === totalPages}
               variant="outline"
             >

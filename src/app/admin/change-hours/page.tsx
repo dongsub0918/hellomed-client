@@ -83,7 +83,8 @@ export default function ChangeHours() {
   // }
 
   return (
-    <section className="space-y-4 mt-6">
+    <section className="space-y-4">
+      <h2 className="text-2xl font-bold">Change hours</h2>
       {formData.map(
         ({
           code,

@@ -9,6 +9,23 @@ export default async function AdminLayout({
   children: React.ReactNode;
 }>) {
   const session = await getServerSession();
+
+  const menus = [
+    {
+      name: "View check-ins",
+      key: "check-in-view",
+    },
+    { name: "Change hours", key: "change-hours" },
+    {
+      name: "Manage carousel",
+      key: "manage-carousel",
+    },
+    {
+      name: "Manage admins",
+      key: "manage-admins",
+    },
+  ];
+
   return (
     <main>
       <header className="w-full bg-sky-500 flex justify-between text-white">
@@ -30,7 +47,24 @@ export default async function AdminLayout({
           </div>
         </div>
       </header>
-      {children}
+      <div className="flex min-h-[calc(100svh-76px)]">
+        {/* sidebar */}
+        <div className="bg-slate-700 w-[15%] p-6">
+          <ul className="space-y-4">
+            {menus.map((menu) => (
+              <li key={menu.key}>
+                <Link href={`/admin/${menu.key}`}>
+                  <span className="text-white underline hover:font-semibold">
+                    {menu.name}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        {/* main content */}
+        <div className="w-[85%] p-10">{children}</div>
+      </div>
     </main>
   );
 }

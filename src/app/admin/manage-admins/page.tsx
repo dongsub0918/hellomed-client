@@ -61,6 +61,7 @@ export default function ManageAdmins() {
 
   return (
     <>
+      <h2 className="text-2xl font-bold">Manage admins</h2>
       {/* Notes on admin accounts */}
       <ul className="w-full border-4 border-black p-4 mt-6">
         <li className="text-lg text-center font-bold text-red-600 pb-5">

@@ -50,7 +50,7 @@ export default function ManageCarousel() {
   return (
     <>
       {/* Current carousel preview */}
-      <h1 className="text-lg mt-6">Carousel Preview</h1>
+      <h1 className="text-2xl font-bold">Carousel Preview</h1>
       <div className="flex flex-col items-center">
         <div className="flex flex-col items-center justify-center mb-8">
           {formCarousel.length > 0 ? (
