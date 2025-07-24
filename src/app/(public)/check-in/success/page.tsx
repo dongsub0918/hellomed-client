@@ -15,7 +15,7 @@ import { CheckInFormInputs } from "@/lib/types/check-in";
 import styles from "./page.module.css";
 
 export default function CheckInFormSuccessPage() {
-  const timer = 10;
+  const timer = 20;
   const [formData, setFormData] = useState<CheckInFormInputs>();
   const [countdown, setCountdown] = useState(timer);
   const router = useRouter();
@@ -69,16 +69,20 @@ export default function CheckInFormSuccessPage() {
     <div className="container mx-auto px-4">
       <Card className="w-full">
         <CardHeader>
-          <p
-            className={`${styles.countdown} text-center text-sm text-muted-foreground`}
+          <div
+            className={`${styles.countdown} text-center text-sm`}
             style={
               {
                 "--progress-width": `${100 - progressPercentage}%`,
               } as React.CSSProperties
             }
           >
-            This message will close in {countdown} seconds
-          </p>
+            This message will close in
+            <span className="text-green-600 text-base font-bold mx-1">
+              {countdown}
+            </span>
+            seconds
+          </div>
           <CardTitle className="text-2xl font-bold flex items-center justify-center text-green-600">
             <CheckCircle className="mr-2" />
             Check-In Successfully Submitted
