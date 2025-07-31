@@ -2,10 +2,10 @@ const homeStructuredData = {
   "@context": "https://schema.org",
   "@type": "MedicalClinic",
   name: "HELLOMED Urgent Care",
-  url: "https://hello-med.com",
+  url: "https://www.hello-med.com",
   telephone: "+1-734-210-1122",
   email: "mailto:JWHS@hello-med.com",
-  image: "https://hello-med.com/landing-img.webp",
+  image: "https://www.hello-med.com/landing-img.webp",
   description: `HELLOMED Urgent Care is a walk-in clinic that provides urgent care services to the community. We are located in Ann Arbor, Michigan and serve the surrounding areas.`,
   address: {
     "@type": "PostalAddress",
@@ -19,7 +19,7 @@ const homeStructuredData = {
     {
       "@type": "MedicalClinic",
       name: "HELLOMED North",
-      image: "https://hello-med.com/landing-img.webp",
+      image: "https://www.hello-med.com/landing-img.webp",
       address: {
         "@type": "PostalAddress",
         streetAddress: "2731 Plymouth Rd",
@@ -44,7 +44,7 @@ const homeStructuredData = {
     {
       "@type": "MedicalClinic",
       name: "HELLOMED Central",
-      image: "https://hello-med.com/landing-img.webp",
+      image: "https://www.hello-med.com/landing-img.webp",
       address: {
         "@type": "PostalAddress",
         streetAddress: "623 E Liberty St",
@@ -69,7 +69,7 @@ const homeStructuredData = {
     {
       "@type": "MedicalClinic",
       name: "HELLOMED South (inside Meijer)",
-      image: "https://hello-med.com/landing-img.webp",
+      image: "https://www.hello-med.com/landing-img.webp",
       address: {
         "@type": "PostalAddress",
         streetAddress: "3145 Ann Arbor-Saline Rd Space B",

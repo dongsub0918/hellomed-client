@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "HELLOMED Walk-In Urgent Clinic Ann Arbor",
   description:
     "HELLOMED is your trusted walk-in urgent care clinic in Ann Arbor. Visit us for fast, reliable medical care without an appointment.",
-  metadataBase: new URL("https://hello-med.com"),
+  metadataBase: new URL("https://www.hello-med.com"),
   icons: {
     icon: "/favicon.png",
   },
@@ -24,6 +24,17 @@ export const metadata: Metadata = {
     "urgent care clinic ann arbor",
     "urgent care ann arbor-saline rd",
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
