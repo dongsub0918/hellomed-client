@@ -1,5 +1,3 @@
-"use client";
-
 import LocationsSection from "@/ui/locations-section";
 import { Metadata } from "next";
 
