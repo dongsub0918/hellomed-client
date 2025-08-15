@@ -14,7 +14,7 @@ import {
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Lab Tests",
+  title: "Lab Tests | Primary Care Ann Arbor",
   description: "Lab tests at HELLOMED in Ann Arbor, Michigan.",
   metadataBase: new URL("https://hello-med.com"),
   alternates: {

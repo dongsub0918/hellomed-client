@@ -14,8 +14,9 @@ import {
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Lab Tests",
-  description: "Lab tests at HELLOMED in Ann Arbor, Michigan.",
+  title: "Lab Tests | Urgent Care Ann Arbor",
+  description:
+    "Comprehensive diagnostic lab services at HELLOMED for urgent care patients. All locations offers lab services to support your ongoing healthcare needs in Ann Arbor.",
   metadataBase: new URL("https://hello-med.com"),
   alternates: {
     canonical: "https://www.hello-med.com/urgent-care/lab-services",

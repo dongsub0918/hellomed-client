@@ -13,8 +13,7 @@ import {
 import { Button } from "@/ui/external/button";
 
 export const metadata: Metadata = {
-  title:
-    "Immigration Medical Exam Blood Test | Immigration Body Check Up | Health Test | HELLOMED",
+  title: "Immigration Medical Exam | Civil Surgeon | Green Card Medical I-693",
   description:
     "Complete your immigration medical exam with HelloMed – including blood tests, chest X-ray, body check-up, and health assessment. IRCC-approved panel physician. Fast, affordable service.",
   metadataBase: new URL("https://hello-med.com"),

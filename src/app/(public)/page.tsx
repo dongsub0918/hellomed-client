@@ -9,8 +9,7 @@ import { Metadata } from "next";
 import homeStructuredData from "@/lib/content/structured-data/home";
 
 export const metadata: Metadata = {
-  title:
-    "Best Urgent Care Ann Arbor-Saline Rd | Healthcare Solutions & After Hours Walk in Clinic | HELLOMED",
+  title: "Top Rated Urgent Care Ann Arbor Michigan | Walk in Clinic | HELLOMED",
   description:
     "Looking for the best urgent care in Ann Arbor? HelloMed offers fast, affordable healthcare solutions at our walk-in clinics on Plymouth Rd & Ann Arbor-Saline Rd. Open after hours.",
   metadataBase: new URL("https://www.hello-med.com"),

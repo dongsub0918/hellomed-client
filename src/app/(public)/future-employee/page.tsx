@@ -12,7 +12,7 @@ import styles from "@/app/(public)/future-employee/future-employee.module.css";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Careers",
+  title: "Careers | Urgent Care Ann Arbor",
   description:
     "Join the HELLOMED team. Explore career opportunities at our Ann Arbor healthcare clinic and become part of our mission to provide quality medical care.",
   metadataBase: new URL("https://hello-med.com"),

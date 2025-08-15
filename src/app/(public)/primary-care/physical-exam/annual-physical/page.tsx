@@ -5,7 +5,7 @@ import { Stethoscope, Calendar, FileText, Activity, Users } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Annual Physical",
+  title: "Annual Physical | Urgent Care Ann Arbor",
   description: "Annual physical exams at HELLOMED in Ann Arbor, Michigan.",
   metadataBase: new URL("https://hello-med.com"),
   alternates: {

@@ -12,7 +12,7 @@ import {
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "IV Infusion",
+  title: "IV Infusion | Urgent Care Ann Arbor",
   description: "IV infusion services at HELLOMED in Ann Arbor, Michigan.",
   metadataBase: new URL("https://hello-med.com"),
   alternates: {

@@ -13,7 +13,7 @@ import {
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Telemedicine",
+  title: "Telemedicine Urgent Care Ann Arbor",
   description:
     "Access quality healthcare from anywhere through HELLOMED's telemedicine services. Connect with our experienced providers via secure video consultations.",
   metadataBase: new URL("https://hello-med.com"),
