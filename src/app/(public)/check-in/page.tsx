@@ -17,7 +17,8 @@ import {
 } from "@/ui/external/select";
 import { Checkbox } from "@/ui/external/checkbox";
 import { CheckInFormInputs } from "@/lib/types/check-in";
-import { postCheckIn } from "@/apis/check-in";
+import { postCheckIn, patchCheckIn } from "@/apis/check-in";
+import { postLog } from "@/apis/log";
 import { uploadImageToS3 } from "@/lib/features/image";
 
 export default function CheckInFormPage() {
@@ -81,7 +82,11 @@ export default function CheckInFormPage() {
     const file = e.target.files?.[0];
     const name = e.target.name;
 
-    if (file && file.type.startsWith("image/")) {
+    if (
+      file &&
+      file.type.startsWith("image/") &&
+      !file.name.toLowerCase().endsWith(".heic")
+    ) {
       if (name === "idUpload") {
         setIdImageFile(file);
         setFormInputs((prev) => ({ ...prev, ["idImage"]: true }));
@@ -112,7 +117,7 @@ export default function CheckInFormPage() {
           ["insuranceImageBack"]: false,
         }));
       }
-      alert("Please select a valid image file");
+      alert("Please select a valid image file. HEIC files are not supported.");
     }
   };
 
@@ -126,66 +131,127 @@ export default function CheckInFormPage() {
       formInputs["preferredPharmacy"] = tempPreferredPharmacy;
     }
 
-    try {
-      // Upload check in form data to database
-      const { id } = await postCheckIn(formInputs);
+    // Upload check in form data to database
+    const { id } = await postCheckIn(formInputs);
 
-      // Upload images to S3
-      if (idImageFile) {
+    // Upload images to S3
+    // When uploading, try first and revert database flag if failed
+    // Also revert formData state flag so the success page shows the correct information
+    // Log error details to database
+    // Applies to all three images
+    if (idImageFile) {
+      try {
         await uploadImageToS3(idImageFile, `id/checkin-${id}`);
+      } catch (error) {
+        await patchCheckIn(id, "idImage");
+        setFormInputs((prev) => ({ ...prev, ["idImage"]: false }));
+        await postLog({
+          type: "error",
+          context: "check-in:page:handleSubmit:idImageFile",
+          message: error.message,
+        });
       }
-      if (insuranceImageFrontFile) {
+    }
+    if (insuranceImageFrontFile) {
+      try {
         await uploadImageToS3(
           insuranceImageFrontFile,
           `insurance-front/checkin-${id}`
         );
+      } catch (error) {
+        await patchCheckIn(id, "insuranceImageFront");
+        setFormInputs((prev) => ({ ...prev, ["insuranceImageFront"]: false }));
+        await postLog({
+          type: "error",
+          context: "check-in:page:handleSubmit:insuranceImageFrontFile",
+          message: error.message,
+        });
       }
-      if (insuranceImageBackFile) {
+    }
+    if (insuranceImageBackFile) {
+      try {
         await uploadImageToS3(
           insuranceImageBackFile,
           `insurance-back/checkin-${id}`
         );
-      }
-
-      // Add into formInputs just the filename
-      const formInputsCopy = { ...formInputs };
-      formInputsCopy["idImageFileName"] = idImageFile?.name || "Not uploaded";
-      formInputsCopy["insuranceImageFrontFileName"] =
-        insuranceImageFrontFile?.name || "Not uploaded";
-      formInputsCopy["insuranceImageBackFileName"] =
-        insuranceImageBackFile?.name || "Not uploaded";
-
-      // Store form data in sessionStorage
-      sessionStorage.setItem("formData", JSON.stringify(formInputsCopy));
-
-      // Redirect to the success page
-      router.push("/check-in/success");
-    } catch (error) {
-      // Log error details if it's an Error instance
-      if (error instanceof Error) {
-        console.error("Check-in Error:", {
+      } catch (error) {
+        await patchCheckIn(id, "insuranceImageBack");
+        setFormInputs((prev) => ({ ...prev, ["insuranceImageBack"]: false }));
+        await postLog({
+          type: "error",
+          context: "check-in:page:handleSubmit:insuranceImageBackFile",
           message: error.message,
-          stack: error.stack,
-          url: window.location.href,
-          userAgent: navigator.userAgent,
-          formInputs: {
-            ...formInputs,
-            // Exclude sensitive data
-            phone: "[REDACTED]",
-            email: "[REDACTED]",
-            address: "[REDACTED]",
-          },
         });
       }
-
-      // Show user-friendly message
-      window.alert(
-        "Check-in submission failed. Please try again after checking your internet connection."
-      );
-      setIsSubmitting(false);
-      // Reload the page to reset all state
-      window.location.reload();
     }
+
+    // Store form data in sessionStorage for view in success page
+    const formInputsCopy = { ...formInputs };
+    sessionStorage.setItem("formData", JSON.stringify(formInputsCopy));
+
+    // Redirect to the success page
+    router.push("/check-in/success");
+
+    // try {
+    //   // Upload check in form data to database
+    //   const { id } = await postCheckIn(formInputs);
+
+    //   // Upload images to S3
+    //   if (idImageFile) {
+    //     await uploadImageToS3(idImageFile, `id/checkin-${id}`);
+    //   }
+    //   if (insuranceImageFrontFile) {
+    //     await uploadImageToS3(
+    //       insuranceImageFrontFile,
+    //       `insurance-front/checkin-${id}`
+    //     );
+    //   }
+    //   if (insuranceImageBackFile) {
+    //     await uploadImageToS3(
+    //       insuranceImageBackFile,
+    //       `insurance-back/checkin-${id}`
+    //     );
+    //   }
+
+    //   // Add into formInputs just the filename
+    //   const formInputsCopy = { ...formInputs };
+    //   formInputsCopy["idImageFileName"] = idImageFile?.name || "Not uploaded";
+    //   formInputsCopy["insuranceImageFrontFileName"] =
+    //     insuranceImageFrontFile?.name || "Not uploaded";
+    //   formInputsCopy["insuranceImageBackFileName"] =
+    //     insuranceImageBackFile?.name || "Not uploaded";
+
+    //   // Store form data in sessionStorage
+    //   sessionStorage.setItem("formData", JSON.stringify(formInputsCopy));
+
+    //   // Redirect to the success page
+    //   router.push("/check-in/success");
+    // } catch (error) {
+    //   // Log error details if it's an Error instance
+    //   if (error instanceof Error) {
+    //     console.error("Check-in Error:", {
+    //       message: error.message,
+    //       stack: error.stack,
+    //       url: window.location.href,
+    //       userAgent: navigator.userAgent,
+    //       formInputs: {
+    //         ...formInputs,
+    //         // Exclude sensitive data
+    //         phone: "[REDACTED]",
+    //         email: "[REDACTED]",
+    //         address: "[REDACTED]",
+    //       },
+    //     });
+    //   }
+
+    //   // Show user-friendly message
+    //   window.alert(
+    //     "Check-in submission failed. Please try again after checking your internet connection."
+    //   );
+    //   setIsSubmitting(false);
+    //   // Reload the page to reset all state
+    //   window.location.reload();
+    // }
   };
 
   const handleChange = (

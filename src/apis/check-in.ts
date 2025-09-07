@@ -30,3 +30,13 @@ export async function getCheckIn(id: number) {
     throw error;
   }
 }
+
+export async function patchCheckIn(id: number, body: string) {
+  const url = `/check-in/${id}/`;
+  try {
+    const response = await client.patch(url, body);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
