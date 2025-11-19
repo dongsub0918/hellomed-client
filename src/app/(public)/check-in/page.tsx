@@ -60,6 +60,7 @@ export default function CheckInFormPage() {
       "birthDate",
       "phone",
       "email",
+      "hearAboutUs",
       "address",
       "zipcode",
       "reasonForVisit",
@@ -191,67 +192,6 @@ export default function CheckInFormPage() {
 
     // Redirect to the success page
     router.push("/check-in/success");
-
-    // try {
-    //   // Upload check in form data to database
-    //   const { id } = await postCheckIn(formInputs);
-
-    //   // Upload images to S3
-    //   if (idImageFile) {
-    //     await uploadImageToS3(idImageFile, `id/checkin-${id}`);
-    //   }
-    //   if (insuranceImageFrontFile) {
-    //     await uploadImageToS3(
-    //       insuranceImageFrontFile,
-    //       `insurance-front/checkin-${id}`
-    //     );
-    //   }
-    //   if (insuranceImageBackFile) {
-    //     await uploadImageToS3(
-    //       insuranceImageBackFile,
-    //       `insurance-back/checkin-${id}`
-    //     );
-    //   }
-
-    //   // Add into formInputs just the filename
-    //   const formInputsCopy = { ...formInputs };
-    //   formInputsCopy["idImageFileName"] = idImageFile?.name || "Not uploaded";
-    //   formInputsCopy["insuranceImageFrontFileName"] =
-    //     insuranceImageFrontFile?.name || "Not uploaded";
-    //   formInputsCopy["insuranceImageBackFileName"] =
-    //     insuranceImageBackFile?.name || "Not uploaded";
-
-    //   // Store form data in sessionStorage
-    //   sessionStorage.setItem("formData", JSON.stringify(formInputsCopy));
-
-    //   // Redirect to the success page
-    //   router.push("/check-in/success");
-    // } catch (error) {
-    //   // Log error details if it's an Error instance
-    //   if (error instanceof Error) {
-    //     console.error("Check-in Error:", {
-    //       message: error.message,
-    //       stack: error.stack,
-    //       url: window.location.href,
-    //       userAgent: navigator.userAgent,
-    //       formInputs: {
-    //         ...formInputs,
-    //         // Exclude sensitive data
-    //         phone: "[REDACTED]",
-    //         email: "[REDACTED]",
-    //         address: "[REDACTED]",
-    //       },
-    //     });
-    //   }
-
-    //   // Show user-friendly message
-    //   window.alert(
-    //     "Check-in submission failed. Please try again after checking your internet connection."
-    //   );
-    //   setIsSubmitting(false);
-    //   // Reload the page to reset all state
-    //   window.location.reload();
-    // }
   };
 
   const handleChange = (
@@ -325,7 +265,7 @@ export default function CheckInFormPage() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="hearAboutUs">How did you hear about us?</Label>
+            <Label htmlFor="hearAboutUs">How did you hear about us? *</Label>
             <Select
               name="hearAboutUs"
               value={formInputs.hearAboutUs}
@@ -336,7 +276,6 @@ export default function CheckInFormPage() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="friend">Friend or Family</SelectItem>
-                <SelectItem value="google">Google</SelectItem>
                 <SelectItem value="bing">Bing</SelectItem>
                 <SelectItem value="yelp">Yelp</SelectItem>
                 <SelectItem value="instagram">Instagram</SelectItem>
@@ -345,6 +284,7 @@ export default function CheckInFormPage() {
                   Local Online Community
                 </SelectItem>
                 <SelectItem value="walkBy">Walk By</SelectItem>
+                <SelectItem value="google">Google</SelectItem>
               </SelectContent>
             </Select>
           </div>
