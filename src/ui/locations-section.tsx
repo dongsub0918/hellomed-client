@@ -34,9 +34,19 @@ const locations = [
     name: "Telemedicine",
     imageUrl: "telemedicine-location.jpg",
     mapUrl: "",
+    internalUrl: "/urgent-care/telemedicine",
     appointmentUrl:
       "https://calendar.google.com/calendar/u/0/appointments/AcZssZ1x0Q-g6WSa_xtiFrXkbd5fX9M-JQxk5aoiUGk=",
     alt: "best urgent care Ann Arbor",
+  },
+  {
+    name: "Immigration Medical Exam",
+    imageUrl: "immigration-medical-exam-uscis.jpg",
+    mapUrl: "",
+    internalUrl: "/immigration-medical-exam",
+    appointmentUrl:
+      "https://calendar.google.com/calendar/u/0/appointments/AcZssZ0nxIjPYateQ8_Kkiap4-KN_y6AGXvAiM4kAF4=",
+    alt: "Immigration Medical Exam in Ann Arbor",
   },
 ];
 
@@ -55,18 +65,11 @@ export default function LocationsSection({
             name={location.name}
             imageUrl={location.imageUrl}
             mapUrl={location.mapUrl}
+            internalUrl={location.internalUrl}
             alt={location.alt}
           />
           {appointmentLinks &&
             (location.appointmentUrl ? (
-              // <Link
-              //   href={location.appointmentUrl}
-              //   target="_blank"
-              //   rel="noopener noreferrer"
-              //   className="mt-5 text-center text-blue-600 hover:text-blue-800 transition-colors duration-200 ease-in-out"
-              // >
-              //   Book Appointment
-              // </Link>
               <div className="flex justify-center items-center mt-4">
                 <Link
                   href={location.appointmentUrl}

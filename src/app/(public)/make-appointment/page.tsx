@@ -15,7 +15,7 @@ export default function MakeAppointmentPage() {
   return (
     <>
       <h1 className="text-center text-3xl font-semibold">
-        Please Choose a location
+        Please Choose A Location / Service
       </h1>
       <div className="p-10">
         <LocationsSection appointmentLinks={true} />
