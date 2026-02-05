@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "./navbar.module.css";
 
-export default function TempNavbar() {
+export default function LandingNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const primaryLink = {
     href: "/make-appointment",

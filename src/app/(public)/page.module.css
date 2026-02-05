@@ -72,8 +72,11 @@
   border-radius: 999px;
   font-weight: 600;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease,
-    background-color 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .primaryButton {
@@ -109,6 +112,17 @@
   background: #153c55;
   border: none;
   color: #fff;
+}
+
+.insuranceButton {
+  background: #153c55;
+  border: none;
+  color: #fff;
+}
+
+.insuranceButton:hover {
+  background: #0f2e42;
+  box-shadow: 0 16px 30px rgba(21, 60, 85, 0.28);
 }
 
 .primaryCareButton:hover {
@@ -162,11 +176,6 @@
   margin: 0 auto;
 }
 
-.footerWrap {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
 
 .sectionHeader,
 .sectionHeaderLight {
@@ -216,7 +225,9 @@
   border-radius: 16px;
   border: 1px solid rgba(148, 163, 184, 0.25);
   box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .featureCard:hover {
