@@ -24,11 +24,24 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/primary-care" className="hover:text-white">
+                  Primary care
+                </Link>
+              </li>
+              <li>
                 <Link
                   href="/immigration-medical-exam"
                   className="hover:text-white"
                 >
                   Immigration medical exam
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/insurance-information"
+                  className="hover:text-white"
+                >
+                  Insurance information
                 </Link>
               </li>
               <li>
