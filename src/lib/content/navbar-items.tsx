@@ -100,20 +100,6 @@ export const urgentNavBarItems = [
     href: "/urgent-care/imaging-services",
     dropdown: [],
   },
-  {
-    name: "Insurance Information",
-    href: "",
-    dropdown: [
-      {
-        name: "Insurace we accept",
-        href: "/urgent-care/insurance-info/insurance-accept",
-      },
-      {
-        name: "No Insurance Plan",
-        href: "/urgent-care/insurance-info/no-insurance-plan",
-      },
-    ],
-  },
 ];
 
 export const primaryNavBarItems = [
@@ -180,19 +166,5 @@ export const primaryNavBarItems = [
     name: "Imaging Services",
     href: "/primary-care/imaging-services",
     dropdown: [],
-  },
-  {
-    name: "Insurance Information",
-    href: "",
-    dropdown: [
-      {
-        name: "Insurace we accept",
-        href: "/primary-care/insurance-info/insurance-accept",
-      },
-      {
-        name: "No Insurance Plan",
-        href: "/primary-care/insurance-info/no-insurance-plan",
-      },
-    ],
   },
 ];

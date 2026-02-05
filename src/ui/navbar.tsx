@@ -75,10 +75,6 @@ export default function Navbar({ theme }: { theme: "urgent" | "primary" }) {
               {" "}
               BOOK NOW
             </Link>
-            {/* <div
-              className={`p-2 mr-4 text-center font-bold text-white rounded-lg ${darkBgVariants[theme]} shadow-lg`}
-            >
-            </div> */}
             <HamburgerX setNavOpen={setNavOpen} navOpen={navOpen} />
           </div>
 
