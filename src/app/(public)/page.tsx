@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import styles from "./page.module.css";
 import HoursTable from "@/ui/hours-table";
 import LocationsSection from "@/ui/locations-section";
-import Carousel from "@/ui/landing-page/desktop/carousel";
+import Carousel from "@/ui/landing-page/carousel";
 import homeStructuredData from "@/lib/content/structured-data/home";
 
 export const metadata: Metadata = {

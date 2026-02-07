@@ -1,6 +1,6 @@
 "use client";
 import { useManageCarousel } from "@/lib/hooks/useCarousel";
-import Carousel from "@/ui/landing-page/desktop/carousel";
+import Carousel from "@/ui/landing-page/carousel";
 import { Label } from "@/ui/external/label";
 import { Input } from "@/ui/external/input";
 import { Button } from "@/ui/external/button";
@@ -32,7 +32,7 @@ export default function ManageCarousel() {
       await handleSubmit();
       if (
         window.confirm(
-          "Your changes to the carousel have been applied. Would you like to redirect to the main page to check?"
+          "Your changes to the carousel have been applied. Would you like to redirect to the main page to check?",
         )
       ) {
         window.open("/", "_blank");
@@ -160,7 +160,7 @@ export default function ManageCarousel() {
                     handleItemChange(
                       selectedIndex,
                       "description",
-                      e.target.value
+                      e.target.value,
                     )
                   }
                   className="w-full"

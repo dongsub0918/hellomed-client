@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Check } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/external/card";
 import { Button } from "@/ui/external/button";
@@ -103,6 +104,13 @@ export default function InsuranceInformationPage() {
           ))}
         </div>
       </section>
+
+      <div className="mt-20 xl:mt-40">
+        <div className="border-t-2 border-gray-300 mb-10 xl:mb-16" />
+        <h2 className="text-3xl xl:text-5xl font-bold text-center mb-8 xl:my-10">
+          No Insurance, No Worries
+        </h2>
+      </div>
 
       <section>
         <h2 className="text-2xl xl:text-4xl font-bold text-center mb-6 xl:mb-8">
@@ -233,12 +241,14 @@ export default function InsuranceInformationPage() {
               ))}
             </div>
             <div className="text-center">
-              <Button
-                size="lg"
-                className="text-lg xl:text-xl py-2 xl:py-3 px-4 xl:px-6"
-              >
-                Enroll Now
-              </Button>
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="text-lg xl:text-xl py-2 xl:py-3 px-4 xl:px-6"
+                >
+                  Enroll Now
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -259,4 +269,3 @@ export default function InsuranceInformationPage() {
     </div>
   );
 }
-

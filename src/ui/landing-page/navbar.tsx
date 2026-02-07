@@ -16,7 +16,7 @@ export default function LandingNavbar() {
     { href: "/primary-care", label: "Primary Care" },
     { href: "/immigration-medical-exam", label: "Immigration Medical Exam" },
     { href: "/future-employee", label: "Careers" },
-    { href: "/contact", label: "Contact our team" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
