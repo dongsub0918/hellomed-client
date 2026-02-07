@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { getCheckIns } from "@/apis/check-in";
 import { Button } from "@/ui/external/button";
@@ -38,14 +38,7 @@ export default function CheckInView() {
     ? Math.floor(checkIns.totalCheckIns / pageSize)
     : 0;
 
-  useEffect(() => {
-    fetchCheckIns();
-  }, [currentPage]);
-
-  // Set web socket to manage real-time updates
-  useCheckInListUpdaterSocket(setCheckIns, currentPage);
-
-  const fetchCheckIns = async () => {
+  const fetchCheckIns = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
@@ -56,7 +49,14 @@ export default function CheckInView() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [currentPage, pageSize]);
+
+  useEffect(() => {
+    fetchCheckIns();
+  }, [fetchCheckIns]);
+
+  // Set web socket to manage real-time updates
+  useCheckInListUpdaterSocket(setCheckIns, currentPage);
 
   // Function to update page in URL
   const updatePage = (newPage: number) => {
