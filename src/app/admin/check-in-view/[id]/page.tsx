@@ -3,17 +3,15 @@
 import { getCheckIn } from "@/apis/check-in";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/external/card";
 import { formatDate } from "@/lib/features/utils";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CheckInFormOutputs } from "@/lib/types/check-in";
 import { getImageFromS3 } from "@/lib/features/image";
 import Image from "next/image";
 
-export default function CheckInDetailsPage({
-  params,
-}: {
-  params: { id: number };
-}) {
+export default function CheckInDetailsPage() {
+  const params = useParams<{ id: string }>();
+  const checkInId = params?.id ? Number(params.id) : null;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [checkIn, setCheckIn] = useState<CheckInFormOutputs>();
@@ -28,23 +26,28 @@ export default function CheckInDetailsPage({
 
   useEffect(() => {
     async function fetchCheckIn() {
+      if (!checkInId || Number.isNaN(checkInId)) {
+        setError("Invalid check-in ID.");
+        setLoading(false);
+        return;
+      }
       setLoading(true);
       setError(null);
       try {
-        const res = await getCheckIn(params.id);
+        const res = await getCheckIn(checkInId);
         setCheckIn(res);
 
         if (res.idImage) {
-          setIdImageSrc(await getImageFromS3(`id/checkin-${params.id}`));
+          setIdImageSrc(await getImageFromS3(`id/checkin-${checkInId}`));
         }
         if (res.insuranceImageFront) {
           setInsuranceImageFrontSrc(
-            await getImageFromS3(`insurance-front/checkin-${params.id}`)
+            await getImageFromS3(`insurance-front/checkin-${checkInId}`)
           );
         }
         if (res.insuranceImageBack) {
           setInsuranceImageBackSrc(
-            await getImageFromS3(`insurance-back/checkin-${params.id}`)
+            await getImageFromS3(`insurance-back/checkin-${checkInId}`)
           );
         }
       } catch (error) {
@@ -59,7 +62,7 @@ export default function CheckInDetailsPage({
     }
 
     fetchCheckIn();
-  }, [params.id]);
+  }, [checkInId]);
 
   if (error) {
     return (

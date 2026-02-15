@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import Link from "next/link";
-import FloatingElement from "@/ui/floating-element";
 
 export const DesktopMenu = ({
   setActive,
@@ -43,19 +42,17 @@ export const DesktopMenuItem = ({
         <div
           className={`absolute top-[167px] left-0 w-full ${bgColor} py-4 px-6`}
         >
-          <FloatingElement delay={0.2}>
-            <div className="max-w-7xl mx-auto flex flex-wrap justify-start">
-              {item.dropdown.map((subItem: any, i: number) => (
-                <Link
-                  key={i}
-                  href={subItem.href}
-                  className="w-3/12 px-4 py-2 text-center text-white hover:font-bold"
-                >
-                  {subItem.name}
-                </Link>
-              ))}
-            </div>
-          </FloatingElement>
+          <div className="max-w-7xl mx-auto flex flex-wrap justify-start">
+            {item.dropdown.map((subItem: any, i: number) => (
+              <Link
+                key={i}
+                href={subItem.href}
+                className="w-3/12 px-4 py-2 text-center text-white hover:font-bold"
+              >
+                {subItem.name}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>

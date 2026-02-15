@@ -52,7 +52,7 @@ export default function useCheckInListUpdaterSocket(
         };
       });
     },
-    []
+    [currentPage, setCheckIns]
   );
 
   useEffect(() => {
@@ -71,7 +71,7 @@ export default function useCheckInListUpdaterSocket(
         socketRef.current?.disconnect();
       }
     };
-  }, []);
+  }, [handleNewCheckin]);
 
   return socketRef;
 }

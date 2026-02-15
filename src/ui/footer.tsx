@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -6,39 +7,53 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between">
           <div className="mb-6 md:mb-0">
-            <h2 className="text-xl font-bold">Walk-In Clinic</h2>
-            <p className="mt-2">
-              Accessibility, Convenience, and Quality Care.
-            </p>
+            <h2 className="text-xl font-bold">HELLOMED</h2>
+            <p className="text-gray-400">Medical attention you can rely on.</p>
           </div>
-          {/* <div className="mb-6 md:mb-0">
+          <div className="mb-6 md:mb-0">
             <h3 className="text-lg font-semibold">Quick Links</h3>
-            <ul className="mt-2 space-y-2">
+            <ul className="mt-2 space-y-2 text-gray-400">
               <li>
-                <a href="/about" className="hover:underline">
-                  About Us
-                </a>
+                <Link href="/make-appointment" className="hover:text-white">
+                  Make an appointment
+                </Link>
               </li>
               <li>
-                <a href="/services" className="hover:underline">
-                  Services
-                </a>
+                <Link href="/urgent-care" className="hover:text-white">
+                  Urgent care
+                </Link>
               </li>
               <li>
-                <a href="/contact" className="hover:underline">
-                  Contact
-                </a>
+                <Link href="/primary-care" className="hover:text-white">
+                  Primary care
+                </Link>
               </li>
               <li>
-                <a href="/faq" className="hover:underline">
-                  FAQ
-                </a>
+                <Link
+                  href="/immigration-medical-exam"
+                  className="hover:text-white"
+                >
+                  Immigration medical exam
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/insurance-information"
+                  className="hover:text-white"
+                >
+                  Insurance information
+                </Link>
+              </li>
+              <li>
+                <Link href="/future-employee" className="hover:text-white">
+                  Careers
+                </Link>
               </li>
             </ul>
-          </div> */}
+          </div>
           <div className="mb-6 md:mb-0">
             <h3 className="text-lg font-semibold">Contact Us</h3>
-            <ul className="mt-2 space-y-2">
+            <ul className="mt-2 space-y-2 text-gray-400">
               <li>(734) 210-1122</li>
               <li>JWHS@hello-med.com</li>
             </ul>
@@ -95,7 +110,7 @@ export default function Footer() {
         </div>
         <div className="text-center mt-8">
           <p className="text-sm text-gray-400">
-            &copy; HELLOMED 2024. All rights reserved.
+            &copy; HELLOMED {new Date().getFullYear()}. All rights reserved.
           </p>
         </div>
       </div>

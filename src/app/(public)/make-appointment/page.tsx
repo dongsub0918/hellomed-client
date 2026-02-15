@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function MakeAppointmentPage() {
   return (
     <>
-      <h1 className="text-center text-3xl font-semibold">
+      <h1 className="text-center text-3xl font-semibold mt-10">
         Please Choose A Location / Service
       </h1>
       <div className="p-10">
