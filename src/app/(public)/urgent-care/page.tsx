@@ -31,9 +31,6 @@ export default function UrgentHome() {
           <strong className="uppercase text-center text-5xl md:text-7xl">
             Clinic Hours
           </strong>
-          <p className="text-center text-lg md:text-2xl lg:text-4xl">
-            (Last check-in time: 30 minutes before closing)
-          </p>
           <div className="w-full px-1/12">
             <HoursTable />
           </div>
